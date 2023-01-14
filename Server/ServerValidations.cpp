@@ -143,4 +143,32 @@ bool ServerValidations::validK(const string &strNum) {
     }
     return true;
 }
+/**
+ * This method checking if the user entered a valid metric or k element settings.
+ * @param responseError - The string we want to return if not valid.
+ * @param extractedResponse - Vector of string with the k element string and the metric string.
+ * @return True if valid, false otherwise.
+ */
+bool ServerValidations::validKAndMetric(string &responseError, vector<string> extractedResponse) {
+    // Init boolean for checking validation.
+    bool result = true;
+    // If the size is not equal to 2, means invalid data.
+    if (extractedResponse.size() != 2) {
+        responseError = "invalid value for K\ninvalid value for metric\n";
+        return false;
+    }
+    // Checking if the k element is valid.
+    if (!validK(extractedResponse[0])) {
+        result = false;
+        responseError = "invalid value for K\n";
+    }
+    // Checking if the metric is valid.
+    if (!validMetric(extractedResponse[1])) {
+        result = false;
+        responseError += "invalid value for metric\n";
+    }
+    return result;
+}
+
+
 

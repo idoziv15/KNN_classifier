@@ -10,6 +10,6 @@ using namespace std;
 class AbstractDefaultIO{
 public:
     virtual string read() = 0;
-    virtual void write() = 0;
+    virtual void write(string content) = 0;
 };
 #endif //EX4_ABSTRACTDEFAULTIO_H

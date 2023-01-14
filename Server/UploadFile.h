@@ -26,10 +26,6 @@ public:
     vector<string> extractClassifications(vector<vector<string>> &lines);
 
 
-private:
-    // dataProcessing object.
-    DataProcessing dataProcessing;
-
 };
 
 #endif //EX4_UPLOADFILE_H

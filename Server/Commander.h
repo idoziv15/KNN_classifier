@@ -7,6 +7,8 @@
 
 #include "AbstractDefaultIO.h"
 #include "RelativeDatabase.h"
+#include "ServerValidations.h"
+#include "DataProcessing.h"
 
 class Commander {
 public:
@@ -26,16 +28,18 @@ public:
 
     AbstractDefaultIO *getDio();
 
-    RelativeDatabase * getDatabase();
+    RelativeDatabase *getDatabase();
 
 
-
+protected:
+    DataProcessing dataProcessing;
+    ServerValidations serverValidations;
 
 private:
     string description;
     AbstractDefaultIO *dio = nullptr;
     RelativeDatabase *relativeDatabase;
-    // Database!!!!
+
 };
 
 #endif //EX4_COMMANDER_H

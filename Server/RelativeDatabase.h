@@ -6,6 +6,7 @@
 
 class RelativeDatabase {
 public:
+    // Destructor for RelativeDatabase class.
     ~RelativeDatabase();
 
     RelativeDatabase(const RelativeDatabase &obj) = delete;
@@ -20,9 +21,21 @@ public:
 
     void setClassifiedRelatives(vector<ClassifiedRelativeVector *> classifiedRelativesVec);
 
+    void setKElement(int k);
+
+    void setMetric(string metric);
+
+    int getKElement();
+
+    string getMetric();
+
 private:
 
     static RelativeDatabase *relativeDatabasePtr;
+
+    int kElement = 5;
+
+    string distanceMetric = "AUC";
 
     RelativeDatabase();
 

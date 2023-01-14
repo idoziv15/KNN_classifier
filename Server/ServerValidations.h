@@ -10,6 +10,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 /**
@@ -39,6 +40,9 @@ public:
 
     // Check if the metric is valid.
     bool validMetric(string metric);
+
+    // Checking the user setting input.
+    bool validKAndMetric(string &responseError, vector<string> extractedResponse);
 };
 
 

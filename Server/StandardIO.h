@@ -12,7 +12,7 @@ public:
 
     string read() override;
 
-    void write(const string &content);
+    void write(string content);
 };
 
 #endif //EX4_STANDARDIO_H

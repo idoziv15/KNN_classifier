@@ -1,5 +1,7 @@
 #include "RelativeDatabase.h"
 
+#include <utility>
+
 
 /**
  * A default constructor.
@@ -53,5 +55,38 @@ vector<ClassifiedRelativeVector *> RelativeDatabase::getClassifiedRelatives() {
         relativeDatabasePtr = new RelativeDatabase();
     }
      return relativeDatabasePtr;
+}
+
+/**
+ *  Setter for k element member.
+ * @param k element.
+ */
+void RelativeDatabase::setKElement(int k) {
+    this->kElement = k;
+}
+
+
+/**
+ *  Setter for distance metric member.
+ * @param metric - The distance metric.
+ */
+void RelativeDatabase::setMetric(string metric) {
+    this->distanceMetric = std::move(metric);
+}
+
+/**
+ *  Getter for k element member.
+ * @return k element member.
+ */
+int RelativeDatabase::getKElement() {
+    return this->kElement;
+}
+
+/**
+ *  Getter for distance metric member.
+ * @return distance metric member.
+ */
+string RelativeDatabase::getMetric() {
+    return this->distanceMetric;
 }
 
