@@ -7,20 +7,24 @@
 
 #include "AbstractDefaultIO.h"
 
-class Commander{
+class Commander {
 public:
     Commander();
 
     // ADD Database!!
     Commander(string description, AbstractDefaultIO *newDescription);
+
     ~Commander();
+
     virtual void execute() = 0;
 
     void setDescription(string description);
+
     string getDescription();
 
     void setDio(AbstractDefaultIO *newDio);
-    AbstractDefaultIO * getDio();
+
+    AbstractDefaultIO *getDio();
 
     // Setter and getter for database.
 
@@ -30,4 +34,5 @@ private:
     AbstractDefaultIO *dio = nullptr;
     // Database!!!!
 };
+
 #endif //EX4_COMMANDER_H
