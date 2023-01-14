@@ -6,6 +6,7 @@
 #define EX4_COMMANDER_H
 
 #include "AbstractDefaultIO.h"
+#include "RelativeDatabase.h"
 
 class Commander {
 public:
@@ -26,12 +27,15 @@ public:
 
     AbstractDefaultIO *getDio();
 
-    // Setter and getter for database.
+    RelativeDatabase * getDatabase();
+
+
 
 
 private:
     string description;
     AbstractDefaultIO *dio = nullptr;
+    RelativeDatabase *relativeDatabase;
     // Database!!!!
 };
 

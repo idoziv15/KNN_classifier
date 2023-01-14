@@ -44,3 +44,14 @@ vector<ClassifiedRelativeVector *> RelativeDatabase::getClassifiedRelatives() {
     return this->classifiedRelatives;
 }
 
+/**
+ * A getter to implement singleton design pattern.
+ * @return The instance of the class.
+ */
+ RelativeDatabase *RelativeDatabase::getInstance() {
+    if(!relativeDatabasePtr){
+        relativeDatabasePtr = new RelativeDatabase();
+    }
+     return relativeDatabasePtr;
+}
+

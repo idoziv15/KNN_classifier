@@ -1,8 +1,6 @@
 #include "UploadFile.h"
 
 
-
-
 /*
  * Constructor for UploadFile class.
  */
@@ -40,7 +38,9 @@ void UploadFile::execute() {
     // Creating a relative vector for the datastructures.
     vector<ClassifiedRelativeVector* > classifiedRelatives = creatClassifiedRelatives(classifiedLines);
 
-
+    // Setting the relativeVectors to the database.
+    this->getDatabase()->setUnclassifiedRelatives(unclassifiedRelatives);
+    this->getDatabase()->setClassifiedRelatives(classifiedRelatives);
 }
 
 /**

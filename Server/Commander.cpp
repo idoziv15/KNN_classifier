@@ -5,7 +5,9 @@
 /**
  * A default constructor.
  */
-Commander::Commander() = default;
+Commander::Commander() {
+    this->relativeDatabase = RelativeDatabase::getInstance();
+}
 
 /**
  * A default destructor.
@@ -20,6 +22,7 @@ Commander::~Commander() = default;
 Commander::Commander(string description, AbstractDefaultIO *dio) {
     setDescription(std::move(description));
     setDio(dio);
+    this->relativeDatabase = RelativeDatabase::getInstance();
 }
 
 /**
@@ -52,4 +55,12 @@ void Commander::setDio(AbstractDefaultIO *newDio) {
  */
 AbstractDefaultIO *Commander::getDio() {
     return dio;
+}
+
+/**
+ * A getter for the database;
+ * @return The database.
+ */
+RelativeDatabase *Commander::getDatabase() {
+    return this->relativeDatabase;
 }

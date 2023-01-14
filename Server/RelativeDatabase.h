@@ -5,10 +5,12 @@
 #include <utility>
 
 class RelativeDatabase {
-
-    RelativeDatabase();
-
+public:
     ~RelativeDatabase();
+
+    RelativeDatabase(const RelativeDatabase &obj) = delete;
+
+    static RelativeDatabase *getInstance();
 
     vector<RelativeVector *> getUnclassifiedRelatives();
 
@@ -19,6 +21,11 @@ class RelativeDatabase {
     void setClassifiedRelatives(vector<ClassifiedRelativeVector *> classifiedRelativesVec);
 
 private:
+
+    static RelativeDatabase *relativeDatabasePtr;
+
+    RelativeDatabase();
+
     vector<ClassifiedRelativeVector *> classifiedRelatives;
     vector<RelativeVector *> unclassifiedRelatives;
 };
