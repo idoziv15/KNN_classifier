@@ -3,6 +3,7 @@
 
 #include "Commander.h"
 #include "DataProcessing.h"
+#include <utility>
 
 /*
  * UploadFile class - a command that upload file using a IO tool to create a database.
@@ -17,6 +18,10 @@ public:
 
     // An implementation for the commander execute.
     void execute() override;
+
+    vector<RelativeVector *> creatUnclassifiedRelatives(vector<vector<string>> lines);
+    vector<ClassifiedRelativeVector *> creatClassifiedRelatives(vector<vector<string>> lines);
+
 
 private:
     // dataProcessing object.

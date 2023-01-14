@@ -6,6 +6,7 @@
 #include <utility>
 
 class ClassifiedRelativeVector : public RelativeVector {
+public:
     ClassifiedRelativeVector(vector<double> valuesVec, string classification);
 
     ClassifiedRelativeVector(vector<double> valuesVec, string classification, double distance);

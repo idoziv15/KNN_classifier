@@ -47,7 +47,6 @@ vector<double> DataProcessing::sTodVec(vector<string> strVec) {
 
 /**
  * This method create a vector that contains vector of string using ',' delim.
- *
  * @param LineVec - Vector of strings.
  * @return Vector that contains vector of strings.
  */
@@ -65,11 +64,10 @@ vector<vector<string>> DataProcessing::createLinesArray(vector<string> lineVec) 
 
 /**
  * This method create a vector that contains vector of doubles.
- *
  * @param lines vector that contains vector of strings.
  * @return vector that contains vector of doubles.
  */
-vector<vector<double>> DataProcessing:: linesToDoubles(vector<vector<string>> lines){
+vector<vector<double>> DataProcessing::linesToDoubles(vector<vector<string>> lines) {
     // Getting lines size.
     unsigned int lineVecSize = lines.size();
     // Init vector.
@@ -87,14 +85,33 @@ vector<vector<double>> DataProcessing:: linesToDoubles(vector<vector<string>> li
  * @param doublesVec vector that contains vector of doubles.
  * @return vector of reference to relative vectors.
  */
-vector<RelativeVector *> DataProcessing::doublesToRelatives(vector<vector<double>> doublesVec) {
+vector<RelativeVector *> DataProcessing::doublesUnclassifiedRelatives(vector<vector<double>> doublesVec) {
     // Getting doublesVec size.
     unsigned int doublesVecSize = doublesVec.size();
     // Init vector.
-    vector<RelativeVector*> relatives;
+    vector<RelativeVector *> relatives;
     for (int i = 0; i < doublesVecSize; ++i) {
         // Creating new RelativeVector on the heap.
         relatives[i] = new RelativeVector(doublesVec[i]);
+    }
+    return relatives;
+}
+
+/**
+ * Creating a ClassifiedRelativeVector from a vector of vector of doubles ans a vector of classifications.
+ * @param doublesVec The values vector of vector of doubles.
+ * @param classifications The array of classifications according to the doubles vectors.
+ * @return An array of Classified relative vectors.
+ */
+vector<ClassifiedRelativeVector *> DataProcessing::doubleToClassifiedRelatives(vector<vector<double>> doublesVec,
+                                                                               vector<string> classifications) {
+    // Getting doublesVec size.
+    unsigned int doublesVecSize = doublesVec.size();
+    // Init vector.
+    vector<ClassifiedRelativeVector *> relatives;
+    for (int i = 0; i < doublesVecSize; ++i) {
+        // Creating new RelativeVector on the heap.
+        relatives[i] = new ClassifiedRelativeVector(doublesVec[i], classifications[i]);
     }
     return relatives;
 }

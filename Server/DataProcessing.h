@@ -4,8 +4,6 @@
 #define EX4_DATAPROCESSING_H
 
 
-
-
 #include <iostream>
 #include <cstdlib>
 #include <vector>
@@ -14,6 +12,7 @@
 #include <string>
 #include "RelativeVector.h"
 #include "ServerValidations.h"
+#include "ClassifiedRelativeVector.h"
 
 using namespace std;
 
@@ -36,7 +35,10 @@ public:
     vector<vector<double>> linesToDoubles(vector<vector<string>> lines);
 
     // Create a vector that contains reference to relative vector.
-    vector<RelativeVector*> doublesToRelatives(vector<vector<double>> doublesVec);
+    vector<RelativeVector *> doublesUnclassifiedRelatives(vector<vector<double>> doublesVec);
+
+    vector<ClassifiedRelativeVector *> doubleToClassifiedRelatives(vector<vector<double>> doublesVec,
+                                                         vector<string> classifications);
 
 
 protected:
@@ -44,6 +46,6 @@ protected:
     ServerValidations serverValidations;
 
 
-
 };
+
 #endif //EX4_DATAPROCESSING_H

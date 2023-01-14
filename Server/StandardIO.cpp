@@ -12,5 +12,3 @@ string StandardIO::read() {
 void StandardIO::write(const string& content) {
     cout << "Wrote to this file! the content is:" << content << endl;
 }
-
-

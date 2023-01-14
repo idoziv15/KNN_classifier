@@ -7,12 +7,12 @@
  * @param initValuesVector The initiated vector of the class.
  */
 ClassifiedRelativeVector::ClassifiedRelativeVector(vector<double> valuesVec, string classification)
-: RelativeVector(std::move(valuesVec)) {
+        : RelativeVector(std::move(valuesVec)) {
     setClassification(std::move(classification));
 }
 
 ClassifiedRelativeVector::ClassifiedRelativeVector(vector<double> valuesVec, string classification, double distance)
-: RelativeVector(std::move(valuesVec)){
+        : RelativeVector(std::move(valuesVec)) {
     setClassification(std::move(classification));
     setDistanceFromMasterVec(distance);
 }
