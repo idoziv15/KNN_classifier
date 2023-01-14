@@ -3,7 +3,7 @@
 #include <utility>
 
 /**
- * A default constructor.
+ * A default constructor which initiate the database singleton.
  */
 Commander::Commander() {
     this->relativeDatabase = RelativeDatabase::getInstance();

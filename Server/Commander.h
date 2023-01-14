@@ -12,7 +12,6 @@ class Commander {
 public:
     Commander();
 
-    // ADD Database!!
     Commander(string description, AbstractDefaultIO *newDescription);
 
     ~Commander();
