@@ -1,11 +1,15 @@
 #include "UploadFile.h"
 
+#include <utility>
 
-/*
- * Constructor for UploadFile class.
+
+/**
+ * A constructor which pass the arguments he receives to the commander constructor.
+ * @param description the description of the command.
+ * @param newDescription The
  */
-UploadFile::UploadFile(string description, AbstractDefaultIO *newDescription)
-        : Commander(std::move(description), newDescription) {
+UploadFile::UploadFile(string description, AbstractDefaultIO *Dio)
+        : Commander(std::move(description), Dio) {
 
 }
 
@@ -50,7 +54,7 @@ void UploadFile::execute() {
  */
 vector<RelativeVector *> UploadFile::creatUnclassifiedRelatives(vector<vector<string>> lines) {
     // Converting the cells to doubles.
-    vector<vector<double>> doublesVec = this->dataProcessing.linesToDoubles(lines);
+    vector<vector<double>> doublesVec = this->dataProcessing.linesToDoubles(std::move(lines));
     // Creating the RelativeVector array.
     return this->dataProcessing.doublesUnclassifiedRelatives(doublesVec);
 }
@@ -61,6 +65,20 @@ vector<RelativeVector *> UploadFile::creatUnclassifiedRelatives(vector<vector<st
  * @return An array of Classified relative vectors.
  */
 vector<ClassifiedRelativeVector *> UploadFile::creatClassifiedRelatives(vector<vector<string>> lines) {
+    // extracting the classifications.
+    vector<string> classifications = extractClassifications(lines);
+    // Converting the cells to doubles.
+    vector<vector<double>> doublesVec = this->dataProcessing.linesToDoubles(lines);
+    // Creating the ClassifiedRelativeVector array.
+    return this->dataProcessing.doubleToClassifiedRelatives(doublesVec, classifications);
+}
+
+/**
+ * Extracting the classifications from a vector of vectors.
+ * @param lines the master vector.
+ * @return a vector of classifications.
+ */
+vector<string> UploadFile::extractClassifications(vector<vector<string>> &lines) {
     // Saving the size of the vector.
     unsigned int size = lines.size();
     // Initiating a new classification vector to store the classifications.
@@ -71,8 +89,5 @@ vector<ClassifiedRelativeVector *> UploadFile::creatClassifiedRelatives(vector<v
         // Removing the classification for the original vector.
         lines[i].pop_back();
     }
-    // Converting the cells to doubles.
-    vector<vector<double>> doublesVec = this->dataProcessing.linesToDoubles(lines);
-    // Creating the ClassifiedRelativeVector array.
-    return this->dataProcessing.doubleToClassifiedRelatives(doublesVec, classifications);
+    return classifications;
 }

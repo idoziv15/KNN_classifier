@@ -11,7 +11,7 @@
 class UploadFile : public Commander {
 public:
     // Constructor for UploadFIle class.
-    UploadFile(string description, AbstractDefaultIO *newDescription);
+    UploadFile(string description, AbstractDefaultIO *Dio);
 
     // Destructor for UploadFile class.
     ~UploadFile();
@@ -20,7 +20,10 @@ public:
     void execute() override;
 
     vector<RelativeVector *> creatUnclassifiedRelatives(vector<vector<string>> lines);
+
     vector<ClassifiedRelativeVector *> creatClassifiedRelatives(vector<vector<string>> lines);
+
+    vector<string> extractClassifications(vector<vector<string>> &lines);
 
 
 private:
