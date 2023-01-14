@@ -11,5 +11,5 @@ add_executable(ex4
         Server/StandardIO.cpp
         Server/StandardIO.h
         Server/Commander.cpp
-        Server/Commander.h Server/UploadFile.cpp Server/UploadFile.h)
+        Server/Commander.h Server/UploadFile.cpp Server/UploadFile.h Server/RelativeVector.cpp Server/RelativeVector.h)
 

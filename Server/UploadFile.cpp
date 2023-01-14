@@ -3,3 +3,16 @@
 //
 
 #include "UploadFile.h"
+
+#include <utility>
+
+UploadFile::UploadFile(string description, AbstractDefaultIO *newDescription)
+: Commander(std::move(description), newDescription) {
+
+}
+
+void UploadFile::execute() {
+
+}
+
+UploadFile::~UploadFile() = default;
