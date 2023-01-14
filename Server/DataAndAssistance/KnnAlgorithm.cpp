@@ -123,8 +123,42 @@ bool KnnAlgorithm::calculateDistances(vector<double> uVec) {
 
 
 string KnnAlgorithm::classifyVector(vector<double> unclassifiedVector) {
-
+    // Calculate all distances of vectors from the user's vector.
+    if (!calculateDistances(std::move(unclassifiedVector))) {
+        return "";
+    }
+    // Calculate the k nearest neighbors.
+    vector<RelativeVector *> nearestK = sortingAndGettingK();
+    // Create a map from the knn.
+    map<string, int> kMap = createMap(nearestK);
+    // Destroy the KNN vector.
+    destroyKnn();
+    // Delete the calculation metric.
+    AbstractDistance *metric = getCalc();
+    delete metric;
+    // Calculate the largest classification and return it.
+    return extractClassification(kMap);
 }
 
-
+/**
+ * Sorting the vector of RelativeVectors, taking only the first k elements.
+ * @return A vector of the k smallest by distance elements.
+ */
+vector<RelativeVector *> KnnAlgorithm::sortingAndGettingK() {
+    // Set the CatalogVectors to a temp vector.
+    vector<RelativeVector *> knn = getCatalogedVectors();
+    // Sort the array by the given compare function.
+    sort(knn.begin(), knn.end(), compareRelativeVector);
+    // Set the knn to the catalog vector.
+    setCatalogedVectors(knn);
+    // Create a new vector.
+    vector<RelativeVector *> kRelativeVectors;
+    // Push to it the first k elements.
+    unsigned long kNum = min(getKNeighbors(), knn.size());
+    for (int i = 0; i < kNum; i++) {
+        kRelativeVectors.push_back(knn[i]);
+    }
+    // Return the first k elements.
+    return kRelativeVectors;
+}
 

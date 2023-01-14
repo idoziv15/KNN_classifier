@@ -24,7 +24,10 @@ public:
 
     string classifyVector(vector<double> unclassifiedVector);
 
-    bool KnnAlgorithm::calculateDistances(vector<double> uVec);
+    bool calculateDistances(vector<double> uVec);
+
+    // Sorting the vector by distances.
+    vector<RelativeVector *> sortingAndGettingK();
 
     // Check validation of the vectors.
     bool sizeComparison(const vector<double> &v1, const vector<double> &v2);
