@@ -146,7 +146,7 @@ string KnnAlgorithm::classifyVector(vector<double> unclassifiedVector) {
  */
 vector<RelativeVector *> KnnAlgorithm::sortingAndGettingK() {
     // Set the CatalogVectors to a temp vector.
-    vector<RelativeVector *> knn = getCatalogedVectors();
+    vecto< *> knn = getCataloged();
     // Sort the array by the given compare function.
     sort(knn.begin(), knn.end(), compareRelativeVector);
     // Set the knn to the catalog vector.
