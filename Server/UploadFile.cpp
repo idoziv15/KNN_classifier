@@ -36,7 +36,7 @@ void UploadFile::execute() {
     // Extracting each cell in the line to a vector, and the vector to a vector.
     vector<vector<string>> classifiedLines = this->dataProcessing.createLinesArray(classifiedVector);
     // Creating a relative vector for the datastructures.
-    vector<ClassifiedRelativeVector* > classifiedRelatives = creatClassifiedRelatives(classifiedLines);
+    vector<ClassifiedRelativeVector *> classifiedRelatives = creatClassifiedRelatives(classifiedLines);
 
     // Setting the relativeVectors to the database.
     this->getDatabase()->setUnclassifiedRelatives(unclassifiedRelatives);
@@ -52,7 +52,7 @@ vector<RelativeVector *> UploadFile::creatUnclassifiedRelatives(vector<vector<st
     // Converting the cells to doubles.
     vector<vector<double>> doublesVec = this->dataProcessing.linesToDoubles(lines);
     // Creating the RelativeVector array.
-     return this->dataProcessing.doublesUnclassifiedRelatives(doublesVec);
+    return this->dataProcessing.doublesUnclassifiedRelatives(doublesVec);
 }
 
 /**
@@ -66,7 +66,7 @@ vector<ClassifiedRelativeVector *> UploadFile::creatClassifiedRelatives(vector<v
     // Initiating a new classification vector to store the classifications.
     vector<string> classifications;
     // Saving all classifications.
-    for(int i = 0; i < size; ++i){
+    for (int i = 0; i < size; ++i) {
         classifications[i] = lines[i].back();
         // Removing the classification for the original vector.
         lines[i].pop_back();
