@@ -61,7 +61,7 @@ vector<ClassifiedRelativeVector *> RelativeDatabase::getClassifiedRelatives() {
  *  Setter for k element member.
  * @param k element.
  */
-void RelativeDatabase::setKElement(int k) {
+void RelativeDatabase::setKElement(unsigned long k) {
     this->kElement = k;
 }
 
@@ -78,7 +78,7 @@ void RelativeDatabase::setMetric(string metric) {
  *  Getter for k element member.
  * @return k element member.
  */
-int RelativeDatabase::getKElement() {
+unsigned  long RelativeDatabase::getKElement() {
     return this->kElement;
 }
 

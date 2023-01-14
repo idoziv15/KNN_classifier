@@ -3,6 +3,15 @@
 
 #include "Server/Distances/AbstractDistance.h"
 #include "ClassifiedRelativeVector.h"
+#include <cstdlib>
+#include <vector>
+#include <string>
+#include "RelativeVector.h"
+#include "../Distances/AbstractDistance.h"
+#include <bits/stdc++.h>
+#include <utility>
+#include <map>
+#include <cmath>
 
 class KnnAlgorithm {
 public:
@@ -27,7 +36,7 @@ public:
     bool calculateDistances(vector<double> uVec);
 
     // Sorting the vector by distances.
-    vector<RelativeVector *> sortingAndGettingK();
+    vector<ClassifiedRelativeVector *> sortingAndGettingK();
 
     // Check validation of the vectors.
     bool sizeComparison(const vector<double> &v1, const vector<double> &v2);
@@ -35,6 +44,11 @@ public:
     vector<string> calculateFiles(vector<RelativeVector *> UnclassifiedVectors,
                                   vector<ClassifiedRelativeVector *> classifiedVectors);
 
+    map<string, int> createMap(vector<ClassifiedRelativeVector *> knn);
+
+    void destroyKnn();
+
+    string extractClassification(const map<string, int> &kMap);
 
 private:
     // The calculation for the distance.
@@ -43,6 +57,9 @@ private:
     unsigned long kNeighbors;
     // The classified relative vectors.
     vector<ClassifiedRelativeVector *> catalogedVectors;
+
+
+
 };
 
 #endif //EX4_KNNALGORITHM_H
