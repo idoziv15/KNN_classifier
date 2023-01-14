@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 
 add_executable(ex4
-        Server/AbstractDefaultIO.cpp
-        Server/AbstractDefaultIO.h
-        Server/StandardIO.cpp
-        Server/StandardIO.h
-        Server/Commander.cpp
-        Server/Commander.h Server/UploadFile.cpp Server/UploadFile.h Server/RelativeVector.cpp Server/RelativeVector.h Server/ClassifiedRelativeVector.cpp Server/ClassifiedRelativeVector.h Server/DataProcessing.cpp Server/DataProcessing.h Server/ServerValidations.cpp Server/RelativeDatabase.cpp Server/RelativeDatabase.h Server/AlgorithmSetting.cpp Server/AlgorithmSetting.h)
+        Server/IO/AbstractDefaultIO.cpp
+        Server/IO/AbstractDefaultIO.h
+        Server/IO/StandardIO.cpp
+        Server/IO/StandardIO.h
+        Server/Commands/Commander.cpp
+        Server/Commands/Commander.h Server/Commands/UploadFile.cpp Server/Commands/UploadFile.h Server/DataAndAssistance/RelativeVector.cpp Server/DataAndAssistance/RelativeVector.h Server/DataAndAssistance/ClassifiedRelativeVector.cpp Server/DataAndAssistance/ClassifiedRelativeVector.h Server/DataAndAssistance/DataProcessing.cpp Server/DataAndAssistance/DataProcessing.h Server/DataAndAssistance/ServerValidations.cpp Server/DataAndAssistance/RelativeDatabase.cpp Server/DataAndAssistance/RelativeDatabase.h Server/Commands/AlgorithmSetting.cpp Server/Commands/AlgorithmSetting.h)
 

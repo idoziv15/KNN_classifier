@@ -5,10 +5,10 @@
 #ifndef EX4_COMMANDER_H
 #define EX4_COMMANDER_H
 
-#include "AbstractDefaultIO.h"
-#include "RelativeDatabase.h"
-#include "ServerValidations.h"
-#include "DataProcessing.h"
+#include "Server/IO/AbstractDefaultIO.h"
+#include "Server/DataAndAssistance/RelativeDatabase.h"
+#include "Server/DataAndAssistance/ServerValidations.h"
+#include "Server/DataAndAssistance/DataProcessing.h"
 
 class Commander {
 public:
