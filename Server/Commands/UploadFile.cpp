@@ -26,15 +26,9 @@ void UploadFile::execute() {
     getDatabase()->deleteClassified();
     // Delete all old unclassified files (if any).
     getDatabase()->deleteUnclassified();
-    // Reading a file of unclassified vectors.
-    string unclassifiedFile = getDio()->read();
-    // Extracting each vector from the file to a vector of strings.
-    vector<string> unclassifiedVector = this->dataProcessing.catchDelim(unclassifiedFile, '\n');
-    // Extracting each cell in the line to a vector, and the vector to a vector.
-    vector<vector<string>> unclassifiedLines = this->dataProcessing.createLinesArray(unclassifiedVector);
-    // Creating a relative vector for the datastructures.
-    vector<RelativeVector *> unclassifiedRelatives = creatUnclassifiedRelatives(unclassifiedLines);
 
+    // Asking from the user to upload the train file.
+    getDio()->write("Please upload your local train CSV file.\n");
     // Reading a file of classified vectors.
     string classifiedFile = getDio()->read();
     // Extracting each vector from the file to a vector of strings.
@@ -43,6 +37,19 @@ void UploadFile::execute() {
     vector<vector<string>> classifiedLines = this->dataProcessing.createLinesArray(classifiedVector);
     // Creating a relative vector for the datastructures.
     vector<ClassifiedRelativeVector *> classifiedRelatives = creatClassifiedRelatives(classifiedLines);
+
+    // Sending the client approval for his upload train file and asking for the test file.
+    getDio()->write("Upload complete.\nPlease upload your local test CSV file.\n");
+    // Reading a file of unclassified vectors.
+    string unclassifiedFile = getDio()->read();
+    // Extracting each vector from the file to a vector of strings.
+    vector<string> unclassifiedVector = this->dataProcessing.catchDelim(unclassifiedFile, '\n');
+    // Extracting each cell in the line to a vector, and the vector to a vector.
+    vector<vector<string>> unclassifiedLines = this->dataProcessing.createLinesArray(unclassifiedVector);
+    // Creating a relative vector for the datastructures.
+    vector<RelativeVector *> unclassifiedRelatives = creatUnclassifiedRelatives(unclassifiedLines);
+    // Approve to the client that the upload completed.
+    getDio()->write("Upload complete.\n");
 
     // Setting the relativeVectors to the database.
     this->getDatabase()->setUnclassifiedRelatives(unclassifiedRelatives);

@@ -1,4 +1,9 @@
+#include "IO/CLI.h"
+#include "IO/StandardIO.h"
 
-int main(){
+int main() {
+    AbstractDefaultIO* standardIo = new StandardIO();
+    CLI cli(standardIo);
+    cli.start();
     return 0;
 }

@@ -4,29 +4,65 @@
 
 #include "CLI.h"
 
+#include <utility>
+
 CLI::~CLI() = default;
 
 CLI::CLI() = default;
 
-CLI::CLI(int clientSocket) {
-    setClientSocket(clientSocket);
+CLI::CLI(AbstractDefaultIO *IO) {
+    setDefaultIO(IO);
 }
 
-void CLI::setClientSocket(int socket) {
-    this->clientSocket = socket;
+void CLI::setDefaultIO(AbstractDefaultIO *IO) {
+    this->defaultIo = IO;
 }
 
-int CLI::getClientSocket() {
-    return this->clientSocket;
+AbstractDefaultIO *CLI::getDefaultIO() {
+    return this->defaultIo;
 }
+
+void CLI::setCommands(map<string, Commander *> newCommand) {
+    this->commands = std::move(newCommand);
+}
+
+map<string, Commander *> CLI::getCommands() {
+    return this->commands;
+}
+
 
 void CLI::start() {
-    map<string, Commander *> commanders = initializeMap(new StandardIO());
+    AbstractDefaultIO *dIO = getDefaultIO();
+    map<string, Commander *> commanders = initializeCommands(dIO);
+    setCommands(commanders);
+    string menu = menuCreator();
+    while (true) {
+        dIO->write(menu);
+        string response = dIO->read();
+        Commander* command = processRequest(response);
+        if (command == nullptr){
+            dIO->write("invalid input\n");
+        }
+        command->execute();
+        if (response == "8" || response == "8\n"){
+            // Free recourses and close client socket!!!!!!!!!.
+            break;
+        }
+    }
+
 }
 
 string CLI::menuCreator() {
-    return std::string();
+    string menu = "Welcome to the KNN Classifier Server. Please choose an option:\n";
+    menu += "1. " + this->commands["1"]->getDescription();
+    menu += "2. " + this->commands["2"]->getDescription();
+    menu += "3. " + this->commands["3"]->getDescription();
+    menu += "4. " + this->commands["4"]->getDescription();
+    menu += "5. " + this->commands["5"]->getDescription();
+    menu += "8. " + this->commands["8"]->getDescription();
+    return menu;
 }
+
 
 map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO) {
     map<string, Commander *> initCommands;
@@ -47,8 +83,12 @@ map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO) {
     return initCommands;
 }
 
-void CLI::setCommands(map<string, Commander *> commands) {
-
+Commander *CLI::processRequest(const string& clientChoice) {
+    if (this->commands.find(clientChoice) == this->commands.end()){
+        return nullptr;
+    }
+    return this->commands[clientChoice];
 }
+
 
 

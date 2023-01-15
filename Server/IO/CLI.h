@@ -22,24 +22,26 @@ public:
 
     CLI();
 
-    explicit CLI(int clientSocket);
+    explicit CLI(AbstractDefaultIO *defaultIo);
 
     ~CLI();
 
-    void setClientSocket(int socket);
+    void setDefaultIO(AbstractDefaultIO* IO);
 
-    int getClientSocket();
+    AbstractDefaultIO* getDefaultIO();
 
     string menuCreator();
 
     map<string, Commander *> initializeCommands(AbstractDefaultIO *IO);
 
-    void setCommands(map<string, Commander *> commands);
+    void setCommands(map<string, Commander *> newCommand);
 
-    map<string, Commander *> getCommands;
+    map<string, Commander *> getCommands();
+
+    Commander* processRequest(const string& clientChoice);
 
 private:
-    int clientSocket;
+    AbstractDefaultIO* defaultIo;
     map<string, Commander *> commands;
 };
 
