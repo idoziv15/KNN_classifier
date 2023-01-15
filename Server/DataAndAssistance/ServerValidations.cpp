@@ -143,6 +143,7 @@ bool ServerValidations::validK(const string &strNum) {
     }
     return true;
 }
+
 /**
  * This method checking if the user entered a valid metric or k element settings.
  * @param responseError - The string we want to return if not valid.
@@ -169,6 +170,3 @@ bool ServerValidations::validKAndMetric(string &responseError, vector<string> ex
     }
     return result;
 }
-
-
-

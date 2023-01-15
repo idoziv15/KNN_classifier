@@ -79,7 +79,6 @@ vector<vector<double>> DataProcessing::linesToDoubles(vector<vector<string>> lin
     return doublesVec;
 }
 
-
 /**
  * This method create a vector that contain a references to relativeVector.
  * @param doublesVec vector that contains vector of doubles.
@@ -115,4 +114,3 @@ vector<ClassifiedRelativeVector *> DataProcessing::doubleToClassifiedRelatives(v
     }
     return relatives;
 }
-

@@ -25,12 +25,8 @@ public:
     // Creating classified relative vector from vector that contains vectors of strings.
     vector<ClassifiedRelativeVector *> creatClassifiedRelatives(vector<vector<string>> lines);
 
-    // Getting the classification the classify data.
+    // Getting the classification of the classified data.
     vector<string> extractClassifications(vector<vector<string>> &lines);
-
-
-
-
 };
 
 #endif //EX4_UPLOADFILE_H
