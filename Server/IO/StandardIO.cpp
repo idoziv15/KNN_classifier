@@ -9,6 +9,7 @@ string StandardIO::read() {
     string line;
     getline(cin, line, '$');
 
+    line += '\0';
     return line;
 }
 
