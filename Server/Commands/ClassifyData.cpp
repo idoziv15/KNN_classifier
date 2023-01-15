@@ -1,5 +1,4 @@
 #include "ClassifyData.h"
-#include <utility>
 
 /**
  *  Destructor for ClassifyData class.
@@ -22,7 +21,7 @@ ClassifyData::ClassifyData(string description, AbstractDefaultIO *newDescription
 void ClassifyData::execute() {
     // Checking if the user didn't upload any files.
     if (getDatabase()->getClassifiedRelatives().empty() || getDatabase()->getUnclassifiedRelatives().empty()) {
-        getDio()->write("please upload data");
+        getDio()->write("please upload data\n");
         return;
     }
     // Creating a distance object.
@@ -34,11 +33,12 @@ void ClassifyData::execute() {
                                                               getDatabase()->getClassifiedRelatives());
     // Checking if was any error while getting classification in the knn algorithm.
     if (classifyData.empty()) {
-        getDio()->write("invalid input!");
+        getDio()->write("invalid input\n");
         return;
     }
+    getDatabase()->setResultVec(classifyData);
     // Classification complete successfully.
-    getDio()->write("classifying data complete");
+    getDio()->write("classifying data complete\n");
 }
 
 

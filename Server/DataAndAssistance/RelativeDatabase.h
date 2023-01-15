@@ -3,6 +3,7 @@
 
 #include "ClassifiedRelativeVector.h"
 #include <utility>
+#include <bits/stdc++.h>
 
 class RelativeDatabase {
 public:
@@ -29,18 +30,28 @@ public:
 
     string getMetric();
 
+    void setResultVec(vector<string> result);
+
+    vector<string> getResult();
+
 private:
-
+    // The pointer to the class to implement the singleton.
     static RelativeDatabase *relativeDatabasePtr;
-
+    // The kElement set to a default value of 5.
     unsigned long kElement = 5;
-
+    // The metric set to a default value of "AUC".
     string distanceMetric = "AUC";
 
+    // The constructor as a singleton.
     RelativeDatabase();
 
+    // Classified file.
     vector<ClassifiedRelativeVector *> classifiedRelatives;
+    // Unclassified file.
     vector<RelativeVector *> unclassifiedRelatives;
+    // After classification vector.
+    vector<string> resultVec;
 };
+
 
 #endif //EX4_RELATIVEDATABASE_H

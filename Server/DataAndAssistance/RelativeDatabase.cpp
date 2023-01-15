@@ -1,6 +1,6 @@
 #include "RelativeDatabase.h"
 
-#include <utility>
+RelativeDatabase *RelativeDatabase ::relativeDatabasePtr = nullptr;
 
 
 /**
@@ -50,11 +50,11 @@ vector<ClassifiedRelativeVector *> RelativeDatabase::getClassifiedRelatives() {
  * A getter to implement singleton design pattern.
  * @return The instance of the class.
  */
- RelativeDatabase *RelativeDatabase::getInstance() {
-    if(!relativeDatabasePtr){
+RelativeDatabase* RelativeDatabase::getInstance() {
+    if (relativeDatabasePtr == nullptr) {
         relativeDatabasePtr = new RelativeDatabase();
     }
-     return relativeDatabasePtr;
+    return relativeDatabasePtr;
 }
 
 /**
@@ -78,7 +78,7 @@ void RelativeDatabase::setMetric(string metric) {
  *  Getter for k element member.
  * @return k element member.
  */
-unsigned  long RelativeDatabase::getKElement() {
+unsigned long RelativeDatabase::getKElement() {
     return this->kElement;
 }
 
@@ -88,5 +88,21 @@ unsigned  long RelativeDatabase::getKElement() {
  */
 string RelativeDatabase::getMetric() {
     return this->distanceMetric;
+}
+
+/**
+ * Setter for the result vector after classification.
+ * @param result The result vector.
+ */
+void RelativeDatabase::setResultVec(vector<string> result) {
+    this->resultVec = std::move(result);
+}
+
+/**
+ * Getter for the result vector.
+ * @return The value of the result vector.
+ */
+vector<string> RelativeDatabase::getResult() {
+    return this->resultVec;
 }
 

@@ -65,31 +65,6 @@ vector<ClassifiedRelativeVector *> KnnAlgorithm::getCataloged() {
 
 
 /**
- * Given two files (as relativeVectors) calculating classifications for all unclassified files.
- * @param UnclassifiedVectors The unclassified vectors.
- * @param classifiedVectors The classified vectors.
- * @return A vector of strings representing the classifications of all unclassified vectors.
- * If the value is an empty vector, it means an error accord.
- */
-vector<string> KnnAlgorithm::calculateFiles(vector<RelativeVector *> unclassifiedVectors,
-                                            vector<ClassifiedRelativeVector *> classifiedVectors) {
-    vector<string> resultClassifications;
-    // Setting the cataloged vector.
-    setCatalogVec(std::move(classifiedVectors));
-    string classification;
-    unsigned int size = unclassifiedVectors.size();
-    for(int i = 0; i < size; ++i){
-        classification = classifyVector(unclassifiedVectors[i]->getValuesVector());
-        if(classification.empty()){
-            vector<string> error;
-            return error;
-        }
-        resultClassifications.push_back(to_string(i) + " " + classification);
-    }
-    return resultClassifications;
-}
-
-/**
  * The function check if two vectors are equally sized.
  * @param v1 The first vector.
  * @param v2 The second vector.
@@ -122,7 +97,6 @@ bool KnnAlgorithm::calculateDistances(vector<double> uVec) {
 }
 
 
-
 /**
  * Create a map contains the string of classification as a key and the number it appears in knn as a value.
  * @param knn The k nearest neighbours to the user's vector.
@@ -146,19 +120,6 @@ map<string, int> KnnAlgorithm::createMap(vector<ClassifiedRelativeVector *> knn)
     return kMap;
 }
 
-
-
-
-/**
- * Deleting all relative vector's data.
- */
-void KnnAlgorithm::destroyKnn() {
-    for (auto &i: catalogedVectors) {
-        delete i;
-    }
-}
-
-
 /**
  * Check what key has the biggest value, and return it's classification.
  * @param kMap Tha map of values.
@@ -181,7 +142,6 @@ string KnnAlgorithm::extractClassification(const map<string, int> &kMap) {
     return resultClass;
 }
 
-
 /**
  * A control flow function for this class calculations.
  * @return the largest classification from the KNN vectors.
@@ -195,11 +155,6 @@ string KnnAlgorithm::classifyVector(vector<double> unclassifiedVector) {
     vector<ClassifiedRelativeVector *> nearestK = sortingAndGettingK();
     // Create a map from the knn.
     map<string, int> kMap = createMap(nearestK);
-    // Destroy the KNN vector.
-    destroyKnn();
-    // Delete the calculation metric.
-    AbstractDistance *metric = getCalc();
-    delete metric;
     // Calculate the largest classification and return it.
     return extractClassification(kMap);
 }
@@ -229,7 +184,7 @@ vector<ClassifiedRelativeVector *> KnnAlgorithm::sortingAndGettingK() {
     // Create a new vector.
     vector<ClassifiedRelativeVector *> kRelativeVectors;
     // Push to it the first k elements.
-    unsigned long kNum = min(getKNeighbors(), knn.size());
+    unsigned long kNum = getKNeighbors() > knn.size() ? knn.size() : getKNeighbors();
     for (int i = 0; i < kNum; i++) {
         kRelativeVectors.push_back(knn[i]);
     }
@@ -237,6 +192,35 @@ vector<ClassifiedRelativeVector *> KnnAlgorithm::sortingAndGettingK() {
     return kRelativeVectors;
 }
 
-
-
-
+/**
+ * Given two files (as relativeVectors) calculating classifications for all unclassified files.
+ * @param UnclassifiedVectors The unclassified vectors.
+ * @param classifiedVectors The classified vectors.
+ * @return A vector of strings representing the classifications of all unclassified vectors.
+ * If the value is an empty vector, it means an error accord.
+ */
+vector<string> KnnAlgorithm::calculateFiles(vector<RelativeVector *> unclassifiedVectors,
+                                            vector<ClassifiedRelativeVector *> classifiedVectors) {
+    // Creating a result vector to store the classifications.
+    vector<string> resultClassifications;
+    // Setting the cataloged vector.
+    setCatalogVec(std::move(classifiedVectors));
+    // The classification of a specific vector.
+    string classification;
+    // Getting the amount of vectors to classify.
+    unsigned int size = unclassifiedVectors.size();
+    for (int i = 0; i < size; ++i) {
+        // Getting the classification of a specific vector.
+        classification = classifyVector(unclassifiedVectors[i]->getValuesVector());
+        // If the classification is empty, return an empty vector.
+        if (classification.empty()) {
+            // Create and return the empty vector.
+            vector<string> error;
+            return error;
+        }
+        // Concatenate the result with the sequenced vector.
+        resultClassifications.push_back(to_string(i) + " " + classification + "\n");
+    }
+    // Return the result.
+    return resultClassifications;
+}
