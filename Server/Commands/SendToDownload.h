@@ -10,5 +10,7 @@ public:
     // Sending the classified data to the user if valid, otherwise sending an error.
     void execute() override;
 
+    SendToDownload(string description, AbstractDefaultIO *Dio);
+
 };
 #endif //EX4_SENDTODOWNLOAD_H

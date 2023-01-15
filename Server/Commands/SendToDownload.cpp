@@ -1,5 +1,8 @@
 
 #include "SendToDownload.h"
+
+#include <utility>
+
 /**
  * Sending the result of the calc if exist, otherwise send an error massage.
  */
@@ -23,4 +26,9 @@ void SendToDownload::execute() {
         output += getDatabase()->getResult()[i];
     }
     getDio()->write(output);
+}
+
+SendToDownload::SendToDownload(string description, AbstractDefaultIO *Dio)
+        : Commander(std::move(description), Dio) {
+
 }
