@@ -1,12 +1,18 @@
 #include "SendData.h"
 
+/**
+ * Sending the result of the calc if exist, otherwise send an error massage.
+ */
 void SendData::execute() {
+    // Checking if the user upload data.
     if (getDatabase()->getClassifiedRelatives().empty() || getDatabase()->getUnclassifiedRelatives().empty()) {
         getDio()->write("please upload data\n");
         return;
     }
+    // Checking if the user choose to classify the data.
     if (getDatabase()->getResult().empty()) {
         getDio()->write("please classify the data\n");
+        return;
     }
 
     // The output is the full file of vectors which been classified.
@@ -17,6 +23,7 @@ void SendData::execute() {
     for (int i = 0; i < size; ++i) {
         output += getDatabase()->getResult()[i];
     }
+    // Concatenating done to the end of the string.
     output += "Done\n";
     getDio()->write(output);
 }

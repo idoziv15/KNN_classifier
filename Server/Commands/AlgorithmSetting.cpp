@@ -39,13 +39,3 @@ void AlgorithmSetting::execute() {
     // Setting the new metric.
     getDatabase()->setMetric(extractedResponse[1]);
 }
-
-
-
-
-
-
-
-
-
-

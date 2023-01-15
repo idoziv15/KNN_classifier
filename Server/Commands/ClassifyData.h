@@ -16,12 +16,13 @@
  */
 class ClassifyData : public Commander {
 public:
+    // A constructor for classify data class.
     ClassifyData(string description, AbstractDefaultIO *newDescription);
-
+    // A destructor for classify data class.
     ~ClassifyData();
-
+    // Classify the user data using knn algorithm.
     void execute() override;
-
+    // Creating a new metric for the knn algorithm.
     AbstractDistance *distanceCreator(const string &distanceSpec);
 };
 
