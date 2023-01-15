@@ -31,6 +31,8 @@ void ClassifyData::execute() {
     // Getting the Knn result.
     vector<string> classifyData = knnAlgorithm.calculateFiles(getDatabase()->getUnclassifiedRelatives(),
                                                               getDatabase()->getClassifiedRelatives());
+    // Delete the distance metric.
+    delete disCalc;
     // Checking if was any error while getting classification in the knn algorithm.
     if (classifyData.empty()) {
         getDio()->write("invalid input\n");

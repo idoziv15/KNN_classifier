@@ -1,15 +1,18 @@
 
 #ifndef EX4_ABSTRACTDEFAULTIO_H
 #define EX4_ABSTRACTDEFAULTIO_H
+
 #include <cstdlib>
 #include "string"
 #include "iostream"
 
 using namespace std;
 
-class AbstractDefaultIO{
+class AbstractDefaultIO {
 public:
     virtual string read() = 0;
+
     virtual void write(string content) = 0;
 };
+
 #endif //EX4_ABSTRACTDEFAULTIO_H
