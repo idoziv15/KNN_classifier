@@ -1,5 +1,13 @@
 #include "EndConnection.h"
 
+#include <utility>
+
+EndConnection::EndConnection(string description, AbstractDefaultIO *Dio)
+        : Commander(std::move(description), Dio) {
+
+}
+
+
 /**
  * Free all data about the process.
  */

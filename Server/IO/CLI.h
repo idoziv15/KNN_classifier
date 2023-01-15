@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <string>
 #include <map>
+#include "AbstractDefaultIO.h"
 #include "StandardIO.h"
 #include "../Commands/Commander.h"
 #include "../Commands/AlgorithmSetting.h"
@@ -31,7 +32,7 @@ public:
 
     string menuCreator();
 
-    map<string, Commander *> initializeMap();
+    map<string, Commander *> initializeCommands(AbstractDefaultIO *IO);
 
     void setCommands(map<string, Commander *> commands);
 

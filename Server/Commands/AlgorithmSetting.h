@@ -12,7 +12,7 @@ class AlgorithmSetting : public Commander {
 public :
 
     // Constructor for algorithm setting class.
-    AlgorithmSetting();
+    AlgorithmSetting(string description, AbstractDefaultIO *Dio);
 
     // Destructor for algorithm setting class.
     ~AlgorithmSetting();

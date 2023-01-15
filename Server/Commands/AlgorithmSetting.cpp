@@ -1,15 +1,18 @@
 
 #include "AlgorithmSetting.h"
 
+#include <utility>
+
 /**
  *  A default destructor for Algorithm Setting class.
  */
 AlgorithmSetting::~AlgorithmSetting() = default;
 
-/**
- *  A default constructor for Algorithm Setting class.
- */
-AlgorithmSetting::AlgorithmSetting() = default;
+AlgorithmSetting::AlgorithmSetting(string description, AbstractDefaultIO *Dio)
+        : Commander(std::move(description), Dio) {
+
+}
+
 
 /**
  * Manging the flow of the command = Algorithm setting class.

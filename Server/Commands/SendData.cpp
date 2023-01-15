@@ -1,5 +1,13 @@
 #include "SendData.h"
 
+#include <utility>
+
+SendData::SendData(string description, AbstractDefaultIO *Dio)
+        : Commander(std::move(description), Dio) {
+
+}
+
+
 /**
  * Sending the result of the calc if exist, otherwise send an error massage.
  */
