@@ -19,10 +19,13 @@ public:
     // An implementation for the commander execute.
     void execute() override;
 
+    // Creating unclassified relative vector from vector that contains vectors of strings.
     vector<RelativeVector *> creatUnclassifiedRelatives(vector<vector<string>> lines);
 
+    // Creating classified relative vector from vector that contains vectors of strings.
     vector<ClassifiedRelativeVector *> creatClassifiedRelatives(vector<vector<string>> lines);
 
+    // Getting the classification the classify data.
     vector<string> extractClassifications(vector<vector<string>> &lines);
 
 
