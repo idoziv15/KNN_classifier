@@ -23,7 +23,10 @@ UploadFile::~UploadFile() = default;
  * Control flow function.
  */
 void UploadFile::execute() {
-
+    // Delete all old classified files (if exist).
+    getDatabase()->deleteClassified();
+    // Delete all old unclassified files (if exist).
+    getDatabase()->deleteUnclassified();
     // Reading a file of unclassified vectors.
     string unclassifiedFile = getDio()->read();
     // Extracting each vector from the file to a vector of strings.

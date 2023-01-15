@@ -106,3 +106,28 @@ vector<string> RelativeDatabase::getResult() {
     return this->resultVec;
 }
 
+/**
+ * Deleting all old data from the unclassified relative vector. If no such data exist, return.
+ */
+void RelativeDatabase::deleteUnclassified() {
+    if (getUnclassifiedRelatives().empty()) {
+        return;
+    }
+    unsigned int size = getUnclassifiedRelatives().size();
+    for (int i = 0; i < size; ++i) {
+        delete  getUnclassifiedRelatives()[i];
+    }
+}
+
+/**
+ * Deleting all old data from the classified relative vector. If no such data exist, return.
+ */
+void RelativeDatabase::deleteClassified() {
+    if (getClassifiedRelatives().empty()) {
+        return;
+    }
+    unsigned int size = getClassifiedRelatives().size();
+    for (int i = 0; i < size; ++i) {
+        delete  getClassifiedRelatives()[i];
+    }
+}

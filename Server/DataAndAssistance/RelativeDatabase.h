@@ -32,6 +32,10 @@ public:
 
     void setResultVec(vector<string> result);
 
+    void deleteUnclassified();
+
+    void deleteClassified();
+
     vector<string> getResult();
 
 private:
