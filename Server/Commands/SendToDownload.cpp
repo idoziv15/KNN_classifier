@@ -1,6 +1,7 @@
-#include "SendData.h"
 
-void SendData::execute() {
+#include "SendToDownload.h"
+
+void SendToDownload::execute() {
     if (getDatabase()->getClassifiedRelatives().empty() || getDatabase()->getUnclassifiedRelatives().empty()) {
         getDio()->write("please upload data\n");
         return;
@@ -17,6 +18,5 @@ void SendData::execute() {
     for (int i = 0; i < size; ++i) {
         output += getDatabase()->getResult()[i];
     }
-    output += "Done\n";
     getDio()->write(output);
 }
