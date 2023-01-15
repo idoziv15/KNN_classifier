@@ -1,5 +1,6 @@
 #include "RelativeDatabase.h"
 
+// What about it???
 RelativeDatabase *RelativeDatabase ::relativeDatabasePtr = nullptr;
 
 
@@ -110,9 +111,11 @@ vector<string> RelativeDatabase::getResult() {
  * Deleting all old data from the unclassified relative vector. If no such data exist, return.
  */
 void RelativeDatabase::deleteUnclassified() {
+    // If no data exist, return.
     if (getUnclassifiedRelatives().empty()) {
         return;
     }
+    // Delete all data from the vector.
     unsigned int size = getUnclassifiedRelatives().size();
     for (int i = 0; i < size; ++i) {
         delete  getUnclassifiedRelatives()[i];
@@ -123,9 +126,11 @@ void RelativeDatabase::deleteUnclassified() {
  * Deleting all old data from the classified relative vector. If no such data exist, return.
  */
 void RelativeDatabase::deleteClassified() {
+    // If no data exist, return.
     if (getClassifiedRelatives().empty()) {
         return;
     }
+    // Delete all data from the vector.
     unsigned int size = getClassifiedRelatives().size();
     for (int i = 0; i < size; ++i) {
         delete  getClassifiedRelatives()[i];

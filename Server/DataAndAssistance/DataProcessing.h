@@ -1,5 +1,3 @@
-
-
 #ifndef EX4_DATAPROCESSING_H
 #define EX4_DATAPROCESSING_H
 
@@ -37,15 +35,14 @@ public:
     // Create a vector that contains reference to relative vector.
     vector<RelativeVector *> doublesUnclassifiedRelatives(vector<vector<double>> doublesVec);
 
+    // creating a vector of classified relative vectors from a vector of doubles and classification.
     vector<ClassifiedRelativeVector *> doubleToClassifiedRelatives(vector<vector<double>> doublesVec,
-                                                         vector<string> classifications);
+                                                                   vector<string> classifications);
 
 
 protected:
     // A server validation instance to use when processing the file.
     ServerValidations serverValidations;
-
-
 };
 
 #endif //EX4_DATAPROCESSING_H
