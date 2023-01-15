@@ -42,6 +42,7 @@ void CLI::start() {
         Commander* command = processRequest(response);
         if (command == nullptr){
             dIO->write("invalid input\n");
+            continue;
         }
         command->execute();
         if (response == "8" || response == "8\n"){
@@ -84,6 +85,7 @@ map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO) {
 }
 
 Commander *CLI::processRequest(const string& clientChoice) {
+
     if (this->commands.find(clientChoice) == this->commands.end()){
         return nullptr;
     }

@@ -57,7 +57,7 @@ vector<vector<string>> DataProcessing::createLinesArray(vector<string> lineVec) 
     vector<vector<string>> lines;
     for (int i = 0; i < lineVecSize; ++i) {
         // Calling catchDelim to separate the string to different vectors of string.
-        lines[i] = catchDelim(lineVec[i], '\t');
+        lines[i] = catchDelim(lineVec[i], '\n');
     }
     return lines;
 }
