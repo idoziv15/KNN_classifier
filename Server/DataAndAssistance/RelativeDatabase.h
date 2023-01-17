@@ -59,7 +59,6 @@ public:
 private:
     // The constructor as a singleton.
     RelativeDatabase();
-
     // The pointer to the class to implement the singleton.
     static RelativeDatabase *relativeDatabasePtr;
     // The kElement set to a default value of 5.

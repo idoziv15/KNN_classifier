@@ -26,7 +26,7 @@ public:
     vector<ClassifiedRelativeVector *> creatClassifiedRelatives(vector<vector<string>> lines);
 
     // Getting the classification of the classified data.
-    vector<string> extractClassifications(vector<vector<string>> &lines);
+    void extractClassifications(vector<vector<string>> &lines, vector<string> &classifications);
 };
 
 #endif //EX4_UPLOADFILE_H

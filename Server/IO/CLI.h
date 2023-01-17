@@ -38,7 +38,7 @@ public:
 
     map<string, Commander *> getCommands();
 
-    Commander* processRequest(const string& clientChoice);
+    Commander* processRequest(string clientChoice);
 
 private:
     AbstractDefaultIO* defaultIo;

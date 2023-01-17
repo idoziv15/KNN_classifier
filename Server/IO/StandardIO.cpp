@@ -6,14 +6,11 @@ StandardIO::~StandardIO() = default;
 
 
 string StandardIO::read() {
-    fflush(stdin);
-    string line;
+    string line, temp;
     getline(cin, line, '$');
-    string line2 = line;
-
-    line2 += '\0';
-    return line2;
-
+    getline(cin, temp, '\n');
+    line += "\n";
+    return line;
 }
 
 void StandardIO::write(string content) {

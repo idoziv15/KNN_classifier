@@ -62,5 +62,5 @@ AbstractDefaultIO *Commander::getDio() {
  * @return The database.
  */
 RelativeDatabase *Commander::getDatabase() {
-    return this->relativeDatabase;
+    return RelativeDatabase :: getInstance();
 }

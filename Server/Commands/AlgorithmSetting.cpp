@@ -22,9 +22,12 @@ void AlgorithmSetting::execute() {
     getDio()->write("The current KNN parameters are: k = "
                     + to_string(getDatabase()->getKElement())
                     + ", distance metric = "
-                    + getDatabase()->getMetric());
+                    + getDatabase()->getMetric() + "\n");
     // Getting the user response.
     string response = getDio()->read();
+
+    response.pop_back(); // DELETE B4 SOCKETS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     // Checking if he doesn't want to change the settings.
     if (response.empty() || response == "\n") {
         return;

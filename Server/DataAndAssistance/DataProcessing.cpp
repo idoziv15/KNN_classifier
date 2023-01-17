@@ -6,13 +6,13 @@
  * @param delim The token.
  * @return The vector witch represent the string. separated.
  */
-vector<string> DataProcessing::catchDelim(const string &fullVector, char delim) {
+vector<string> DataProcessing::catchDelim(string fullVector, char delim) {
     // Create a new stream to go over the line.
     istringstream line(fullVector);
     // Initiate a string to store the data from the vector.
     string fromDelim;
     // Create a vector of strings, representing the cells in the file vector.
-    vector<string> strVec;
+    vector<string> strVec = vector<string>();
     // Go over the string from the file and separate its values to a new vector.
     while (getline(line, fromDelim, delim)) {
         strVec.push_back(fromDelim);
@@ -56,10 +56,29 @@ vector<vector<string>> DataProcessing::createLinesArray(vector<string> lineVec) 
     // Init vector.
     vector<vector<string>> lines;
     for (int i = 0; i < lineVecSize; ++i) {
+        vector<string> newLine;
         // Calling catchDelim to separate the string to different vectors of string.
-        lines[i] = catchDelim(lineVec[i], '\n');
+        createVecVec(lineVec[i], ' ', newLine);
+        lines.push_back(newLine);
     }
     return lines;
+}
+
+/**
+ * Inserting string seperated by a specific delim to a vector of strings.
+ * @param fullVec The string to convert.
+ * @param delim The token separating the values in the string.
+ * @param dest The result vector.
+ */
+void DataProcessing::createVecVec(string fullVec, char delim, vector<string> &dest) {
+    // Create a new stream to go over the line.
+    istringstream line(fullVec);
+    // Initiate a string to store the data from the vector.
+    string fromDelim;
+    // Go over the string from the file and separate its values to a new vector.
+    while (getline(line, fromDelim, delim)) {
+        dest.push_back(fromDelim);
+    }
 }
 
 /**
@@ -67,16 +86,13 @@ vector<vector<string>> DataProcessing::createLinesArray(vector<string> lineVec) 
  * @param lines vector that contains vector of strings.
  * @return vector that contains vector of doubles.
  */
-vector<vector<double>> DataProcessing::linesToDoubles(vector<vector<string>> lines) {
+void DataProcessing::linesToDoubles(vector<vector<string>> lines, vector<vector<double>> &dest) {
     // Getting lines size.
     unsigned int lineVecSize = lines.size();
-    // Init vector.
-    vector<vector<double>> doublesVec;
     for (int i = 0; i < lineVecSize; ++i) {
         // Calling the sToVec function to create a vector of doubles.
-        doublesVec[i] = sTodVec(lines[i]);
+        dest.push_back(sTodVec(lines[i]));
     }
-    return doublesVec;
 }
 
 /**
@@ -89,9 +105,10 @@ vector<RelativeVector *> DataProcessing::doublesUnclassifiedRelatives(vector<vec
     unsigned int doublesVecSize = doublesVec.size();
     // Init vector.
     vector<RelativeVector *> relatives;
+    relatives.reserve(doublesVecSize);
     for (int i = 0; i < doublesVecSize; ++i) {
         // Creating new RelativeVector on the heap.
-        relatives[i] = new RelativeVector(doublesVec[i]);
+        relatives.push_back(new RelativeVector(doublesVec[i]));
     }
     return relatives;
 }
@@ -104,13 +121,15 @@ vector<RelativeVector *> DataProcessing::doublesUnclassifiedRelatives(vector<vec
  */
 vector<ClassifiedRelativeVector *> DataProcessing::doubleToClassifiedRelatives(vector<vector<double>> doublesVec,
                                                                                vector<string> classifications) {
+
     // Getting doublesVec size.
     unsigned int doublesVecSize = doublesVec.size();
     // Init vector.
     vector<ClassifiedRelativeVector *> relatives;
+    relatives.reserve(doublesVecSize);
     for (int i = 0; i < doublesVecSize; ++i) {
         // Creating new RelativeVector on the heap.
-        relatives[i] = new ClassifiedRelativeVector(doublesVec[i], classifications[i]);
+        relatives.push_back(new ClassifiedRelativeVector(doublesVec[i], classifications[i]));
     }
     return relatives;
 }

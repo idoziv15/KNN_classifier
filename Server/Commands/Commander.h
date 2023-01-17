@@ -42,9 +42,8 @@ private:
     string description;
     // The IO member.
     AbstractDefaultIO *dio = nullptr;
-    // The data base member.
+    // The database member.
     RelativeDatabase *relativeDatabase;
-
 };
 
 #endif //EX4_COMMANDER_H

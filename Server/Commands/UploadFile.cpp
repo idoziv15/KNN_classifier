@@ -1,7 +1,6 @@
 #include "UploadFile.h"
 
 
-
 /**
  * A constructor which pass the arguments he receives to the commander constructor.
  * @param description the description of the command.
@@ -54,6 +53,7 @@ void UploadFile::execute() {
     // Setting the relativeVectors to the database.
     this->getDatabase()->setUnclassifiedRelatives(unclassifiedRelatives);
     this->getDatabase()->setClassifiedRelatives(classifiedRelatives);
+
 }
 
 /**
@@ -63,7 +63,8 @@ void UploadFile::execute() {
  */
 vector<RelativeVector *> UploadFile::creatUnclassifiedRelatives(vector<vector<string>> lines) {
     // Converting the cells to doubles.
-    vector<vector<double>> doublesVec = this->dataProcessing.linesToDoubles(std::move(lines));
+    vector<vector<double>> doublesVec;
+    this->dataProcessing.linesToDoubles(std::move(lines), doublesVec);
     // Creating the RelativeVector array.
     return this->dataProcessing.doublesUnclassifiedRelatives(doublesVec);
 }
@@ -74,29 +75,30 @@ vector<RelativeVector *> UploadFile::creatUnclassifiedRelatives(vector<vector<st
  * @return An array of Classified relative vectors.
  */
 vector<ClassifiedRelativeVector *> UploadFile::creatClassifiedRelatives(vector<vector<string>> lines) {
+    // Declaring a vector to store the classifications.
+    vector<string> classifications;
     // extracting the classifications.
-    vector<string> classifications = extractClassifications(lines);
+    extractClassifications(lines, classifications);
+    // Init vector.
+    vector<vector<double>> doublesVec;
     // Converting the cells to doubles.
-    vector<vector<double>> doublesVec = this->dataProcessing.linesToDoubles(lines);
+    this->dataProcessing.linesToDoubles(lines, doublesVec);
     // Creating the ClassifiedRelativeVector array.
     return this->dataProcessing.doubleToClassifiedRelatives(doublesVec, classifications);
 }
 
 /**
  * Extracting the classifications from a vector of vectors.
- * @param lines the master vector.
- * @return a vector of classifications.
+ * @param lines The vector of all line vectors.
+ * @param classifications The classifications vector to store the results.
  */
-vector<string> UploadFile::extractClassifications(vector<vector<string>> &lines) {
+void UploadFile::extractClassifications(vector<vector<string>> &lines, vector<string> &classifications) {
     // Saving the size of the vector.
     unsigned int size = lines.size();
-    // Initiating a new classification vector to store the classifications.
-    vector<string> classifications;
     // Saving all classifications.
     for (int i = 0; i < size; ++i) {
-        classifications[i] = lines[i].back();
+        classifications.push_back(lines[i].back());
         // Removing the classification for the original vector.
         lines[i].pop_back();
     }
-    return classifications;
 }

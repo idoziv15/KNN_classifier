@@ -1,7 +1,3 @@
-//
-// Created by yuval on 1/15/23.
-//
-
 #include "CLI.h"
 
 #include <utility>
@@ -84,8 +80,8 @@ map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO) {
     return initCommands;
 }
 
-Commander *CLI::processRequest(const string& clientChoice) {
-
+Commander *CLI::processRequest(string clientChoice) {
+    clientChoice.pop_back();
     if (this->commands.find(clientChoice) == this->commands.end()){
         return nullptr;
     }

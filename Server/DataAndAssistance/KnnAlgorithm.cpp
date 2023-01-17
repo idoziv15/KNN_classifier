@@ -219,7 +219,7 @@ vector<string> KnnAlgorithm::calculateFiles(vector<RelativeVector *> unclassifie
             return error;
         }
         // Concatenate the result with the sequenced vector.
-        resultClassifications.push_back(to_string(i) + " " + classification + "\n");
+        resultClassifications.push_back(to_string(i + 1) + " " + classification + "\n");
     }
     // Return the result.
     return resultClassifications;
