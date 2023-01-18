@@ -1,5 +1,5 @@
-#include "IO/CLI.h"
-#include "IO/StandardIO.h"
+#include "Server/ServerFlow/CLI.h"
+#include "./IO/StandardIO.h"
 
 /**
  * The main function of the server.
