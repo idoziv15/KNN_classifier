@@ -2,6 +2,10 @@
 #define EX4_ABSTRACTOPERATIONS_H
 
 #include <IO/AbstractDefaultIO.h>
+#include <cstdlib>
+#include "string"
+#include "iostream"
+#include "sstream"
 
 class AbstractOperations{
 public:
