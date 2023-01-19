@@ -71,14 +71,14 @@ void ClientManagement::menuManagement(string menuStr) {
         getDefaultIO()->write(line);
         return;
     }
-    AbsractOperation * op = choiceProcess(line);
-    op.ec
+    AbstractOperations * op = choiceProcess(line);
+    op->executeOp();
 }
 
 /**
  * Processing what choice from the menu the user made, and (hopefully returning the choices operation).
  * @param choice The choice the user made (no manipulations made on it).
  */
-AbsractOperation * ClientManagement::choiceProcess(string choice) {
+AbstractOperations * ClientManagement::choiceProcess(string choice) {
 
 }

@@ -1,7 +1,7 @@
 #include "AbstractOperations.h"
 
 AbstractOperations::AbstractOperations(AbstractDefaultIO *defaultIo) {
-    setDio(defaultIo);
+    this->dio = defaultIo;
 }
 
 void AbstractOperations::setDio(AbstractDefaultIO *defaultIo) {

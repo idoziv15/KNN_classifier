@@ -15,6 +15,7 @@
 #include "Server/Commands/UploadFile.h"
 
 using namespace std;
+
 /**
  * CLI class - The control flow of the server, running all the command by user's choice.
  */
@@ -33,10 +34,10 @@ public:
     ~CLI();
 
     // Setter for IO.
-    void setDefaultIO(AbstractDefaultIO* IO);
+    void setDefaultIO(AbstractDefaultIO *IO);
 
     // Getter for IO.
-    AbstractDefaultIO* getDefaultIO();
+    AbstractDefaultIO *getDefaultIO();
 
     // Creating the menu for the client.
     string menuCreator();
@@ -51,11 +52,11 @@ public:
     map<string, Commander *> getCommands();
 
     // This method checking the user choice and process is request.
-    Commander* processRequest(string clientChoice);
+    Commander *processRequest(string clientChoice);
 
 private:
     // IO member.
-    AbstractDefaultIO* defaultIo;
+    AbstractDefaultIO *defaultIo;
 
     // Map for all the commands.
     map<string, Commander *> commands;

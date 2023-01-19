@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
+#include "AbstractOperations.h"
 
 
 using namespace std;

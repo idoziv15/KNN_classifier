@@ -39,7 +39,7 @@ public:
     string userInput();
 
     // Processing the user's choice.
-    bool choiceProcess(string choice);
+    AbstractOperations* choiceProcess(string choice);
 
 private:
     // IO member.
