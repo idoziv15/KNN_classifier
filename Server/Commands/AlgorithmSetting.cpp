@@ -30,6 +30,7 @@ void AlgorithmSetting::execute() {
 
     // Checking if he doesn't want to change the settings.
     if (response.empty() || response == "\n") {
+        getDio()->write("Valid");
         return;
     }
     // Getting the response into a vector for validation check.
@@ -40,6 +41,8 @@ void AlgorithmSetting::execute() {
         getDio()->write(validError);
         return;
     }
+    // If the user input was valid send that flag to the client.
+    getDio()->write("Valid");
     // Setting the new k element
     getDatabase()->setKElement(stoi(extractedResponse[0]));
     // Setting the new metric.
