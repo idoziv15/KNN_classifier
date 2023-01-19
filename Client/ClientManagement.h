@@ -3,6 +3,7 @@
 
 #include <IO/AbstractDefaultIO.h>
 #include <cstdlib>
+#include "ClientValidation.h"
 
 
 using namespace std;
@@ -31,9 +32,20 @@ public:
     // A getter for the default io.
     AbstractDefaultIO *getDefaultIO();
 
+    // Managing the menu choice of the client.
+    void menuManagement(string menuStr);
+
+    // Reading input from the user.
+    string userInput();
+
+    // Processing the user's choice.
+    bool choiceProcess(string choice);
+
 private:
     // IO member.
     AbstractDefaultIO *defaultIo{};
+    // The client management member.
+    ClientValidation clientValidation;
 };
 
 #endif //EX4_CLIENTMANAGEMENT_H
