@@ -71,6 +71,7 @@ void ClientManagement::menuManagement(string menuStr) {
         getDefaultIO()->write(line);
         return;
     }
+    // Send to the server the choice -->> !
     AbstractOperations * op = choiceProcess(line);
     op->executeOp();
 }

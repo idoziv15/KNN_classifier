@@ -214,3 +214,22 @@ bool ClientValidation::validI(string strNum) {
     // If the string is convertable, return true.
     return true;
 }
+
+
+/**
+ * Checking if a file exist on the computer.
+ * @param path The path to the file.
+ */
+bool ClientValidation::validPath(const string &path) {
+    // Create a new stream to read from the file.
+    fstream myFile;
+    // Try to open the file.
+    myFile.open(path);
+    // If the file wouldn't open, print an error message and return.
+    if (!myFile) {
+        return false;
+    }
+    // If the file opened, close it.
+    myFile.close();
+    return true;
+}

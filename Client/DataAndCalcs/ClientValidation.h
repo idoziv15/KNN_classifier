@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
-#include "AbstractOperations.h"
+#include "Client/Operations/AbstractOperations.h"
 
 
 using namespace std;
@@ -37,6 +37,8 @@ public:
 
     // Checking if a string is a valid integer.
     bool validI(string strNum);
+
+    bool validPath(const string &path);
 
 
 protected:

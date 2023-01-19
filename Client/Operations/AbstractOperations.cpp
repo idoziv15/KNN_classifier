@@ -13,3 +13,14 @@ AbstractDefaultIO *AbstractOperations::getDio() {
 }
 
 AbstractOperations::~AbstractOperations() = default;
+
+
+/**
+ * Reading the user's input.
+ * @return The user's input.
+ */
+string AbstractOperations::userInput() {
+    string line;
+    getline(cin, line);
+    return line;
+}

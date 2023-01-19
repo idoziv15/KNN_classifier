@@ -3,7 +3,8 @@
 
 #include <IO/AbstractDefaultIO.h>
 #include <cstdlib>
-#include "ClientValidation.h"
+#include "Client/DataAndCalcs/ClientValidation.h"
+#include "Client/Operations//AbstractOperations.h"
 
 
 using namespace std;
@@ -18,7 +19,7 @@ public:
     ClientManagement();
 
     // A constructor which receives a default io pointer.
-    ClientManagement(AbstractDefaultIO* dio);
+    explicit ClientManagement(AbstractDefaultIO* dio);
 
     // A destructor for the class.
     ~ClientManagement();
