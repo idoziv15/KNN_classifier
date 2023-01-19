@@ -1,7 +1,7 @@
 #ifndef EX4_ALGORITHMSETTINGOP_H
 #define EX4_ALGORITHMSETTINGOP_H
 
-#include "AbstractOperations.h"
+#include "Client/AbstractOperations.h"
 
 
 using namespace std;

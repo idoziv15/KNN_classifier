@@ -3,7 +3,8 @@
 
 #include <IO/AbstractDefaultIO.h>
 #include "Client/DataAndCalcs/ClientValidation.h"
-
+#include "iostream"
+#include "sstream"
 class AbstractOperations {
 public:
     explicit AbstractOperations(AbstractDefaultIO *defaultIo);
