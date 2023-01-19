@@ -11,3 +11,5 @@ void AbstractOperations::setDio(AbstractDefaultIO *defaultIo) {
 AbstractDefaultIO *AbstractOperations::getDio() {
     return this->dio;
 }
+
+AbstractOperations::~AbstractOperations() = default;
