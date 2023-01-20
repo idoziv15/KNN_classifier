@@ -21,7 +21,7 @@ public:
 
 protected:
     AbstractDefaultIO *dio;
-    ClientValidations clientValidations;
+    ClientValidation clientValidations;
 };
 
 #endif //EX4_ABSTRACTOPERATIONS_H

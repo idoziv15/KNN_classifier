@@ -81,5 +81,5 @@ void ClientManagement::menuManagement(string menuStr) {
  * @param choice The choice the user made (no manipulations made on it).
  */
 AbstractOperations * ClientManagement::choiceProcess(string choice) {
-
+    return nullptr;
 }

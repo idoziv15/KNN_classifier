@@ -19,8 +19,14 @@ add_executable(ex4
         Server/DataAndAssistance/ClassifiedRelativeVector.h
         Server/DataAndAssistance/DataProcessing.cpp Server/DataAndAssistance/DataProcessing.h
         Server/DataAndAssistance/ServerValidations.cpp
-        Server/DataAndAssistance/RelativeDatabase.cpp Server/DataAndAssistance/RelativeDatabase.h Server/Commands/AlgorithmSetting.cpp Server/Commands/AlgorithmSetting.h Server/Commands/ClassifyData.cpp Server/Commands/ClassifyData.h Server/Distances/Taxicab.h Server/Distances/Taxicab.cpp Server/Distances/Minkowski.h Server/Distances/Minkowski.cpp Server/Distances/Euclidean.h Server/Distances/Chebyshev.h Server/Distances/Euclidean.cpp Server/Distances/Chebyshev.cpp Server/Distances/Canberra.h Server/Distances/Canberra.cpp Server/Distances/AbstractDistance.h Server/Distances/AbstractDistance.cpp Server/DataAndAssistance/KnnAlgorithm.cpp Server/DataAndAssistance/KnnAlgorithm.h Server/Commands/SendData.cpp Server/Commands/SendData.h Server/Commands/SendToDownload.cpp Server/Commands/SendToDownload.h Server/Commands/EndConnection.cpp Server/Commands/EndConnection.h Server/main.cpp Server/ServerFlow/CLI.cpp Server/ServerFlow/CLI.h Client/ClientManagement.cpp Client/ClientManagement.h Client/ClientValidation.cpp
-        Client/DataAndCalcs/ClientValidation.h
-        Client/DataAndCalcs/ClientValidation.cpp
-        Client/AbstractOperations.cpp Client/AbstractOperations.h)
+        Server/DataAndAssistance/RelativeDatabase.cpp Server/DataAndAssistance/RelativeDatabase.h Server/Commands/AlgorithmSetting.cpp Server/Commands/AlgorithmSetting.h Server/Commands/ClassifyData.cpp Server/Commands/ClassifyData.h Server/Distances/Taxicab.h Server/Distances/Taxicab.cpp Server/Distances/Minkowski.h Server/Distances/Minkowski.cpp Server/Distances/Euclidean.h Server/Distances/Chebyshev.h Server/Distances/Euclidean.cpp Server/Distances/Chebyshev.cpp Server/Distances/Canberra.h Server/Distances/Canberra.cpp Server/Distances/AbstractDistance.h Server/Distances/AbstractDistance.cpp Server/DataAndAssistance/KnnAlgorithm.cpp Server/DataAndAssistance/KnnAlgorithm.h Server/Commands/SendData.cpp Server/Commands/SendData.h Server/Commands/SendToDownload.cpp Server/Commands/SendToDownload.h Server/Commands/EndConnection.cpp Server/Commands/EndConnection.h Server/main.cpp Server/ServerFlow/CLI.cpp Server/ServerFlow/CLI.h Client/ClientManagement.cpp
+       Client/DataAndCalcs/ClientValidation.h Client/DataAndCalcs/ClientValidation.cpp
+        Client/Operations/UploadFilesOp.cpp
+        Client/Operations/UploadFilesOp.h
+        Client/Operations/AbstractOperations.h
+        Client/Operations/AbstractOperations.cpp
+        Client/Operations/AlgorithmSettingOp.h
+        Client/Operations/AlgorithmSettingOp.cpp
+        Client/Operations/DisplayResult.h
+        Client/Operations/DisplayResult.cpp)
 
