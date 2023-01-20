@@ -38,4 +38,6 @@ void SendToDownload::execute() {
         output += getDatabase()->getResult()[i];
     }
     getDio()->write(output);
+    getDio()->read();
+    getDio()->write(getMenu());
 }

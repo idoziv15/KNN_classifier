@@ -6,8 +6,11 @@
  * @return 0;
  */
 int main() {
-    AbstractDefaultIO *standardIo = new StandardIO();
-    CLI cli(standardIo);
-    cli.start();
+//    AbstractDefaultIO *standardIo = new StandardIO();
+//    CLI cli(standardIo);
+//    cli.start();
+
+
+    servermanage.startserver()
     return 0;
 }

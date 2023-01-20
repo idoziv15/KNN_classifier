@@ -13,7 +13,7 @@ public:
     void executeOp() override;
 
     // Downloading the file to the computer.
-    void downloadFileToComputer();
+    void downloadFileToComputer(string file);
 };
 
 #endif //EX4_DOWNLOADOP_H

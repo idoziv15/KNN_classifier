@@ -28,4 +28,4 @@ add_executable(ex4
         Client/Operations/AlgorithmSettingOp.h
         Client/Operations/AlgorithmSettingOp.cpp
         Client/Operations/DisplayResult.h
-        Client/Operations/DisplayResult.cpp Client/Operations/DownloadOp.cpp Client/Operations/DownloadOp.h)
+        Client/Operations/DisplayResult.cpp Client/Operations/DownloadOp.cpp Client/Operations/DownloadOp.h IO/SocketIO.cpp IO/SocketIO.h Server/ServerFlow/ServerManager.cpp Server/ServerFlow/ServerManager.h)

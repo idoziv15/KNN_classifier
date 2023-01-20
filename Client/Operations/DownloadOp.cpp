@@ -18,15 +18,22 @@ DownloadOp::DownloadOp(AbstractDefaultIO *defaultIo) : AbstractOperations(defaul
  */
 void DownloadOp::executeOp() {
     string response = getDio()->read();
-    if(response == "fail"){
+    if (response == "fail") {
         getDio()->write("OK");
         return;
     }
+    // Confirmation the
+    getDio()->write("OK");
+
 
     //  download the file with threads.!!!!!!!!!!!!!!!! HERE!!!!!!!!!!!!!!
 
 }
 
-void DownloadOp::downloadFileToComputer() {
+/**
+ * Downloading the file to the computer of the client.
+ * @param file The file as a string to download.
+ */
+void DownloadOp::downloadFileToComputer(string file) {
 
 }
