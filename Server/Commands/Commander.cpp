@@ -2,6 +2,7 @@
 
 #include <utility>
 
+
 /**
  * A default constructor which initiate the database singleton.
  */
@@ -62,5 +63,22 @@ AbstractDefaultIO *Commander::getDio() {
  * @return The database.
  */
 RelativeDatabase *Commander::getDatabase() {
-    return this->relativeDatabase;
+    return RelativeDatabase::getInstance();
+}
+
+/**
+ * A setter for the menu.
+ * @param menu The menu string.
+ */
+void Commander::setMenu(string menu) {
+    this->fullMenu = std::move(menu);
+}
+
+
+/**
+ * A getter for the full menu.
+ * @return The full menu.
+ */
+string Commander::getMenu() {
+    return this->fullMenu;
 }

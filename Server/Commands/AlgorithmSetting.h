@@ -5,14 +5,19 @@
 
 #include "Commander.h"
 
-
+/**
+ * This class is a command - Responsible for the knn algorithm setting (distance metric and k neighbours).
+ */
 class AlgorithmSetting : public Commander {
 public :
 
-    AlgorithmSetting();
+    // Constructor for algorithm setting class.
+    AlgorithmSetting(string description, AbstractDefaultIO *Dio);
 
+    // Destructor for algorithm setting class.
     ~AlgorithmSetting();
 
+    // Execute the class by changing the algorithm setting.
     void execute() override;
 
 

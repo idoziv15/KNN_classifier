@@ -1,7 +1,3 @@
-//
-// Created by tal on 12/30/22.
-//
-
 #ifndef EX4_SERVERVALIDATIONS_H
 #define EX4_SERVERVALIDATIONS_H
 
@@ -13,13 +9,15 @@
 #include <vector>
 
 using namespace std;
+
 /**
  * A validation class for the server.
  */
-class ServerValidations{
+class ServerValidations {
 public:
     // Check if a file is on the server using given path.
-    bool validPath(const string& path);
+    bool validPath(const string &path);
+
     // Checking if the last char is space or not.
     string isLastSpace(string classification);
 
@@ -27,7 +25,7 @@ public:
     string isDot(string toNum);
 
     // Checking if the string is a valid double number.
-    bool validD(const string& strToD);
+    bool validD(const string &strToD);
 
     // Checking if a sting is a number.
     bool validI(const std::string &strNum);
@@ -44,6 +42,5 @@ public:
     // Checking the user setting input.
     bool validKAndMetric(string &responseError, vector<string> extractedResponse);
 };
-
 
 #endif //EX4_SERVERVALIDATIONS_H

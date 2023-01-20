@@ -6,12 +6,14 @@ StandardIO::~StandardIO() = default;
 
 
 string StandardIO::read() {
-    string line;
-    getline(cin,line,'$');
-
+    string line, temp;
+    getline(cin, line, '$');
+    getline(cin, temp, '\n');
+//    line += "\n";
     return line;
 }
 
 void StandardIO::write(string content) {
-    cout << "Wrote to this file! the content is:\n" << content << endl;
+
+    cout << content;
 }

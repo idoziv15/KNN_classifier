@@ -1,6 +1,7 @@
 #include "RelativeDatabase.h"
 
-#include <utility>
+// What about it???
+RelativeDatabase *RelativeDatabase ::relativeDatabasePtr = nullptr;
 
 
 /**
@@ -50,18 +51,18 @@ vector<ClassifiedRelativeVector *> RelativeDatabase::getClassifiedRelatives() {
  * A getter to implement singleton design pattern.
  * @return The instance of the class.
  */
- RelativeDatabase *RelativeDatabase::getInstance() {
-    if(!relativeDatabasePtr){
+RelativeDatabase* RelativeDatabase::getInstance() {
+    if (relativeDatabasePtr == nullptr) {
         relativeDatabasePtr = new RelativeDatabase();
     }
-     return relativeDatabasePtr;
+    return relativeDatabasePtr;
 }
 
 /**
  *  Setter for k element member.
  * @param k element.
  */
-void RelativeDatabase::setKElement(int k) {
+void RelativeDatabase::setKElement(unsigned long k) {
     this->kElement = k;
 }
 
@@ -78,7 +79,7 @@ void RelativeDatabase::setMetric(string metric) {
  *  Getter for k element member.
  * @return k element member.
  */
-int RelativeDatabase::getKElement() {
+unsigned long RelativeDatabase::getKElement() {
     return this->kElement;
 }
 
@@ -90,3 +91,48 @@ string RelativeDatabase::getMetric() {
     return this->distanceMetric;
 }
 
+/**
+ * Setter for the result vector after classification.
+ * @param result The result vector.
+ */
+void RelativeDatabase::setResultVec(vector<string> result) {
+    this->resultVec = std::move(result);
+}
+
+/**
+ * Getter for the result vector.
+ * @return The value of the result vector.
+ */
+vector<string> RelativeDatabase::getResult() {
+    return this->resultVec;
+}
+
+/**
+ * Deleting all old data from the unclassified relative vector. If no such data exist, return.
+ */
+void RelativeDatabase::deleteUnclassified() {
+    // If no data exist, return.
+    if (getUnclassifiedRelatives().empty()) {
+        return;
+    }
+    // Delete all data from the vector.
+    unsigned int size = getUnclassifiedRelatives().size();
+    for (int i = 0; i < size; ++i) {
+        delete  getUnclassifiedRelatives()[i];
+    }
+}
+
+/**
+ * Deleting all old data from the classified relative vector. If no such data exist, return.
+ */
+void RelativeDatabase::deleteClassified() {
+    // If no data exist, return.
+    if (getClassifiedRelatives().empty()) {
+        return;
+    }
+    // Delete all data from the vector.
+    unsigned int size = getClassifiedRelatives().size();
+    for (int i = 0; i < size; ++i) {
+        delete  getClassifiedRelatives()[i];
+    }
+}
