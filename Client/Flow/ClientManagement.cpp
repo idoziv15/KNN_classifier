@@ -87,10 +87,20 @@ string ClientManagement::userInput() {
  */
 void ClientManagement::start() {
     SocketCreator socketCreator(getPort());
-    int clientSocket = socketCreator.creatServerSocket();
-
+    int clientSocket = socketCreator.makeNewSocket();
+    // Creating a struct address for the socket.
+    struct sockaddr_in sin = socketCreator.creatAddrInStruct();
+    // Connecting to the server.
+    if (connect(clientSocket, (struct sockaddr *) &sin, sizeof(sin)) < ZERO_FLAG) {
+        perror("Error connecting to server");
+        exit(0);
+    }
+    run();
 }
 
+/**
+ * Running the connection.
+ */
 void ClientManagement::run() {
     while (true) {
         string menu = getDefaultIO()->read();
