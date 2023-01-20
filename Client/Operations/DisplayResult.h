@@ -13,3 +13,4 @@ class DisplayResult : public AbstractOperations {
 
 
 #endif //EX4_DISPLAYRESULT_H
+
