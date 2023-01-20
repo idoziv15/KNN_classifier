@@ -1,26 +1,47 @@
 #include "ServerManager.h"
+#include "IO/SocketIO.h"
+#include "CLI.h"
 
-ServerManager::ServerManager() = default;
+ServerManager::ServerManager(int port) {
+    setPort(port);
+}
 
 ServerManager::~ServerManager() = default;
 
-
-
-void ServerManager::runServer(int portNum) {
-    int serverSocket = makeNewSocket();
+/**
+ * A setter for the port number to bind to the socket.
+ * @param port The port number to bind to the socket.
+ */
+void ServerManager::setPort(int port) {
+    this->portNum = port;
 }
 
 /**
- * Creating a new socket.
- * @return An int representing a socket.
+ * A getter for the port of the server's socket.
+ * @return The port number to bind to the socket.
  */
-int ServerManager::makeNewSocket() {
-    // Creat a new socket.
-    int serverSocket = socket(AF_INET, SOCK_STREAM, 0);
-    // If the creation didn't work, raise an error.
-    if (serverSocket < ZERO_FLAG) {
-        perror("Error binding socket.");
-        exit(0);
+int ServerManager::getPort() {
+    return this->portNum;
+}
+
+/**
+ * Running the server without ever stopping, accepting new clients concurrently using threads.
+ */
+void ServerManager::runServer() {
+    // Creating a socket creator.
+    SocketCreator socketCreator;
+    // Creating new server socket.
+    int serverSocket = socketCreator.creatServerSocket();
+    // Running the server.
+    while (true) {
+        // Accepting new clients.
+        int clientSocket = socketCreator.acceptClient(serverSocket);
+        // Thead - HERE!!!
+        // Creating new IO to communicate with the client.
+        AbstractDefaultIO *socketIO = new SocketIO(clientSocket);
+        // Creating cli.
+        CLI cli(socketIO);
+        // Starting the conversation.
+        cli.start();
     }
-    return serverSocket;
 }

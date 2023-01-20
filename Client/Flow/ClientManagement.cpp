@@ -1,9 +1,14 @@
 #include "ClientManagement.h"
 
+#include <utility>
+
 /**
  * A default constructor.
  */
-ClientManagement::ClientManagement() = default;
+ClientManagement::ClientManagement(int port, string ip) {
+    setPort(port);
+    setIp(std::move(ip));
+}
 
 /**
  * A default destructor.
@@ -17,6 +22,39 @@ ClientManagement::~ClientManagement() = default;
 ClientManagement::ClientManagement(AbstractDefaultIO *dio) {
     setDefaultIO(dio);
 }
+
+/**
+ * A setter for the port number of the server.
+ * @param newPort The port number of the server.
+ */
+void ClientManagement::setPort(int newPort) {
+    this->port = newPort;
+}
+
+/**
+ * A getter for the port number of the server.
+ * @return The current port number of the server.
+ */
+int ClientManagement::getPort() {
+    return this->port;
+}
+
+/**
+ * A setter for the server's ip.
+ * @param ip The server's ip.
+ */
+void ClientManagement::setIp(string ip) {
+    this->serverIp = ip;
+}
+
+/**
+ * A getter for the server's ip.
+ * @return The server's ip.
+ */
+string ClientManagement::getIp() {
+    return this->serverIp;
+}
+
 
 /**
  * A getter for the DIO.
@@ -48,6 +86,12 @@ string ClientManagement::userInput() {
  * This method starts the client's operation with the server.
  */
 void ClientManagement::start() {
+    SocketCreator socketCreator(getPort());
+    int clientSocket = socketCreator.creatServerSocket();
+
+}
+
+void ClientManagement::run() {
     while (true) {
         string menu = getDefaultIO()->read();
         if (!menuManagement(menu)) {
@@ -90,3 +134,6 @@ bool ClientManagement::menuManagement(string menuStr) {
 AbstractOperations *ClientManagement::choiceProcess(string choice) {
     return nullptr;
 }
+
+
+

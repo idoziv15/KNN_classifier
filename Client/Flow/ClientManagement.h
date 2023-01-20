@@ -1,10 +1,11 @@
 #ifndef EX4_CLIENTMANAGEMENT_H
 #define EX4_CLIENTMANAGEMENT_H
 
-#include <IO/AbstractDefaultIO.h>
+#include "IO/AbstractDefaultIO.h"
 #include <cstdlib>
 #include "Client/Operations/AbstractOperations.h"
-#include "DataAndCalcs/ClientValidation.h"
+#include "Client/DataAndCalcs/ClientValidation.h"
+#include "IO/SocketCreator.h"
 
 
 using namespace std;
@@ -16,10 +17,18 @@ class ClientManagement {
 public:
 
     // A constructor for the class.
-    ClientManagement();
+    ClientManagement(int port, string ip);
 
     // A constructor which receives a default io pointer.
     explicit ClientManagement(AbstractDefaultIO *dio);
+
+    void setPort(int newPort);
+
+    int getPort();
+
+    void setIp(string serverIp);
+
+    string getIp();
 
     // A destructor for the class.
     ~ClientManagement();
@@ -42,11 +51,18 @@ public:
     // Processing the user's choice.
     AbstractOperations *choiceProcess(string choice);
 
+    // Runs the connection.
+    void run();
+
 private:
     // IO member.
     AbstractDefaultIO *defaultIo{};
     // The client management member.
     ClientValidation clientValidation;
+    // The port number of the server.
+    int port;
+    // The server's ip.
+    string serverIp;
 };
 
 #endif //EX4_CLIENTMANAGEMENT_H
