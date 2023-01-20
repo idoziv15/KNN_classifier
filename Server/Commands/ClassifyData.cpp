@@ -16,12 +16,12 @@ ClassifyData::ClassifyData(string description, AbstractDefaultIO *newDescription
 }
 
 /**
- * Control flow method -  ClassifyData is a commander.
+ * Control flow method - ClassifyData is a commander.
  */
 void ClassifyData::execute() {
     // Checking if the user didn't upload any files.
     if (getDatabase()->getClassifiedRelatives().empty() || getDatabase()->getUnclassifiedRelatives().empty()) {
-        getDio()->write("please upload data\n");
+        getDio()->write("please upload data\n" + getMenu());
         return;
     }
     // Creating a distance object.
@@ -35,12 +35,12 @@ void ClassifyData::execute() {
     delete disCalc;
     // Checking if was any error while getting classification in the knn algorithm.
     if (classifyData.empty()) {
-        getDio()->write("invalid input\n");
+        getDio()->write("invalid input\n" + getMenu());
         return;
     }
     getDatabase()->setResultVec(classifyData);
     // Classification complete successfully.
-    getDio()->write("classifying data complete\n");
+    getDio()->write("classifying data complete\n" + getMenu());
 }
 
 

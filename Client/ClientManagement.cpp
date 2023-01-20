@@ -1,7 +1,5 @@
 #include "ClientManagement.h"
 
-#include <utility>
-
 /**
  * A default constructor.
  */
@@ -52,7 +50,9 @@ string ClientManagement::userInput() {
 void ClientManagement::start() {
     while (true) {
         string menu = getDefaultIO()->read();
-        menuManagement(menu);
+        if (!menuManagement(menu)) {
+            return;
+        }
     }
 }
 
@@ -60,26 +60,33 @@ void ClientManagement::start() {
  * Printing the menu and managing the menu choice of the client.
  * @return The client's choice from the menu.
  */
-void ClientManagement::menuManagement(string menuStr) {
+bool ClientManagement::menuManagement(string menuStr) {
     // Print the menu.
     cout << menuStr;
     // Get the user's input.
     string line = userInput();
+    if (line == "8") {
+        getDefaultIO()->write(line);
+        return false;
+    }
     // Check if the input is a valid integer.
-    if(!this->clientValidation.validI(line)){
+    if (!this->clientValidation.validI(line)) {
         // If it isn't, send it to the server making no operations.
         getDefaultIO()->write(line);
-        return;
+        return true;
     }
+    // If the operation decided to be 3, it's just print so return.
+    if (line == "3") { return true; }
     // Send to the server the choice -->> !
-    AbstractOperations * op = choiceProcess(line);
+    AbstractOperations *op = choiceProcess(line);
     op->executeOp();
+    return true;
 }
 
 /**
  * Processing what choice from the menu the user made, and (hopefully returning the choices operation).
  * @param choice The choice the user made (no manipulations made on it).
  */
-AbstractOperations * ClientManagement::choiceProcess(string choice) {
+AbstractOperations *ClientManagement::choiceProcess(string choice) {
     return nullptr;
 }

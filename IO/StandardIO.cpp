@@ -9,10 +9,11 @@ string StandardIO::read() {
     string line, temp;
     getline(cin, line, '$');
     getline(cin, temp, '\n');
-    line += "\n";
+//    line += "\n";
     return line;
 }
 
 void StandardIO::write(string content) {
+
     cout << content;
 }

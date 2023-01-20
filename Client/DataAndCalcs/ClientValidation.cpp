@@ -52,10 +52,10 @@ bool ClientValidation::validD(const string &str) {
 bool ClientValidation::validDistance(const string &distanceSpec) {
     // Check if the string is a valid distance.
     if (distanceSpec == "AUC"
-    || distanceSpec == "MAN"
-    || distanceSpec == "CHB"
-    || distanceSpec == "CAN"
-    || distanceSpec == "MIN") {
+        || distanceSpec == "MAN"
+        || distanceSpec == "CHB"
+        || distanceSpec == "CAN"
+        || distanceSpec == "MIN") {
         return true;
     }
     // If no valid option was chosen, false.
@@ -169,8 +169,8 @@ bool ClientValidation::checkingUserInput(vector<string> userVecCheck) {
     userVecCheck.pop_back();
     // Checking if the k, distance formula and double vec are valid.
     if (!validKElements(kElement)
-    || !validDistance(distanceFormula)
-    || !checkVecDouble(userVecCheck)) {
+        || !validDistance(distanceFormula)
+        || !checkVecDouble(userVecCheck)) {
         return false;
     }
     return true;

@@ -17,7 +17,6 @@ AlgorithmSettingOp::~AlgorithmSettingOp() = default;
  *  This method run the algorithm setting option for the client.
  */
 void AlgorithmSettingOp::executeOp() {
-
     // Get the server response.
     string setting = getDio()->read();
     // Printing the server response.
@@ -30,13 +29,4 @@ void AlgorithmSettingOp::executeOp() {
     changeSetting += "$";
     // Send the user input to the server.
     getDio()->write(changeSetting);
-    // Checking if the server returned a valid flag for the user input, if valid return.
-    if (getDio()->read() == "Valid") {
-        return;
-    }
-    // Getting the invalid message from the server.
-    invalidServerReply = getDio()->read();
-    // Presenting the user the invalidation input message.
-    cout << invalidServerReply << endl;
-
 }

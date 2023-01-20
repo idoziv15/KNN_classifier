@@ -2,10 +2,13 @@
 #define EX4_ENDCONNECTION_H
 
 #include "Commander.h"
+#include <utility>
+
+
 /**
  * This class end the connection between the server and the client.
  */
-class EndConnection : public Commander{
+class EndConnection : public Commander {
 public:
 
     EndConnection(string description, AbstractDefaultIO *Dio);
@@ -14,4 +17,5 @@ public:
     void execute() override;
 
 };
+
 #endif //EX4_ENDCONNECTION_H

@@ -4,30 +4,56 @@
  * Uploading two files to the server.
  */
 void UploadFilesOp::executeOp() {
-    if (!createSendFile()) {
+    if (!createSendFileOne()) {
         return;
     }
-    if (!createSendFile()) {
-        getDio()->write("invalid$");
-    }
+    // Read the server's response.
+    string response = getDio()->read();
+    cout << response << endl;
+    createSendFileTwo();
 }
 
 /**
  * Creating a string from a file content and sending it to the server.
  * If the path to the file is invalid, print "invalid input" and return.
- * @return a boolen answer if the operation succeeded or not.
+ * @return a boolean answer if the operation succeeded or not.
  */
-bool UploadFilesOp::createSendFile() {
+bool UploadFilesOp::createSendFileOne() {
+    // Reading the server's: "Please upload your local train CSV file.\n"
+    cout << getDio()->read();
+    // Get the path to the first file.
     string firstFilePath = userInput();
+    // Checking if the file is ok to read.
     if (!clientValidations.validPath(firstFilePath)) {
-        cout << "invalid input" << endl;
+        // Tell the server an error accord.
+        getDio()->write("fail");
         return false;
     }
+    // Get the content of the file.
     string firstFile = uploadFile(firstFilePath);
-    firstFile += "$";
+    // Send the file to the server.
     getDio()->write(firstFile);
-    string response = getDio()->read();
-    cout << response << endl;
+    return true;
+}
+
+/**
+ * Creating a string from a file content and sending it to the server.
+ * If the path to the file is invalid, print "invalid input" and return.
+ * @return a boolean answer if the operation succeeded or not.
+ */
+bool UploadFilesOp::createSendFileTwo() {
+    // Get the path to the first file.
+    string firstFilePath = userInput();
+    // Checking if the file is ok to read.
+    if (!clientValidations.validPath(firstFilePath)) {
+        // Tell the server an error accord.
+        getDio()->write("fail");
+        return false;
+    }
+    // Get the content of the file.
+    string firstFile = uploadFile(firstFilePath);
+    // Send the file to the server.
+    getDio()->write(firstFile);
     return true;
 }
 
@@ -51,7 +77,7 @@ string UploadFilesOp::uploadFile(string path) {
         if (fullVector.empty()) {
             continue;
         }
-        fullFile += fullVector;
+        fullFile += fullVector + "\n";
     }
     return fullFile;
 }

@@ -14,12 +14,12 @@ SendData::SendData(string description, AbstractDefaultIO *Dio)
 void SendData::execute() {
     // Checking if the user upload data.
     if (getDatabase()->getClassifiedRelatives().empty() || getDatabase()->getUnclassifiedRelatives().empty()) {
-        getDio()->write("please upload data\n");
+        getDio()->write("please upload data\n" + getMenu());
         return;
     }
     // Checking if the user choose to classify the data.
     if (getDatabase()->getResult().empty()) {
-        getDio()->write("please classify the data\n");
+        getDio()->write("please classify the data\n" + getMenu());
         return;
     }
 
@@ -33,5 +33,5 @@ void SendData::execute() {
     }
     // Concatenating done to the end of the string.
     output += "Done\n";
-    getDio()->write(output);
+    getDio()->write(output + getMenu());
 }

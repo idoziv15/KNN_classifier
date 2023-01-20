@@ -13,7 +13,6 @@ AlgorithmSetting::AlgorithmSetting(string description, AbstractDefaultIO *Dio)
 
 }
 
-
 /**
  * Manging the flow of the command = Algorithm setting class.
  */
@@ -25,12 +24,9 @@ void AlgorithmSetting::execute() {
                     + getDatabase()->getMetric() + "\n");
     // Getting the user response.
     string response = getDio()->read();
-
-    response.pop_back(); // DELETE B4 SOCKETS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     // Checking if he doesn't want to change the settings.
     if (response.empty() || response == "\n") {
-        getDio()->write("Valid");
+        getDio()->write("Valid\n");
         return;
     }
     // Getting the response into a vector for validation check.
@@ -38,13 +34,13 @@ void AlgorithmSetting::execute() {
     string validError;
     // Checking the user response and write to the user if invalid.
     if (!this->serverValidations.validKAndMetric(validError, extractedResponse)) {
-        getDio()->write(validError);
+        getDio()->write(validError + getMenu());
         return;
     }
-    // If the user input was valid send that flag to the client.
-    getDio()->write("Valid");
     // Setting the new k element
     getDatabase()->setKElement(stoi(extractedResponse[0]));
     // Setting the new metric.
     getDatabase()->setMetric(extractedResponse[1]);
+    // Send the menu to the client.
+    getDio()->write(getMenu());
 }

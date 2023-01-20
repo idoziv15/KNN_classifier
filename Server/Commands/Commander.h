@@ -30,12 +30,21 @@ public:
     // A getter for relative-database member.
     RelativeDatabase *getDatabase();
 
+    // A setter for the menu.
+    void setMenu(string menu);
+
+    // A getter for the menu.
+    string getMenu();
+
 
 protected:
     // Member for data processing that all the inheritance can use.
     DataProcessing dataProcessing;
     // Member for validation that all the inheritance can use.
     ServerValidations serverValidations;
+    // The full menu.
+    string fullMenu;
+
 
 private:
     // The specific description for each inheritance.

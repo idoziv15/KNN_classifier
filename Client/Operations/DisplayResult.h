@@ -4,6 +4,7 @@
 #include "AbstractOperations.h"
 
 class DisplayResult : public AbstractOperations {
+
     explicit DisplayResult(AbstractDefaultIO *defaultIo);
 
     ~DisplayResult();

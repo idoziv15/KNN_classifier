@@ -3,8 +3,8 @@
 
 #include <IO/AbstractDefaultIO.h>
 #include <cstdlib>
-#include "Client/DataAndCalcs/ClientValidation.h"
-#include "Client/Operations//AbstractOperations.h"
+#include "Client/Operations/AbstractOperations.h"
+#include "DataAndCalcs/ClientValidation.h"
 
 
 using namespace std;
@@ -19,7 +19,7 @@ public:
     ClientManagement();
 
     // A constructor which receives a default io pointer.
-    explicit ClientManagement(AbstractDefaultIO* dio);
+    explicit ClientManagement(AbstractDefaultIO *dio);
 
     // A destructor for the class.
     ~ClientManagement();
@@ -34,13 +34,13 @@ public:
     AbstractDefaultIO *getDefaultIO();
 
     // Managing the menu choice of the client.
-    void menuManagement(string menuStr);
+    bool menuManagement(string menuStr);
 
     // Reading input from the user.
     string userInput();
 
     // Processing the user's choice.
-    AbstractOperations* choiceProcess(string choice);
+    AbstractOperations *choiceProcess(string choice);
 
 private:
     // IO member.

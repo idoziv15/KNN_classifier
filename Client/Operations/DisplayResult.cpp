@@ -1,7 +1,3 @@
-//
-// Created by arbel on 19/01/2023.
-//
-
 #include "DisplayResult.h"
 
 DisplayResult::DisplayResult(AbstractDefaultIO *defaultIo) : AbstractOperations(defaultIo) {
@@ -11,7 +7,7 @@ DisplayResult::DisplayResult(AbstractDefaultIO *defaultIo) : AbstractOperations(
 DisplayResult::~DisplayResult() = default;
 
 void DisplayResult::executeOp() {
-   string classifiedData,tempLine;
+    string classifiedData, tempLine;
 //    istringstream tempData (getDio()->read());
 //    getline(tempData,tempLine);
 //    classifiedData += tempLine + "\n";

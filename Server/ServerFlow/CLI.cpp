@@ -1,6 +1,7 @@
 #include "CLI.h"
 
 #include <utility>
+
 /**
  * Destructor for CLI class.
  */
@@ -63,21 +64,21 @@ void CLI::start() {
     setCommands(commanders);
     // Creating the menu.
     string menu = menuCreator();
+    // Send the menu to the client.
+    dIO->write(menu);
     // While tru to run the connection between the client and the server until the client ask to close the connection.
     while (true) {
-        // Send the menu to the client.
-        dIO->write(menu);
         // Checking the user choice.
         string response = dIO->read();
         // Check if the user entered a valid choice and execute his request, otherwise sending the user error.
-        Commander* command = processRequest(response);
-        if (command == nullptr){
+        Commander *command = processRequest(response);
+        if (command == nullptr) {
             dIO->write("invalid input\n");
             continue;
         }
         command->execute();
         // Checking if the user want to close the connection to the server.
-        if (response == "8" || response == "8\n"){
+        if (response == "8" || response == "8\n") {
             // Free recourses and close client socket!!!!!!!!!.
             break;
         }
@@ -99,6 +100,14 @@ string CLI::menuCreator() {
     menu += "4. " + this->commands["4"]->getDescription();
     menu += "5. " + this->commands["5"]->getDescription();
     menu += "8. " + this->commands["8"]->getDescription();
+    // Set the menu to all commanders.
+    this->commands["1"]->setMenu(menu);
+    this->commands["2"]->setMenu(menu);
+    this->commands["3"]->setMenu(menu);
+    this->commands["4"]->setMenu(menu);
+    this->commands["5"]->setMenu(menu);
+    this->commands["8"]->setMenu(menu);
+    // Rerun the complete menu.
     return menu;
 }
 
@@ -136,11 +145,8 @@ map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO) {
  */
 Commander *CLI::processRequest(string clientChoice) {
     clientChoice.pop_back();
-    if (this->commands.find(clientChoice) == this->commands.end()){
+    if (this->commands.find(clientChoice) == this->commands.end()) {
         return nullptr;
     }
     return this->commands[clientChoice];
 }
-
-
-
