@@ -105,7 +105,8 @@ bool KnnAlgorithm::calculateDistances(vector<double> uVec) {
 map<string, int> KnnAlgorithm::createMap(vector<ClassifiedRelativeVector *> knn) {
     // Declare a map.
     map<string, int> kMap;
-    for (int i = 0; i < knn.size(); i++) {
+    unsigned int size = knn.size();
+    for (int i = 0; i < size; i++) {
         // If the classification is in the map.
         if (kMap.find(knn[i]->getClassification()) != kMap.end()) {
             // Add one to the value.
