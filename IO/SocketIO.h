@@ -2,6 +2,7 @@
 #define EX4_SOCKETIO_H
 
 #include "AbstractDefaultIO.h"
+#include <sys/socket.h>
 
 class SocketIO : public AbstractDefaultIO {
 public:

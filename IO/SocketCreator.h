@@ -1,5 +1,5 @@
-#ifndef EX4_SERVERMANAGER_H
-#define EX4_SERVERMANAGER_H
+#ifndef EX4_SOCKETCREATOR_H
+#define EX4_SOCKETCREATOR_H
 
 #include <sys/socket.h>
 #include <cstdio>
@@ -8,27 +8,18 @@
 #include <unistd.h>
 #include <cstring>
 #include <cstdlib>
-#include "IO/SocketCreator.h"
 
 #define CLIENTS_TO_LISTEN 5
 #define DEFAULT_PORT 12345
 #define ZERO_FLAG 0
 
-/**
- *
- */
-class ServerManager {
+class SocketCreator {
 public:
-    // Default constructor.
-    ServerManager(int port);
+    explicit SocketCreator(int port);
 
-    // Default destructor.
-    ~ServerManager();
+    SocketCreator();
 
-    // Running the server.
-    void runServer();
-
-private:
+    ~SocketCreator();
 
     int makeNewSocket();
 
@@ -51,8 +42,10 @@ private:
     // Accepting a new client.
     int acceptClient(int serverSocket);
 
+
+
 private:
     int portNum;
 };
 
-#endif //EX4_SERVERMANAGER_H
+#endif //EX4_SOCKETCREATOR_H
