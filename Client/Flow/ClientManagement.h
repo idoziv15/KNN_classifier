@@ -2,13 +2,13 @@
 #define EX4_CLIENTMANAGEMENT_H
 
 #include <cstdlib>
-#include "Client/IO/SocketCreator.h"
-#include "Client/IO/SocketIO.h"
+#include "../../IO/SocketCreator.h"
+#include "../../IO/SocketIO.h"
 #include <utility>
-#include "Client/Operations/UploadFilesOp.h"
-#include "Client/Operations/DownloadOp.h"
-#include "Client/Operations/AlgorithmSettingOp.h"
-#include "Client/Operations/DisplayResult.h"
+#include "../Operations/UploadFilesOp.h"
+#include "../Operations/DownloadOp.h"
+#include "../Operations/AlgorithmSettingOp.h"
+#include "../Operations/DisplayResult.h"
 
 using namespace std;
 

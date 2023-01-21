@@ -2,10 +2,10 @@
 #define EX4_COMMANDER_H
 
 #include <utility>
-#include "Server/IO/AbstractDefaultIO.h"
-#include "Server/DataAndAssistance/RelativeDatabase.h"
-#include "Server/DataAndAssistance/ServerValidations.h"
-#include "Server/DataAndAssistance/DataProcessing.h"
+#include "../../IO/AbstractDefaultIO.h"
+#include "../DataAndAssistance/RelativeDatabase.h"
+#include "../DataAndAssistance/ServerValidations.h"
+#include "../DataAndAssistance/DataProcessing.h"
 /**
  *  An abstract class - Gathers all the options the user can choice (command).
  */

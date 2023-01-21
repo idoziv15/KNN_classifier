@@ -4,8 +4,8 @@
 
 #include "iostream"
 #include "sstream"
-#include "Client/IO/AbstractDefaultIO.h"
-#include "Client/DataAndCalcs/ClientValidation.h"
+#include "../../IO/AbstractDefaultIO.h"
+#include "../DataAndCalcs/ClientValidation.h"
 
 
 class AbstractOperations {

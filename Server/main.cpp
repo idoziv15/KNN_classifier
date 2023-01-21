@@ -1,5 +1,5 @@
-#include "Server/DataAndAssistance/ServerValidations.h"
-#include "Server/ServerFlow/ServerManager.h"
+#include "DataAndAssistance/ServerValidations.h"
+#include "ServerFlow/ServerManager.h"
 
 /**
  * The main function of the server.

@@ -1,7 +1,7 @@
 #ifndef EX4_KNNALGORITHM_H
 #define EX4_KNNALGORITHM_H
 
-#include "Server/Distances/AbstractDistance.h"
+#include "../Distances/AbstractDistance.h"
 #include "ClassifiedRelativeVector.h"
 #include <cstdlib>
 #include <vector>

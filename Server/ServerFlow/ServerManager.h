@@ -8,7 +8,9 @@
 #include <unistd.h>
 #include <cstring>
 #include <cstdlib>
-#include "Server/IO/SocketCreator.h"
+#include "../../IO/SocketCreator.h"
+#include "../../IO/SocketIO.h"
+#include "CLI.h"
 
 #define CLIENTS_TO_LISTEN 5
 #define DEFAULT_PORT 12345

@@ -4,15 +4,15 @@
 #include <cstdlib>
 #include <string>
 #include <map>
-#include "Server/IO/AbstractDefaultIO.h"
-#include "Server/IO/StandardIO.h"
-#include "Server/Commands/Commander.h"
-#include "Server/Commands/AlgorithmSetting.h"
-#include "Server/Commands/ClassifyData.h"
-#include "Server/Commands/EndConnection.h"
-#include "Server/Commands/SendData.h"
-#include "Server/Commands/SendToDownload.h"
-#include "Server/Commands/UploadFile.h"
+#include "../../IO/AbstractDefaultIO.h"
+#include "../../IO/StandardIO.h"
+#include "../Commands/Commander.h"
+#include "../Commands/AlgorithmSetting.h"
+#include "../Commands/ClassifyData.h"
+#include "../Commands/EndConnection.h"
+#include "../Commands/SendData.h"
+#include "../Commands/SendToDownload.h"
+#include "../Commands/UploadFile.h"
 
 using namespace std;
 
