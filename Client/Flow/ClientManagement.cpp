@@ -148,7 +148,9 @@ bool ClientManagement::menuManagement(string menuStr) {
     }
     // Send to the server the choice -->> !
     AbstractOperations *op = choiceProcess(line);
+    // Execute the operation.
     op->executeOp();
+    // Delete the resources.
     delete op;
     return true;
 }
@@ -165,8 +167,11 @@ AbstractOperations *ClientManagement::choiceProcess(string choice) {
             return new UploadFilesOp(getDefaultIO());
         case 2:
             return new AlgorithmSettingOp(getDefaultIO());
-        case 3:
+        case 4:
             return new DisplayResult(getDefaultIO());
-
+        case 5:
+            return nullptr;
+        default:
+            return nullptr;
     }
 }
