@@ -55,11 +55,11 @@ map<string, Commander *> CLI::getCommands() {
 /**
  * The control flow method - Printing the menu for the user, check his choice and execute this command.
  */
-void CLI::start() {
+void CLI::start(RelativeDatabase * relativeDatabase) {
     // Ger the IO.
     AbstractDefaultIO *dIO = getDefaultIO();
     // Creating the map with all the possibles commands.
-    map<string, Commander *> commanders = initializeCommands(dIO);
+    map<string, Commander *> commanders = initializeCommands(dIO, relativeDatabase);
     // SEt the member with the new map that contains all the possibles commands.
     setCommands(commanders);
     // Creating the menu.
@@ -115,16 +115,16 @@ string CLI::menuCreator() {
  * @param IO standard Io or socket Io.
  * @return A map that contains all the possibles commands.
  */
-map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO) {
+map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO, RelativeDatabase* database) {
     // Init a map for all the commands.
     map<string, Commander *> initCommands;
     // Init all the commands by calling their constructor.
-    Commander *uploadFile = new UploadFile("upload an unclassified csv data file\n", IO);
-    Commander *algorithmSetting = new AlgorithmSetting("algorithm setting\n", IO);
-    Commander *classifyData = new ClassifyData("classify data\n", IO);
-    Commander *displayResult = new SendData("display results\n", IO);
-    Commander *downloadResult = new SendToDownload("download results\n", IO);
-    Commander *exit = new EndConnection("exit\n", IO);
+    Commander *uploadFile = new UploadFile("upload an unclassified csv data file\n", IO, database);
+    Commander *algorithmSetting = new AlgorithmSetting("algorithm setting\n", IO, database);
+    Commander *classifyData = new ClassifyData("classify data\n", IO, database);
+    Commander *displayResult = new SendData("display results\n", IO, database);
+    Commander *downloadResult = new SendToDownload("download results\n", IO, database);
+    Commander *exit = new EndConnection("exit\n", IO, database);
 
     // Profiling a value for specific key ( by the order of the menu commands).
     initCommands["1"] = uploadFile;

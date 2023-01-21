@@ -8,8 +8,15 @@
  */
 AlgorithmSetting::~AlgorithmSetting() = default;
 
-AlgorithmSetting::AlgorithmSetting(string description, AbstractDefaultIO *Dio)
-        : Commander(std::move(description), Dio) {
+
+/**
+ * The constructor of AlgorithmSetting class.
+ * @param description the description of the class.
+ * @param Dio The IO.
+ * @param database The general database.
+ */
+AlgorithmSetting::AlgorithmSetting(string description, AbstractDefaultIO *Dio,RelativeDatabase* database)
+        : Commander(std::move(description), Dio,database) {
 
 }
 

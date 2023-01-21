@@ -1,7 +1,17 @@
+
 #include "SendToDownload.h"
 
-SendToDownload::SendToDownload(string description, AbstractDefaultIO *Dio)
-        : Commander(std::move(description), Dio) {
+#include <utility>
+
+
+/**
+ * The constructor of sentTODownload class.
+ * @param description The class description.
+ * @param Dio The default IO.
+ * @param database The general database.
+ */
+SendToDownload::SendToDownload(string description, AbstractDefaultIO *Dio, RelativeDatabase* database)
+        : Commander(std::move(description), Dio, database) {
 
 }
 

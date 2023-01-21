@@ -4,10 +4,11 @@
 /**
  * A constructor which pass the arguments he receives to the commander constructor.
  * @param description the description of the command.
- * @param newDescription The
+ * @param Dio The default IO.
+ * @param database The general database.
  */
-UploadFile::UploadFile(string description, AbstractDefaultIO *Dio)
-        : Commander(std::move(description), Dio) {
+UploadFile::UploadFile(string description, AbstractDefaultIO *Dio, RelativeDatabase *database)
+        : Commander(std::move(description), Dio, database) {
 
 }
 

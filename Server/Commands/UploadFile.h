@@ -11,7 +11,7 @@
 class UploadFile : public Commander {
 public:
     // Constructor for UploadFIle class.
-    UploadFile(string description, AbstractDefaultIO *Dio);
+    UploadFile(string description, AbstractDefaultIO *Dio, RelativeDatabase* database);
 
     // Destructor for UploadFile class.
     ~UploadFile();

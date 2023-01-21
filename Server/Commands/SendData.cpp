@@ -2,8 +2,14 @@
 
 #include <utility>
 
-SendData::SendData(string description, AbstractDefaultIO *Dio)
-        : Commander(std::move(description), Dio) {
+/**
+ * The constructor of SentData class.
+ * @param description The description of the class.
+ * @param Dio THe default IO.
+ * @param database The general database.
+ */
+SendData::SendData(string description, AbstractDefaultIO *Dio, RelativeDatabase* database)
+        : Commander(std::move(description), Dio, database) {
 
 }
 

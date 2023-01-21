@@ -1,7 +1,6 @@
 #include "RelativeDatabase.h"
 
-// What about it???
-RelativeDatabase *RelativeDatabase ::relativeDatabasePtr = nullptr;
+
 
 
 /**
@@ -47,16 +46,7 @@ vector<ClassifiedRelativeVector *> RelativeDatabase::getClassifiedRelatives() {
     return this->classifiedRelatives;
 }
 
-/**
- * A getter to implement singleton design pattern.
- * @return The instance of the class.
- */
-RelativeDatabase* RelativeDatabase::getInstance() {
-    if (relativeDatabasePtr == nullptr) {
-        relativeDatabasePtr = new RelativeDatabase();
-    }
-    return relativeDatabasePtr;
-}
+
 
 /**
  *  Setter for k element member.
