@@ -34,21 +34,21 @@ int SocketCreator::getPort() {
  * Creat a sockaddr_in for the server's socket.
  * @return struct of sockaddr_in.
  */
-//struct sockaddr_in SocketCreator::createAddrInStructServer() {
-//    // Create a struct for the socket's data.
-//    struct sockaddr_in sin{};
-//    // Set values to it of it's size (in bytes).
-//    memset(&sin, 0, sizeof(sin));
-//    // Set the protocol of the connection to the struct.
-//    sin.sin_family = AF_INET;
-//    // Set the addresses values of the socket.
-//    sin.sin_addr.s_addr = INADDR_ANY;
-//    // Get the current port.
-//    const int serverPort = getPort();
-//    // Set the current port of the server to the struct.
-//    sin.sin_port = htons(serverPort);
-//    return sin;
-//}
+struct sockaddr_in SocketCreator::createAddrInStructServer() {
+    // Create a struct for the socket's data.
+    struct sockaddr_in sin{};
+    // Set values to it of it's size (in bytes).
+    memset(&sin, 0, sizeof(sin));
+    // Set the protocol of the connection to the struct.
+    sin.sin_family = AF_INET;
+    // Set the addresses values of the socket.
+    sin.sin_addr.s_addr = INADDR_ANY;
+    // Get the current port.
+    const int serverPort = getPort();
+    // Set the current port of the server to the struct.
+    sin.sin_port = htons(serverPort);
+    return sin;
+}
 
 
 /**
@@ -111,7 +111,7 @@ int SocketCreator::setListen(int numOfListens, int serverSocket) {
 int SocketCreator::creatServerSocket() {
     // Create a new socket.
     int serverSocket = makeNewSocket();
-    struct sockaddr_in sin = createAddrInStruct(to_string(INADDR_ANY));
+    struct sockaddr_in sin = createAddrInStructServer();
     // Bind the struct with all data to the server's socket, check if the binding worked.
     serverSocket = bindSocket(serverSocket, sin);
     // Set the server to listen to a specific number of client's.
