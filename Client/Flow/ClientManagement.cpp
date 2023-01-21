@@ -1,6 +1,7 @@
 #include "ClientManagement.h"
 
 
+
 /**
  * A default constructor.
  */
@@ -148,6 +149,7 @@ bool ClientManagement::menuManagement(string menuStr) {
     }
     // Send to the server the choice -->> !
     AbstractOperations *op = choiceProcess(line);
+    getDefaultIO()->write(line);
     // Execute the operation.
     op->executeOp();
     // Delete the resources.

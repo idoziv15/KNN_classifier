@@ -1,17 +1,16 @@
 #ifndef EX4_CLIENTMANAGEMENT_H
 #define EX4_CLIENTMANAGEMENT_H
 
-#include "IO/AbstractDefaultIO.h"
+
 #include <cstdlib>
-#include "Client/Operations/AbstractOperations.h"
-#include "Client/DataAndCalcs/ClientValidation.h"
-#include "IO/SocketCreator.h"
-#include "IO/SocketIO.h"
 #include <utility>
+# include "./IO/SocketCreator.h"
+#include "./IO/SocketIO.h"
 #include "Client/Operations/UploadFilesOp.h"
-#include "Client/Operations/DownloadOp.h"
 #include "Client/Operations/AlgorithmSettingOp.h"
 #include "Client/Operations/DisplayResult.h"
+
+
 
 using namespace std;
 
