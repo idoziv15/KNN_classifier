@@ -3,12 +3,6 @@
 #include <utility>
 
 
-/**
- * A default constructor which initiate the database singleton.
- */
-Commander::Commander() {
-    this->relativeDatabase = RelativeDatabase::getInstance();
-}
 
 /**
  * A default destructor.
@@ -18,12 +12,13 @@ Commander::~Commander() = default;
 /**
  * A constructor who receives a description and a pointer to AbstractDefaultIo object.
  * @param description The description of the command.
- * @param dio The IO tool the command is using.
+ * @param defaultIo The IO tool the command is using.
+ * @param database The general database.
  */
-Commander::Commander(string description, AbstractDefaultIO *dio) {
+Commander::Commander(string description, AbstractDefaultIO *defaultIo, RelativeDatabase* database) {
+    setDatabase(database);
     setDescription(std::move(description));
-    setDio(dio);
-    this->relativeDatabase = RelativeDatabase::getInstance();
+    setDio(defaultIo);
 }
 
 /**
@@ -63,7 +58,7 @@ AbstractDefaultIO *Commander::getDio() {
  * @return The database.
  */
 RelativeDatabase *Commander::getDatabase() {
-    return RelativeDatabase::getInstance();
+    return this->relativeDatabase;
 }
 
 /**
@@ -81,4 +76,11 @@ void Commander::setMenu(string menu) {
  */
 string Commander::getMenu() {
     return this->fullMenu;
+}
+/**
+ * Setter for the database member.
+ * @param database a reference to a database.
+ */
+void Commander::setDatabase(RelativeDatabase *database) {
+    this->relativeDatabase = database;
 }

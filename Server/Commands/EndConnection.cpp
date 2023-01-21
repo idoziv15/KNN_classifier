@@ -1,8 +1,13 @@
 #include "EndConnection.h"
 
-
-EndConnection::EndConnection(string description, AbstractDefaultIO *Dio)
-        : Commander(std::move(description), Dio) {
+/**
+ * The constructor for EndConnection class.
+ * @param description The description of the class.
+ * @param Dio The default Io.
+ * @param database The general database.
+ */
+EndConnection::EndConnection(string description, AbstractDefaultIO *Dio, RelativeDatabase *database)
+        : Commander(std::move(description), Dio, database) {
 
 }
 
@@ -14,6 +19,4 @@ void EndConnection::execute() {
     getDatabase()->deleteUnclassified();
     // Calling the delete method from database class to free all the classified data that saved for this client.
     getDatabase()->deleteClassified();
-    // Delete the database instance.
-    delete getDatabase();
 }

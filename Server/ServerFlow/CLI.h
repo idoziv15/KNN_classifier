@@ -22,7 +22,7 @@ using namespace std;
 class CLI {
 public:
     // The control flow method.
-    void start();
+    void start(RelativeDatabase *relativeDatabase);
 
     // The default constructor for CLI class.
     CLI();
@@ -43,7 +43,7 @@ public:
     string menuCreator();
 
     // Creating a map that contain all the commands.
-    map<string, Commander *> initializeCommands(AbstractDefaultIO *IO);
+    map<string, Commander *> initializeCommands(AbstractDefaultIO *IO, RelativeDatabase* database);
 
     // Setter for the specific command.
     void setCommands(map<string, Commander *> newCommand);
@@ -55,6 +55,8 @@ public:
     Commander *processRequest(string clientChoice);
 
 private:
+
+
     // IO member.
     AbstractDefaultIO *defaultIo;
 

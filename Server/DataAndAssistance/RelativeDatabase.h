@@ -11,14 +11,15 @@
  */
 class RelativeDatabase {
 public:
+
+    // The constructor as a singleton.
+    RelativeDatabase();
+
     // Destructor for RelativeDatabase class.
     ~RelativeDatabase();
 
     // Deleting the option of a copy constructor.
     RelativeDatabase(const RelativeDatabase &obj) = delete;
-
-    // Getting the instance of the class as a singleton.
-    static RelativeDatabase *getInstance();
 
     // A getter for the unclassified relative vector.
     vector<RelativeVector *> getUnclassifiedRelatives();
@@ -57,10 +58,7 @@ public:
     vector<string> getResult();
 
 private:
-    // The constructor as a singleton.
-    RelativeDatabase();
-    // The pointer to the class to implement the singleton.
-    static RelativeDatabase *relativeDatabasePtr;
+
     // The kElement set to a default value of 5.
     unsigned long kElement = 5;
     // The metric set to a default value of "AUC".

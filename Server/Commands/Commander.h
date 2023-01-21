@@ -14,7 +14,7 @@ public:
     // A default constructor for commander class.
     Commander();
     // Constructor for commander class.
-    Commander(string description, AbstractDefaultIO *newDescription);
+    Commander(string description, AbstractDefaultIO *defaultIo, RelativeDatabase* relativeDatabase);
     // Destructor for commander class.
     ~Commander();
     // Pure virtual function that all the implementing classes(commands) need to have.
@@ -32,6 +32,9 @@ public:
 
     // A setter for the menu.
     void setMenu(string menu);
+
+    // Setter for database member.
+    void setDatabase(RelativeDatabase* database);
 
     // A getter for the menu.
     string getMenu();

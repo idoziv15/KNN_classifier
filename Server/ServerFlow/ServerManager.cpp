@@ -44,13 +44,16 @@ void ServerManager::runServer() {
         // Thead - HERE!!!
         // Creating new IO to communicate with the client.
         AbstractDefaultIO *socketIO = new SocketIO(clientSocket);
+        RelativeDatabase *database = new RelativeDatabase();
         // Creating cli.
         CLI cli(socketIO);
         // Starting the conversation.
-        cli.start();
+        cli.start(database);
         // Closing the client's socket.
         close(clientSocket);
         // Destroy the default io when finishing the connection.
         delete socketIO;
+        // Destroy the database when finishing the connection.
+        delete database;
     }
 }

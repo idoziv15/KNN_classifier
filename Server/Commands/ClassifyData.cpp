@@ -8,10 +8,11 @@ ClassifyData::~ClassifyData() = default;
 /**
  * A constructor which pass the arguments he receives to the commander constructor.
  * @param description the description of the command.
- * @param newDescription Which IO we are gonna use.
+ * @param defaultIo Which IO we are gonna use.
+ * @param database The general database.
  */
-ClassifyData::ClassifyData(string description, AbstractDefaultIO *newDescription)
-        : Commander(std::move(description), newDescription) {
+ClassifyData::ClassifyData(string description, AbstractDefaultIO *defaultIo, RelativeDatabase* database)
+        : Commander(std::move(description), defaultIo, database) {
 
 }
 

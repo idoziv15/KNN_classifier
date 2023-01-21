@@ -12,7 +12,7 @@ public:
     void execute() override;
 
     // Sending the data in the specified format.
-    SendToDownload(string description, AbstractDefaultIO *Dio);
+    SendToDownload(string description, AbstractDefaultIO *Dio, RelativeDatabase* database);
 
 };
 

@@ -11,7 +11,7 @@
 class EndConnection : public Commander {
 public:
 
-    EndConnection(string description, AbstractDefaultIO *Dio);
+    EndConnection(string description, AbstractDefaultIO *Dio,  RelativeDatabase* database);
 
     // THis method do all needed to close the connection with the client.
     void execute() override;

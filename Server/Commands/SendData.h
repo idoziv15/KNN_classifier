@@ -13,7 +13,7 @@ public:
     void execute() override;
 
     // sending the result data after the classification.
-    SendData(string description, AbstractDefaultIO *Dio);
+    SendData(string description, AbstractDefaultIO *Dio, RelativeDatabase* database);
 
 };
 

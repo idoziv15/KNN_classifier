@@ -7,7 +7,9 @@ class DownloadOp : public AbstractOperations {
 public:
     // A constructor.
     explicit DownloadOp(AbstractDefaultIO *defaultIo);
-    ~DownloadOp();
+
+    // A destructor.
+    ~DownloadOp() override;
 
     // Making the operation.
     void executeOp() override;
