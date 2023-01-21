@@ -173,7 +173,7 @@ AbstractOperations *ClientManagement::choiceProcess(string choice) {
         case 4:
             return new DisplayResult(getDefaultIO());
         case 5:
-            return nullptr;
+            return new DownloadOp(getDefaultIO());
         default:
             return nullptr;
     }

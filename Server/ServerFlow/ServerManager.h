@@ -17,7 +17,7 @@
 #define ZERO_FLAG 0
 
 /**
- *
+ * Running the server.
  */
 class ServerManager {
 public:

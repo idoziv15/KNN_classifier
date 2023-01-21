@@ -2,6 +2,7 @@
 #define EX4_SENDTODOWNLOAD_H
 
 #include "Commander.h"
+#include <utility>
 
 /**
  * This class is a command class that sends the classified data to the user, ready to download it to his computer.
