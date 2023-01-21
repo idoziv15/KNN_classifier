@@ -143,7 +143,6 @@ map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO) {
  * @return The specify command the user want to execute.
  */
 Commander *CLI::processRequest(string clientChoice) {
-    clientChoice.pop_back();
     if (this->commands.find(clientChoice) == this->commands.end()) {
         return nullptr;
     }

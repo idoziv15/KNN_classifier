@@ -15,4 +15,4 @@ file(GLOB_RECURSE IO_SOURCES "IO/*.cpp" "IO/*.h")
 add_executable(ex4_server ${SERVER_SOURCES} ${IO_SOURCES})
 
 # client executable
-add_executable(ex4_client ${CLIENT_SOU1RCES} ${IO_SOURCES})
+add_executable(ex4_client ${CLIENT_SOURCES} ${IO_SOURCES})
