@@ -35,7 +35,7 @@ void SocketIO::setSocket(int socket) {
  * @param content The content of the sending message.
  */
 void SocketIO::write(string content) {
-    content += "$";
+    content += "$\0";
     unsigned long lenMsg = content.size();
     const char *buffer = content.c_str();
     long sent_bytes = send(getSocket(), buffer, lenMsg, 0);
@@ -64,18 +64,15 @@ string SocketIO::read() {
             perror("Error receiving data.");
             exit(0);
         }
-        // Concatenate the data.
-        response += buffer;
+        for (int i = 0; i < readBytes; ++i) {
+            response += buffer[i];
+        }
         // If the token is reached, finish reading.
         if (response.back() == '$') {
             // Remove the token.
             response.pop_back();
             // Return the response.
             return response;
-        }
-        // Clearing the buffer.
-        for (char &i: buffer) {
-            i = '\0';
         }
     }
 }

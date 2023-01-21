@@ -20,13 +20,12 @@ void AlgorithmSettingOp::executeOp() {
     // Get the server response.
     string setting = getDio()->read();
     // Printing the server response.
-    cout << setting << endl;
+    cout << setting ;
     // Init a string for user input.
     string changeSetting, invalidServerReply;
     // Getting user input.
     getline(cin, changeSetting);
-    // Concatenate the user input with $ for server check.
-    changeSetting += "$";
     // Send the user input to the server.
     getDio()->write(changeSetting);
+
 }
