@@ -7,10 +7,10 @@
 using namespace std;
 
 class AlgorithmSettingOp : public AbstractOperations {
-
+public:
     explicit AlgorithmSettingOp(AbstractDefaultIO *defaultIo);
 
-    ~AlgorithmSettingOp();
+    ~AlgorithmSettingOp() override;
 
     void executeOp() override;
 };

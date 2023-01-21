@@ -89,17 +89,17 @@ void ClientManagement::start() {
     SocketCreator socketCreator(getPort());
     // Creating a new socket for the client.
     int clientSocket = socketCreator.makeNewSocket();
-    // Creating a SocketIO for the client.
-    AbstractDefaultIO *dio = new SocketIO(clientSocket);
-    // Set the SocketIO to the client.
-    setDefaultIO(dio);
     // Creating a struct address for the socket.
-    struct sockaddr_in sin = socketCreator.createAddrInStructClient(getIp());
+    struct sockaddr_in sin = socketCreator.createAddrInStruct(getIp());
     // Connecting to the server.
     if (connect(clientSocket, (struct sockaddr *) &sin, sizeof(sin)) < ZERO_FLAG) {
         perror("Error connecting to server");
         exit(0);
     }
+    // Creating a SocketIO for the client.
+    AbstractDefaultIO *dio = new SocketIO(clientSocket);
+    // Set the SocketIO to the client.
+    setDefaultIO(dio);
     // Run the communication with the client.
     run();
     // Destroy the default io.
@@ -131,20 +131,25 @@ bool ClientManagement::menuManagement(string menuStr) {
     // Get the user's input.
     string line = userInput();
     if (line == "8") {
+        // Send the server the "exit" choice to finish the connection and free resources.
         getDefaultIO()->write(line);
         return false;
     }
     // Check if the input is a valid integer.
-    if (!this->clientValidation.validI(line)) {
+    if (!this->clientValidation.validI(line)) { // ADD MENU CHOICES CHECK.
         // If it isn't, send it to the server making no operations.
         getDefaultIO()->write(line);
         return true;
     }
     // If the operation decided to be 3, it's just print so return.
-    if (line == "3") { return true; }
+    if (line == "3") {
+        getDefaultIO()->write(line);
+        return true;
+    }
     // Send to the server the choice -->> !
     AbstractOperations *op = choiceProcess(line);
     op->executeOp();
+    delete op;
     return true;
 }
 
@@ -153,5 +158,15 @@ bool ClientManagement::menuManagement(string menuStr) {
  * @param choice The choice the user made (no manipulations made on it).
  */
 AbstractOperations *ClientManagement::choiceProcess(string choice) {
-    return nullptr;
+    // Convert the choice to a number.
+    int choiceNum = stoi(choice);
+    switch (choiceNum) {
+        case 1:
+            return new UploadFilesOp(getDefaultIO());
+        case 2:
+            return new AlgorithmSettingOp(getDefaultIO());
+        case 3:
+            return new DisplayResult(getDefaultIO());
+
+    }
 }

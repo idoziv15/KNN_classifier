@@ -11,7 +11,7 @@ class AbstractOperations {
 public:
     explicit AbstractOperations(AbstractDefaultIO *defaultIo);
 
-    ~AbstractOperations();
+    virtual ~AbstractOperations();
 
     virtual void executeOp() = 0;
 

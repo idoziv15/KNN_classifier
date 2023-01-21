@@ -8,6 +8,13 @@
  */
 class UploadFilesOp : public AbstractOperations {
 public:
+
+    // A constructor for the class receiving a default io.
+    explicit UploadFilesOp(AbstractDefaultIO *defaultIo);
+
+    // A destructor for the class.
+    ~UploadFilesOp() override;
+
     // Execute the command.
     void executeOp() override;
 

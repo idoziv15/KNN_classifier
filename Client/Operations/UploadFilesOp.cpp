@@ -1,15 +1,32 @@
 #include "UploadFilesOp.h"
 
 /**
+ * A constructor who receives a default io to initiate it's inheriting class.
+ * @param defaultIo A default io for the class.
+ */
+UploadFilesOp::UploadFilesOp(AbstractDefaultIO *defaultIo) : AbstractOperations(defaultIo) {
+
+}
+
+/**
+ * A default destructor.
+ */
+UploadFilesOp::~UploadFilesOp() = default;
+
+
+/**
  * Uploading two files to the server.
  */
 void UploadFilesOp::executeOp() {
+    // If the first file had invalid path, return.
     if (!createSendFileOne()) {
         return;
     }
     // Read the server's response.
     string response = getDio()->read();
+    // Print the response.
     cout << response << endl;
+    // Send the second file.
     createSendFileTwo();
 }
 
@@ -81,4 +98,3 @@ string UploadFilesOp::uploadFile(string path) {
     }
     return fullFile;
 }
-

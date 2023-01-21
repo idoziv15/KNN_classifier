@@ -8,6 +8,10 @@
 #include "IO/SocketCreator.h"
 #include "IO/SocketIO.h"
 #include <utility>
+#include "Client/Operations/UploadFilesOp.h"
+#include "Client/Operations/DownloadOp.h"
+#include "Client/Operations/AlgorithmSettingOp.h"
+#include "Client/Operations/DisplayResult.h"
 
 using namespace std;
 

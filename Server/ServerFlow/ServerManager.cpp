@@ -50,6 +50,8 @@ void ServerManager::runServer() {
         CLI cli(socketIO);
         // Starting the conversation.
         cli.start();
+        // Closing the client's socket.
+        close(clientSocket);
         // Destroy the default io when finishing the connection.
         delete cli.getDefaultIO();
     }

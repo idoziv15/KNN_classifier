@@ -55,7 +55,7 @@ struct sockaddr_in SocketCreator::createAddrInStructServer() {
  * Creat a sockaddr_in for the server's socket.
  * @return struct of sockaddr_in.
  */
-struct sockaddr_in SocketCreator::createAddrInStructClient(const string &ip) {
+struct sockaddr_in SocketCreator::createAddrInStruct(const string &ip) {
     // Create a struct for the socket's data.
     struct sockaddr_in sin{};
     // Set values to it of it's size (in bytes).

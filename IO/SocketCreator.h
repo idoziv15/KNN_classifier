@@ -31,10 +31,10 @@ public:
     int creatServerSocket();
 
     // Creating a new struct for the server.
-    struct sockaddr_in createAddrInStructServer();
+//    struct sockaddr_in createAddrInStructServer();
 
     // Creating a new struct for the client, using the server's ip.
-    struct sockaddr_in createAddrInStructClient(const string& ip);
+    struct sockaddr_in createAddrInStruct(const string& ip);
 
     // A setter for the port number.
     void setPort(int port);

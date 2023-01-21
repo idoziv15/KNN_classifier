@@ -3,8 +3,9 @@
 
 #include "AbstractOperations.h"
 
-class DisplayResult : public AbstractOperations {
 
+class DisplayResult : public AbstractOperations {
+public:
     explicit DisplayResult(AbstractDefaultIO *defaultIo);
 
     ~DisplayResult();

@@ -73,13 +73,12 @@ void CLI::start() {
         // Check if the user entered a valid choice and execute his request, otherwise sending the user error.
         Commander *command = processRequest(response);
         if (command == nullptr) {
-            dIO->write("invalid input\n");
+            dIO->write("invalid input\n" + menu);
             continue;
         }
         command->execute();
         // Checking if the user want to close the connection to the server.
         if (response == "8" || response == "8\n") {
-            // Free recourses and close client socket!!!!!!!!!.
             break;
         }
     }
