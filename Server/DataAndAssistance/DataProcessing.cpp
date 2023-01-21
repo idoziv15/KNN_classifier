@@ -58,7 +58,7 @@ vector<vector<string>> DataProcessing::createLinesArray(vector<string> lineVec) 
     for (int i = 0; i < lineVecSize; ++i) {
         vector<string> newLine;
         // Calling catchDelim to separate the string to different vectors of string.
-        createVecVec(lineVec[i], ' ', newLine);
+        createVecVec(lineVec[i], ',', newLine);
         lines.push_back(newLine);
     }
     return lines;
@@ -77,6 +77,9 @@ void DataProcessing::createVecVec(string fullVec, char delim, vector<string> &de
     string fromDelim;
     // Go over the string from the file and separate its values to a new vector.
     while (getline(line, fromDelim, delim)) {
+        if (fromDelim.back() == '\r'){
+            fromDelim.pop_back();
+        }
         dest.push_back(fromDelim);
     }
 }

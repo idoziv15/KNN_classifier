@@ -17,5 +17,6 @@ DisplayResult::~DisplayResult() = default;
  * Executing the operation by printing the response from the server.
  */
 void DisplayResult::executeOp() {
-    cout << getDio()->read() << ends;
+    cout << getDio()->read();
+    getDio()->write("Ok");
 }

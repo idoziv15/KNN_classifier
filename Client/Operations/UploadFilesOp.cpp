@@ -25,7 +25,7 @@ void UploadFilesOp::executeOp() {
     // Read the server's response.
     string response = getDio()->read();
     // Print the response.
-    cout << response << endl;
+    cout << response ;
     // Send the second file.
     createSendFileTwo();
 }

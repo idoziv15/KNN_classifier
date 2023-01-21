@@ -115,11 +115,15 @@ void RelativeDatabase::deleteUnclassified() {
     if (getUnclassifiedRelatives().empty()) {
         return;
     }
+    vector<RelativeVector *> relativeVector = getUnclassifiedRelatives();
     // Delete all data from the vector.
-    unsigned int size = getUnclassifiedRelatives().size();
+    unsigned int size = relativeVector.size();
     for (int i = 0; i < size; ++i) {
-        delete  getUnclassifiedRelatives()[i];
+        delete  relativeVector.back();
+        relativeVector.pop_back();
     }
+    vector<RelativeVector *> destroy;
+    setUnclassifiedRelatives(destroy);
 }
 
 /**
@@ -130,9 +134,13 @@ void RelativeDatabase::deleteClassified() {
     if (getClassifiedRelatives().empty()) {
         return;
     }
+    vector<ClassifiedRelativeVector *> relativeVector = getClassifiedRelatives();
     // Delete all data from the vector.
-    unsigned int size = getClassifiedRelatives().size();
+    unsigned int size = relativeVector.size();
     for (int i = 0; i < size; ++i) {
-        delete  getClassifiedRelatives()[i];
+        delete  relativeVector.back();
+        relativeVector.pop_back();
     }
+    vector<ClassifiedRelativeVector *> destroy;
+    setClassifiedRelatives(destroy);
 }

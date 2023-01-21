@@ -26,7 +26,7 @@ void AlgorithmSetting::execute() {
     string response = getDio()->read();
     // Checking if he doesn't want to change the settings.
     if (response.empty() || response == "\n") {
-        getDio()->write("Valid\n");
+        getDio()->write(getMenu());
         return;
     }
     // Getting the response into a vector for validation check.

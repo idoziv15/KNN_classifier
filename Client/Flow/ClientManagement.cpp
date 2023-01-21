@@ -149,6 +149,7 @@ bool ClientManagement::menuManagement(string menuStr) {
     }
     // Send to the server the choice -->> !
     AbstractOperations *op = choiceProcess(line);
+    // Sending the client's request to the server.
     getDefaultIO()->write(line);
     // Execute the operation.
     op->executeOp();

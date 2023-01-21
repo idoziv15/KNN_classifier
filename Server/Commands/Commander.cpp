@@ -55,7 +55,7 @@ void Commander::setDio(AbstractDefaultIO *newDio) {
  * @return The new io tool.
  */
 AbstractDefaultIO *Commander::getDio() {
-    return dio;
+    return this->dio;
 }
 
 /**
