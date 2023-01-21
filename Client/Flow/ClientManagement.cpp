@@ -91,8 +91,10 @@ void ClientManagement::start() {
     int clientSocket = socketCreator.makeNewSocket();
     // Creating a SocketIO for the client.
     AbstractDefaultIO *dio = new SocketIO(clientSocket);
+    // Set the SocketIO to the client.
+    setDefaultIO(dio);
     // Creating a struct address for the socket.
-    struct sockaddr_in sin = socketCreator.creatAddrInStruct();
+    struct sockaddr_in sin = socketCreator.createAddrInStructClient(getIp());
     // Connecting to the server.
     if (connect(clientSocket, (struct sockaddr *) &sin, sizeof(sin)) < ZERO_FLAG) {
         perror("Error connecting to server");

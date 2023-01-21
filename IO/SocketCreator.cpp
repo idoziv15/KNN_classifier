@@ -1,17 +1,12 @@
 #include "SocketCreator.h"
 
 /**
- * A constructor which sets a port number.
- * @param port
+ * A constructor which sets a port number of a server's app.
+ * @param port The server's app port number.
  */
 SocketCreator::SocketCreator(int port) {
     setPort(port);
 }
-
-/**
- * A default constructor.
- */
-//SocketCreator::SocketCreator() = default;
 
 /**
  * A default destructor.
@@ -39,7 +34,7 @@ int SocketCreator::getPort() {
  * Creat a sockaddr_in for the server's socket.
  * @return struct of sockaddr_in.
  */
-struct sockaddr_in SocketCreator::creatAddrInStruct() {
+struct sockaddr_in SocketCreator::createAddrInStructServer() {
     // Create a struct for the socket's data.
     struct sockaddr_in sin{};
     // Set values to it of it's size (in bytes).
@@ -54,6 +49,30 @@ struct sockaddr_in SocketCreator::creatAddrInStruct() {
     sin.sin_port = htons(serverPort);
     return sin;
 }
+
+
+/**
+ * Creat a sockaddr_in for the server's socket.
+ * @return struct of sockaddr_in.
+ */
+struct sockaddr_in SocketCreator::createAddrInStructClient(const string& ip) {
+    // Create a struct for the socket's data.
+    struct sockaddr_in sin{};
+    // Set values to it of it's size (in bytes).
+    memset(&sin, 0, sizeof(sin));
+    // Set the protocol of the connection to the struct.
+    sin.sin_family = AF_INET;
+    // Reformat the ip from string to char*.
+    const char * ipAddr = ip.c_str();
+    // Set the addresses values of the socket.
+    sin.sin_addr.s_addr = inet_addr(ipAddr);
+    // Get the current port.
+    const int serverPort = getPort();
+    // Set the current port of the server to the struct.
+    sin.sin_port = htons(serverPort);
+    return sin;
+}
+
 
 /**
  * Binding a socket to a port number.
@@ -92,7 +111,7 @@ int SocketCreator::setListen(int numOfListens, int serverSocket) {
 int SocketCreator::creatServerSocket() {
     // Create a new socket.
     int serverSocket = makeNewSocket();
-    struct sockaddr_in sin = creatAddrInStruct();
+    struct sockaddr_in sin = createAddrInStructServer();
     // Bind the struct with all data to the server's socket, check if the binding worked.
     serverSocket = bindSocket(serverSocket, sin);
     // Set the server to listen to a specific number of client's.
@@ -117,7 +136,7 @@ int SocketCreator::makeNewSocket() {
 
 
 /**
- * Accept a new client.
+ * Accept a new client from a server's socket.
  * @param serverSocket The server's socket.
  * @return a socket of a new  client.
  */

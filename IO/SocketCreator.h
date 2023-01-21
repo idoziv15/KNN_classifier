@@ -8,6 +8,9 @@
 #include <unistd.h>
 #include <cstring>
 #include <cstdlib>
+#include <string>
+
+using namespace std;
 
 #define CLIENTS_TO_LISTEN 5
 #define DEFAULT_PORT 12345
@@ -15,15 +18,23 @@
 
 class SocketCreator {
 public:
+    // A constructor for the class.
     explicit SocketCreator(int port);
 
+    // A destructor for the class.
     ~SocketCreator();
 
+    // Creating a new socket.
     int makeNewSocket();
 
+    // Creating a new server socket.
     int creatServerSocket();
 
-    struct sockaddr_in creatAddrInStruct();
+    // Creating a new struct for the server.
+    struct sockaddr_in createAddrInStructServer();
+
+    // Creating a new struct for the client, using the server's ip.
+    struct sockaddr_in createAddrInStructClient(const string& ip);
 
     // A setter for the port number.
     void setPort(int port);
@@ -40,9 +51,8 @@ public:
     // Accepting a new client.
     int acceptClient(int serverSocket);
 
-
-
 private:
+    // The port number of the server.
     int portNum;
 };
 
