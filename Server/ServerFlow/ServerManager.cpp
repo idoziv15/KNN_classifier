@@ -1,6 +1,5 @@
 #include "ServerManager.h"
 
-
 /**
  * A constructor which receives a port number to bind to the server's main socket.
  * @param port The port number to bind.
