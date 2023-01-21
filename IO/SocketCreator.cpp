@@ -55,7 +55,7 @@ struct sockaddr_in SocketCreator::createAddrInStructServer() {
  * Creat a sockaddr_in for the server's socket.
  * @return struct of sockaddr_in.
  */
-struct sockaddr_in SocketCreator::createAddrInStructClient(const string& ip) {
+struct sockaddr_in SocketCreator::createAddrInStructClient(const string &ip) {
     // Create a struct for the socket's data.
     struct sockaddr_in sin{};
     // Set values to it of it's size (in bytes).
@@ -63,7 +63,7 @@ struct sockaddr_in SocketCreator::createAddrInStructClient(const string& ip) {
     // Set the protocol of the connection to the struct.
     sin.sin_family = AF_INET;
     // Reformat the ip from string to char*.
-    const char * ipAddr = ip.c_str();
+    const char *ipAddr = ip.c_str();
     // Set the addresses values of the socket.
     sin.sin_addr.s_addr = inet_addr(ipAddr);
     // Get the current port.
@@ -134,7 +134,6 @@ int SocketCreator::makeNewSocket() {
     return newSocket;
 }
 
-
 /**
  * Accept a new client from a server's socket.
  * @param serverSocket The server's socket.
@@ -155,5 +154,3 @@ int SocketCreator::acceptClient(int serverSocket) {
     }
     return clientSocket;
 }
-
-
