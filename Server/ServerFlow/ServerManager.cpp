@@ -51,6 +51,6 @@ void ServerManager::runServer() {
         // Closing the client's socket.
         close(clientSocket);
         // Destroy the default io when finishing the connection.
-        delete cli.getDefaultIO();
+        delete socketIO;
     }
 }
