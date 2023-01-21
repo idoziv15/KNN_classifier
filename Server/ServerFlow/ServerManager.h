@@ -20,7 +20,7 @@
 class ServerManager {
 public:
     // Default constructor.
-    ServerManager(int port);
+    explicit ServerManager(int port);
 
     // Default destructor.
     ~ServerManager();
@@ -28,31 +28,14 @@ public:
     // Running the server.
     void runServer();
 
-private:
-
-    int makeNewSocket();
-
-    int creatServerSocket();
-
-    struct sockaddr_in creatAddrInStruct();
-
     // A setter for the port number.
     void setPort(int port);
 
     // A getter for the port number.
     int getPort();
 
-    // Binding a socket to a port number.
-    int bindSocket(int serverSocket, sockaddr_in sin);
-
-    // Set a socket to listen to a specific number of clients.
-    int setListen(int numOfListens, int serverSocket);
-
-    // Accepting a new client.
-    int acceptClient(int serverSocket);
-
 private:
-    int portNum;
+    int portNum{};
 };
 
 #endif //EX4_SERVERMANAGER_H

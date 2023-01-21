@@ -11,7 +11,7 @@ SocketCreator::SocketCreator(int port) {
 /**
  * A default constructor.
  */
-SocketCreator::SocketCreator() = default;
+//SocketCreator::SocketCreator() = default;
 
 /**
  * A default destructor.
@@ -106,13 +106,13 @@ int SocketCreator::creatServerSocket() {
  */
 int SocketCreator::makeNewSocket() {
     // Creat a new socket.
-    int serverSocket = socket(AF_INET, SOCK_STREAM, 0);
+    int newSocket = socket(AF_INET, SOCK_STREAM, 0);
     // If the creation didn't work, raise an error.
-    if (serverSocket < ZERO_FLAG) {
+    if (newSocket < ZERO_FLAG) {
         perror("Error binding socket.");
         exit(0);
     }
-    return serverSocket;
+    return newSocket;
 }
 
 

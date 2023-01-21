@@ -13,8 +13,12 @@ using namespace std;
  */
 class AbstractDefaultIO {
 public:
+    // A default destructor.
+    virtual ~AbstractDefaultIO();
+
     // A pure virtual method read that all the inheritance need to implement.
     virtual string read() = 0;
+
     // A pure virtual method write that all the inheritance need to implement.
     virtual void write(string content) = 0;
 };

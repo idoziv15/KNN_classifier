@@ -41,8 +41,8 @@ int main(int args, char *argv[]) {
     vector<string> argc_vector = extract_argc(argv);
     string ipAddress = argc_vector[0];
     int portNumber = stoi(argc_vector[1]);
-    ClientManagement clientManagement;
-
+    ClientManagement clientManagement(portNumber, ipAddress);
+    clientManagement.start();
 
     return 0;
 }

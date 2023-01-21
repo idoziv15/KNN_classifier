@@ -1,6 +1,5 @@
 #include "ClientManagement.h"
 
-#include <utility>
 
 /**
  * A default constructor.
@@ -86,8 +85,12 @@ string ClientManagement::userInput() {
  * This method starts the client's operation with the server.
  */
 void ClientManagement::start() {
+    // Creating a socket creator.
     SocketCreator socketCreator(getPort());
+    // Creating a new socket for the client.
     int clientSocket = socketCreator.makeNewSocket();
+    // Creating a SocketIO for the client.
+    AbstractDefaultIO *dio = new SocketIO(clientSocket);
     // Creating a struct address for the socket.
     struct sockaddr_in sin = socketCreator.creatAddrInStruct();
     // Connecting to the server.
@@ -95,15 +98,21 @@ void ClientManagement::start() {
         perror("Error connecting to server");
         exit(0);
     }
+    // Run the communication with the client.
     run();
+    // Destroy the default io.
+    delete getDefaultIO();
 }
 
 /**
  * Running the connection.
  */
 void ClientManagement::run() {
+    // While the client still want to, run the connection.
     while (true) {
+        // Get a message from the server.
         string menu = getDefaultIO()->read();
+        // If the menu management alerts to, close the connection.
         if (!menuManagement(menu)) {
             return;
         }
@@ -144,6 +153,3 @@ bool ClientManagement::menuManagement(string menuStr) {
 AbstractOperations *ClientManagement::choiceProcess(string choice) {
     return nullptr;
 }
-
-
-

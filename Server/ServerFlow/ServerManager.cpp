@@ -2,10 +2,17 @@
 #include "IO/SocketIO.h"
 #include "CLI.h"
 
+/**
+ * A constructor which receives a port number to bind to the server's main socket.
+ * @param port The port number to bind.
+ */
 ServerManager::ServerManager(int port) {
     setPort(port);
 }
 
+/**
+ * A default destructor.
+ */
 ServerManager::~ServerManager() = default;
 
 /**
@@ -29,7 +36,7 @@ int ServerManager::getPort() {
  */
 void ServerManager::runServer() {
     // Creating a socket creator.
-    SocketCreator socketCreator;
+    SocketCreator socketCreator(getPort());
     // Creating new server socket.
     int serverSocket = socketCreator.creatServerSocket();
     // Running the server.
@@ -43,5 +50,7 @@ void ServerManager::runServer() {
         CLI cli(socketIO);
         // Starting the conversation.
         cli.start();
+        // Destroy the default io when finishing the connection.
+        delete cli.getDefaultIO();
     }
 }

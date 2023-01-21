@@ -17,8 +17,6 @@ class SocketCreator {
 public:
     explicit SocketCreator(int port);
 
-    SocketCreator();
-
     ~SocketCreator();
 
     int makeNewSocket();

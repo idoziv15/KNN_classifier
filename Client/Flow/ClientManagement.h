@@ -6,7 +6,8 @@
 #include "Client/Operations/AbstractOperations.h"
 #include "Client/DataAndCalcs/ClientValidation.h"
 #include "IO/SocketCreator.h"
-
+#include "IO/SocketIO.h"
+#include <utility>
 
 using namespace std;
 
@@ -16,25 +17,29 @@ using namespace std;
 class ClientManagement {
 public:
 
+    // Initiating the client's management to start running.
+    void start();
+
     // A constructor for the class.
     ClientManagement(int port, string ip);
 
     // A constructor which receives a default io pointer.
     explicit ClientManagement(AbstractDefaultIO *dio);
 
+    // A setter for the port number of the server.
     void setPort(int newPort);
 
+    // A getter for the port number of the server.
     int getPort();
 
+    // A setter for the IP number of the server.
     void setIp(string serverIp);
 
+    // A getter for the IP number of the server.
     string getIp();
 
     // A destructor for the class.
     ~ClientManagement();
-
-    void start();
-
 
     // A setter for the default io.
     void setDefaultIO(AbstractDefaultIO *dio);
@@ -60,9 +65,9 @@ private:
     // The client management member.
     ClientValidation clientValidation;
     // The port number of the server.
-    int port;
+    int port = 12345;
     // The server's ip.
-    string serverIp;
+    string serverIp = "127.0.0.1";
 };
 
 #endif //EX4_CLIENTMANAGEMENT_H
