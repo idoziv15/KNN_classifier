@@ -1,9 +1,4 @@
-
 #include "SendToDownload.h"
-
-#include <utility>
-
-
 
 SendToDownload::SendToDownload(string description, AbstractDefaultIO *Dio)
         : Commander(std::move(description), Dio) {
