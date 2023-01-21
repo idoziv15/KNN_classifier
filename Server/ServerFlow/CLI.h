@@ -4,8 +4,8 @@
 #include <cstdlib>
 #include <string>
 #include <map>
-#include "./IO/AbstractDefaultIO.h"
-#include "./IO/StandardIO.h"
+#include "Server/IO/AbstractDefaultIO.h"
+#include "Server/IO/StandardIO.h"
 #include "Server/Commands/Commander.h"
 #include "Server/Commands/AlgorithmSetting.h"
 #include "Server/Commands/ClassifyData.h"

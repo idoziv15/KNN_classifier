@@ -1,7 +1,7 @@
 #ifndef EX4_UPLOADFILESOP_H
 #define EX4_UPLOADFILESOP_H
 
-#include "Client/Operations/AbstractOperations.h"
+#include "AbstractOperations.h"
 
 /**
  * Uploading a file to the program.
