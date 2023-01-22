@@ -101,10 +101,10 @@ To clone and run this application, you'll need [Git](https://git-scm.com) instal
 
 ```bash
 # Clone this repository.
-$ git clone https://github.com/TalMizrahii/AP1Project3
+$ git clone https://github.com/TalMizrahii/AP1-KNN-TCP-Server
 
 # Go into the repository.
-$ cd AP1Project3
+$ cd AP1-KNN-TCP-Server
 
 # Compile using makefile.
 $ make
@@ -112,22 +112,10 @@ $ make
   This command will create two .out files; server.out and client.out.
   
 ```bash
-# To run the server with default iris database:
+# To run the server with default port:
 $ make run-server
 ```
-To run the server with specific database:
-
-```bash
-# Run wine
-$ make run-wine
-```
-
-```bash
-# Run beans
-$ make run-beans
-```
-  
-To run the client:
+To run the client with the default connection settings:
   
 ```bash
 $ make run-client
