@@ -51,7 +51,8 @@ If the user asks for the algorithm settings, the server will send him the curren
 If he wants no changes to be made, he can press ENTER and the server will send the menu again. If the user wants to change the settings, he can enter a new K element, and a metric of his choice from these options:
   
   
-  * MUN - [Taxicab geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
+  * MAN - [Taxicab geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
+  
   * AUC - [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)
   * CHB - [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance)
   * CAN - [Canberra distance](https://en.wikipedia.org/wiki/Canberra_distance)
