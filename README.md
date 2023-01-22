@@ -81,10 +81,13 @@ The last option (8) is to close the connection. all data will be released and th
   Both server and client share the IO directory. This directory's purpose is to allow them to communicate threw different IO ways, such as sockets, keyboard io, etc. They use the AbstractDefaultIO to polymorphism the IO tool they use. In this program, we use the TCP socket IO.
   
 ### client
-The Clients implementation is relatively basic. It uses "operations" to fulfill the user requests, such as printing the results of the classification or entering a path to a file. The communication with the server is performed as a "ping pong" talk. If the client sends a message to the server, it can't send a repetitive message until the server replies with a message of its own. 
+  
+The Clients implementation is relatively basic. It uses "operations" to fulfill the user requests, such as printing the results of the classification or entering a path to a file. The communication with the server is performed as a "ping pong" talk. If the client sends a message to the server, it can't send a repetitive message until the server replies with a message of its own. All client operations are made sequentially, except the "download results". in this option, the client opens a new thread, which gives him the ability to concurrently make new commends while he downloads the results to his computer.
 
 ### Server
-
+  
+The server's implementation is based on a CLI with the client. After the server accepts a new client, it opens a thread for this client, which gives him the ability to concurrently accept new clients and handle them. The server implements the [Command](https://en.wikipedia.org/wiki/Command_pattern) design pattern, giving him the modular option to add and remove new features from the menu. The server uses the RelativeDatabase class to store all information from the client. This class is allocated on the heap to assure data modularity and safe data sharing between the different commands.
+  
 
 ## Installing And Executing
 
