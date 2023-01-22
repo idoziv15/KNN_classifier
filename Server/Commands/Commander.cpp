@@ -20,7 +20,7 @@ Commander::Commander(string description, AbstractDefaultIO *defaultIo, RelativeD
 /**
  * The default constructor of the class.
  */
-Commander::Commander() = defualt;
+Commander::Commander() = default;
 
 /**
  * A setter for the description.
