@@ -65,7 +65,6 @@ void Commander::setMenu(string menu) {
     this->fullMenu = std::move(menu);
 }
 
-
 /**
  * A getter for the full menu.
  * @return The full menu.
