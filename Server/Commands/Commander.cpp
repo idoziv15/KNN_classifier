@@ -1,9 +1,5 @@
 #include "Commander.h"
 
-#include <utility>
-
-
-
 /**
  * A default destructor.
  */
@@ -20,6 +16,11 @@ Commander::Commander(string description, AbstractDefaultIO *defaultIo, RelativeD
     setDescription(std::move(description));
     setDio(defaultIo);
 }
+
+/**
+ * The default constructor of the class.
+ */
+Commander::Commander() = defualt;
 
 /**
  * A setter for the description.

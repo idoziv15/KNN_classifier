@@ -3,7 +3,6 @@
 
 #include "Commander.h"
 #include "../DataAndAssistance/DataProcessing.h"
-#include <utility>
 
 /*
  * UploadFile class - a command that upload file using a IO tool to create a database.

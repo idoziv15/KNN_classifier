@@ -18,8 +18,8 @@ UploadFile::UploadFile(string description, AbstractDefaultIO *Dio, RelativeDatab
 UploadFile::~UploadFile() = default;
 
 
-/*
- * Control flow function.
+/**
+ * The control flow function.
  */
 void UploadFile::execute() {
     // Delete all old classified files (if any).

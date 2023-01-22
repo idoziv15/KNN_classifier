@@ -1,7 +1,5 @@
 #include "SendData.h"
 
-#include <utility>
-
 /**
  * The constructor of SentData class.
  * @param description The description of the class.

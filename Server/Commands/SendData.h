@@ -2,7 +2,7 @@
 #ifndef EX4_SENDDATA_H
 #define EX4_SENDDATA_H
 
-# include "Commander.h"
+#include "Commander.h"
 
 /**
  * This class responsible to send the data to the client.
@@ -13,7 +13,7 @@ public:
     void execute() override;
 
     // sending the result data after the classification.
-    SendData(string description, AbstractDefaultIO *Dio, RelativeDatabase* database);
+    SendData(string description, AbstractDefaultIO *Dio, RelativeDatabase *database);
 
 };
 
