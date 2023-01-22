@@ -41,11 +41,16 @@ void DownloadOp::executeOp() {
     getDio()->write("OK");
     // Get the path from the user.
     string path = userInput();
+    // Create a file stream.
+    std::ofstream myFile;
+    // Open the file to the path we gor from the user.
+    myFile.open(path);
     // Checking if the path is valid.
-    if (!clientValidations.validPath(path)) {
+    if (!myFile) {
         cout << "invalid input" << endl;
         return;
     }
+    myFile.close();
     // Creating a thread to download the file.
     thread t2(downloadFileToComputer, response, path);
     // Detaching the thread from the main thread.
