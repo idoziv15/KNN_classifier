@@ -53,10 +53,24 @@ If he wants no changes to be made, he can press ENTER and the server will send t
   
   * MAN - [Taxicab geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
   
+  ![image](https://user-images.githubusercontent.com/103560553/202403477-4c2885df-8eee-4721-897b-dee4e95c4ed0.png)
+  
   * AUC - [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)
+  
+  ![image](https://user-images.githubusercontent.com/103560553/202403137-049e516b-ac15-4e21-abbc-bf4f465a83bf.png)
+
   * CHB - [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance)
+  
+  ![image](https://user-images.githubusercontent.com/103560553/202403736-3438755a-f128-46a9-8f55-4b1cf69a215f.png)
+
   * CAN - [Canberra distance](https://en.wikipedia.org/wiki/Canberra_distance)
+
+  ![image](https://user-images.githubusercontent.com/103560553/202403909-432f6285-c7cb-4a78-b9e7-a0b6b837c455.png)
+
   * MIN - [Minkowski distance](https://en.wikipedia.org/wiki/Minkowski_distance)
+  
+  ![image](https://user-images.githubusercontent.com/103560553/202404050-595c6cba-1b98-42ba-868c-c2c28586d6e4.png)
+
 
  In the third option, the client can just classify the data in the server. If no files were uploaded, the server will reply with an error message, and send the menu again. This part will look like this:
   
