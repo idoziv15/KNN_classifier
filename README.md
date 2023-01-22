@@ -78,8 +78,10 @@ The last option (8) is to close the connection. all data will be released and th
 
 ## Implementation
   
+  Both server and client share the IO directory. This directory's purpose is to allow them to communicate threw different IO ways, such as sockets, keyboard io, etc. They use the AbstractDefaultIO to polymorphism the IO tool they use. In this program, we use the TCP socket IO.
+  
 ### client
-
+The Clients implementation is relatively basic. It uses "operations" to fulfill the user requests, such as printing the results of the classification or entering a path to a file. The communication with the server is performed as a "ping pong" talk. If the client sends a message to the server, it can't send a repetitive message until the server replies with a message of its own. 
 
 ### Server
 
