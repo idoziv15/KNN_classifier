@@ -104,10 +104,10 @@ To clone and run this application, you'll need [Git](https://git-scm.com) instal
 
 ```bash
 # Clone this repository.
-$ git clone https://github.com/TalMizrahii/AP1-KNN-TCP-Server
+$ git clone https://github.com/TalMizrahii/AP1-KNN-Multithreaded-TCP-Server
 
 # Go into the repository.
-$ cd AP1-KNN-TCP-Server
+$ cd AP1-KNN-Multithreaded-TCP-Server
 
 # Compile using makefile.
 $ make
