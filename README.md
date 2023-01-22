@@ -34,47 +34,37 @@ The client receives two system arguments:
   
 The menu looks like this:
   
-Welcome to the KNN Classifier Server. Please choose an option:
-1. upload an unclassified csv data file.
-2. algorithm settings.
-3. classify data
-4. display results
-5. download results
-8. exit
+  <img width="368" alt="1" src="https://user-images.githubusercontent.com/103560553/213907301-233a977c-a5b1-49f8-b42c-97fd3f332baa.PNG">
 
 
-### The Server
-
-The server receives two system arguments:
+The user can choose any option from the menu. If he enters a choice outside of the menu, the server will reply "invalid input" message and will send the menu again.
   
- * A path to the file database contains classified vectors in a CSV file.
- * The port number to use (needs to be an unused port number).
- 
-We use a given database named "datasets", containing .cvs files. Each row in a file represents a vector of doubles. The last cell in the row represents the classification of the vector. 
+In the first option, the user will be asked to upload files to the server. He will be asked to enter a path to a classified CSV file, and a path to an unclassified CSV file. The client will automatically send the content of the files to the server. This option will look like that:
+
+
+  <img width="368" alt="3" src="https://user-images.githubusercontent.com/103560553/213906933-1b0cd068-c3dc-4808-a286-e36b1b564603.PNG">
+
   
-The server sets its socket to listen to 5 clients at most.
+If the user asks for the algorithm settings, the server will send him the current settings of the KNN algorithm. The message with the default settings looks like that:
 
-He processes the message from the client into 3 elements (in this order):
-
-* 1. The vector - must be the same size as the vectors in the database.
-* 2. The distance calculation was wanted to be used in the KNN algorithm.
-* 3. The number K for the KNN algorithm.
-
-The second argument (The distance calculation) is interpreted as:
+<img width="370" alt="2" src="https://user-images.githubusercontent.com/103560553/213906987-efa9ee9f-1935-4b0d-860b-9d322b0b5018.PNG">
+  
+If he wants no changes to be made, he can press ENTER and the server will send the menu again. If the user wants to change the settings, he can enter a new K element, and a metric of his choice from these options:
+  
+  
   * MUN - [Taxicab geometry](https://en.wikipedia.org/wiki/Taxicab_geometry)
   * AUC - [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)
   * CHB - [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance)
   * CAN - [Canberra distance](https://en.wikipedia.org/wiki/Canberra_distance)
   * MIN - [Minkowski distance](https://en.wikipedia.org/wiki/Minkowski_distance)
-  
-The third argument, the KNN, must be a positive number. If the K is larger then the number of vectors in the file, the algorithm will calaulate the maximum vectors he can from the database.
 
-The server calculates the KNN and returns the classification to the client's socket. After that, the server waits for a new message from the client. If the client sends "-1", the server will close the client's socket and accept a new client. If the client sends any invalid message (not by format, invalid metric, etc), the server will reply with "invalid input".
+ In the third option, the client can just classify the data in the server. If no files were uploaded, the server will reply with an error message, and send the menu again. This part will look like this:
   
-A run example, server perspective:
   
-<img width="367" alt="server" src="https://user-images.githubusercontent.com/103560553/210224382-9ade1708-43f9-436c-b2b4-22ab6cf80fb0.PNG">
+<img width="285" alt="4" src="https://user-images.githubusercontent.com/103560553/213907466-b97fdb4d-20e7-4e9c-8049-776ea83f8145.PNG">
 
+
+### The Server
 
 ## Implementation
   
