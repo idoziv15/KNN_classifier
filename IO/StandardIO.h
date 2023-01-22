@@ -3,15 +3,21 @@
 
 #include "AbstractDefaultIO.h"
 
-
+/**
+ * A standard IO class using the keyboard and the screen.
+ */
 class StandardIO : public AbstractDefaultIO {
 public:
+    // A default constructor.
     StandardIO();
 
-    ~StandardIO();
+    // A default destructor.
+    ~StandardIO() override;
 
+    // An implementation to read.
     string read() override;
 
+    // An implementation to write.
     void write(string content);
 };
 
