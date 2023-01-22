@@ -64,6 +64,12 @@ If he wants no changes to be made, he can press ENTER and the server will send t
 <img width="285" alt="4" src="https://user-images.githubusercontent.com/103560553/213907466-b97fdb4d-20e7-4e9c-8049-776ea83f8145.PNG">
 
 
+  In option number 4, the client can request the result of the classification. The server will send the client the result of each vector in the order he received it. If no classification command is performed or no files were uploaded, the server will send an error message. The result will be displayed like that:
+  
+<img width="288" alt="5" src="https://user-images.githubusercontent.com/103560553/213907770-2840113a-7d60-48f5-8dd0-2fcc5e75d638.PNG">
+
+
+
 ### The Server
 
 ## Implementation
