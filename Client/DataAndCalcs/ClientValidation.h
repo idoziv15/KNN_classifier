@@ -39,6 +39,8 @@ public:
 
     bool validPath(const string &path);
 
+    // Checking if the choice by the user is valid.
+    bool checkValidChoice(string line);
 
 protected:
 

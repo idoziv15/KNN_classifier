@@ -233,3 +233,23 @@ bool ClientValidation::validPath(const string &path) {
     myFile.close();
     return true;
 }
+
+/**
+ * Checking if the line is a valid menu choice.
+ * @param line The line to check.
+ * @return true if it's valid, false otherwise.
+ */
+bool ClientValidation::checkValidChoice(string line) {
+    // Check if the choice is a number.
+    if (!validI(line)) {
+        return false;
+    }
+    // Convert the line to integer.
+    int numToCheck = stoi(line);
+    // If the number is not in range, return false.
+    if (numToCheck < 1 || (numToCheck > 5 && numToCheck != 8)) {
+        return false;
+    }
+    // If passed all tests, return true.
+    return true;
+}

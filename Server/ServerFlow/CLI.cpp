@@ -146,5 +146,6 @@ Commander *CLI::processRequest(string clientChoice) {
     if (this->commands.find(clientChoice) == this->commands.end()) {
         return nullptr;
     }
+
     return this->commands[clientChoice];
 }

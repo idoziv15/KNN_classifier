@@ -136,7 +136,7 @@ bool ClientManagement::menuManagement(string menuStr) {
         return false;
     }
     // Check if the input is a valid integer.
-    if (!this->clientValidation.validI(line)) { // ADD MENU CHOICES CHECK.
+    if (!this->clientValidation.checkValidChoice(line)) { // ADD MENU CHOICES CHECK.
         // If it isn't, send it to the server making no operations.
         getDefaultIO()->write(line);
         return true;
@@ -164,6 +164,7 @@ bool ClientManagement::menuManagement(string menuStr) {
 AbstractOperations *ClientManagement::choiceProcess(string choice) {
     // Convert the choice to a number.
     int choiceNum = stoi(choice);
+    // Get the operation the user asked for.
     switch (choiceNum) {
         case 1:
             return new UploadFilesOp(getDefaultIO());
