@@ -2,8 +2,8 @@
 
 /**
  * A constructor for this class, receiving a metric calculation and a number K for the Knn calculation.
- * @param calculation
- * @param kNum
+ * @param calculation - The metric we want to use for calculation.
+ * @param kNum - The num of vectors we want to sample.
  */
 KnnAlgorithm::KnnAlgorithm(AbstractDistance *calculation, unsigned long kNum) {
     setCalc(calculation);
@@ -17,7 +17,7 @@ KnnAlgorithm::~KnnAlgorithm() = default;
 
 /**
  * A setter for the K element.
- * @param kNum
+ * @param kNum - The num of vectors we want to sample.
  */
 void KnnAlgorithm::setKNeighbors(unsigned long kNum) {
     this->kNeighbors = kNum;
@@ -25,7 +25,7 @@ void KnnAlgorithm::setKNeighbors(unsigned long kNum) {
 
 /**
  * A setter for the calculation metric.
- * @param calculation
+ * @param calculation -  The metric.
  */
 void KnnAlgorithm::setCalc(AbstractDistance *calculation) {
     this->calc = calculation;

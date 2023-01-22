@@ -1,8 +1,4 @@
-
 #include "SendToDownload.h"
-
-#include <utility>
-
 
 /**
  * The constructor of sentTODownload class.

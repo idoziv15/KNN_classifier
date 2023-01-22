@@ -35,10 +35,14 @@ void SocketIO::setSocket(int socket) {
  * @param content The content of the sending message.
  */
 void SocketIO::write(string content) {
+    // Concertinaing the string to use "TA Protocol"
     content += "$\0";
+    // Getting the message length.
     unsigned long lenMsg = content.size();
+    // Write the content to the buffer ready to send.
     const char *buffer = content.c_str();
     long sent_bytes = send(getSocket(), buffer, lenMsg, 0);
+    // Checking if sent successfully.
     if (sent_bytes < 0) {
         perror("error sending to client");
         exit(0);

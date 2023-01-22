@@ -39,6 +39,8 @@ public:
 
 
 private:
+
+    //The port number we got as argument to the program.
     int portNum{};
 };
 

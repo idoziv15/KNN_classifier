@@ -21,7 +21,7 @@ RelativeVector::~RelativeVector() = default;
 
 /**
  * A Setter for the values vector.
- * @param newValuesVector
+ * @param newValuesVector - The double vector.
  */
 void RelativeVector::setValuesVector(vector<double> newValuesVector) {
     this->valuesVector = std::move(newValuesVector);

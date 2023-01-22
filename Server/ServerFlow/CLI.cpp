@@ -1,6 +1,6 @@
 #include "CLI.h"
 
-#include <utility>
+
 
 /**
  * Destructor for CLI class.
@@ -143,9 +143,10 @@ map<string, Commander *> CLI::initializeCommands(AbstractDefaultIO *IO, Relative
  * @return The specify command the user want to execute.
  */
 Commander *CLI::processRequest(string clientChoice) {
+    // Checking if the user request is valid, if exist in the map of commands.
     if (this->commands.find(clientChoice) == this->commands.end()) {
         return nullptr;
     }
-
+    // Return the user request to be done.
     return this->commands[clientChoice];
 }

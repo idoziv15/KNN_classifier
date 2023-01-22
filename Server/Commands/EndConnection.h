@@ -11,6 +11,7 @@
 class EndConnection : public Commander {
 public:
 
+    // The constructor of the class.
     EndConnection(string description, AbstractDefaultIO *Dio,  RelativeDatabase* database);
 
     // THis method do all needed to close the connection with the client.
