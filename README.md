@@ -23,11 +23,7 @@
 
 This program has two components, a Server and a client. The Server is a TCP server, which can receive two CSV files. One of the files contains vectors of doubles and a specific classification, and the other file contain vectors of doubles with no classification. The Client can connect to the server, enter a path to the files, and ask the server to calculate the classification of each vector from the unclassified file using [KNN algorithm](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) . The server can send to the client the result, and if the client wishes to, it can can send it to a file in the client's computer.
 
-### The Client
-
-The client receives two system arguments:
- * The IP address of the server.
- * The port number the server uses.
+The client receives two system arguments. The IP address of the server, and his port number. The server gets only a port number to bind to his main socket.
   
  After initiation, the client connects to the server. The server sends the client a menu, and from it, the client can choose a command for the server. 
 
@@ -76,30 +72,17 @@ The last operational option is to download the results to the client's computer.
   
   <img width="547" alt="7" src="https://user-images.githubusercontent.com/103560553/213908097-36d254be-85bc-41bb-a6b0-a1b891a1a6d5.PNG">
 
+The last option (8) is to close the connection. all data will be released and the client socket will be closed. The server will move to the next connection.
+  
 
-### The Server
 
 ## Implementation
   
 ### client
 
-If the port number received as a system argument is not valid (negative or larger than 65,553) the program will close. Same as the port number, if the IP address is not a valid IP the program also will close.
-  
-The client uses the UserVectorInput class to get input from the user. All socket activity is made in the ClientSocket class, and the validations are made using the ClientValidations class.
 
 ### Server
-The server contains two directories, Distances, and flowAndData.
-  
-Distances contain classes that represent every different calculation that can be performed in the KNN algorithm. It also contains the AbstarctDistances class, used for polymorphism between the calculations.
 
-In the flowAndData, we created a RelativeVector class, which contains the vector of doubles and the classification for each row. We calculated the KNN in the KnnAlgorithm class using a hash map and returned the resulting classification. To access the database, we use the FileReader class, which inherits from the DataProcessing class, to read and extract the data to a vector of RelativeVectors.
-
-All socket activity, run, and creation is made in the ServerSocket class. It also inherits from the DataProcessing class to use its methods of processing data. It also contains a member of type ServerValidation, to validate the data received from the client's socket.
-
-## Dependencies
-
-* The program tested for linux machines.
-* Compiled with g++.
 
 ## Installing And Executing
 
