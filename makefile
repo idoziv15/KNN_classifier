@@ -1,6 +1,6 @@
 all:
-	g++ -std=c++11  ./Client/*.cpp ./Client/DataAndCalcs/*.cpp ./Client/Flow/*.cpp ./IO/*.cpp ./Client/Operations/*.cpp -o client.out
-	g++ -std=c++11  ./Server/*.cpp ./Server/Distances/*.cpp ./Server/ServerFlow/*.cpp ./Server/DataAndAssistance/*.cpp ./Server/Commands/*.cpp ./IO/*.cpp -o server.out	
+	g++ -std=c++11 -pthread  ./Client/*.cpp ./Client/DataAndCalcs/*.cpp ./Client/Flow/*.cpp ./IO/*.cpp ./Client/Operations/*.cpp -o client.out
+	g++ -std=c++11 -pthread ./Server/*.cpp ./Server/Distances/*.cpp ./Server/ServerFlow/*.cpp ./Server/DataAndAssistance/*.cpp ./Server/Commands/*.cpp ./IO/*.cpp -o server.out	
 	
 run-server: server.out
 	./server.out 12345

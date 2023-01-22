@@ -11,6 +11,7 @@
 #include "../../IO/SocketCreator.h"
 #include "../../IO/SocketIO.h"
 #include "CLI.h"
+#include <thread>
 
 #define CLIENTS_TO_LISTEN 5
 #define DEFAULT_PORT 12345
@@ -35,6 +36,7 @@ public:
 
     // A getter for the port number.
     int getPort();
+
 
 private:
     int portNum{};

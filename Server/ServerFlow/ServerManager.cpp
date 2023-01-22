@@ -30,6 +30,28 @@ int ServerManager::getPort() {
 }
 
 /**
+ *
+ * @param clientSocket
+ * @return
+ */
+void* handleClient(int clientSocket) {
+    // Creating new IO to communicate with the client.
+    AbstractDefaultIO *socketIO = new SocketIO(clientSocket);
+    RelativeDatabase *database = new RelativeDatabase();
+    // Creating cli.
+    CLI cli(socketIO);
+    // Starting the conversation.
+    cli.start(database);
+    // Closing the client's socket.
+    close(clientSocket);
+    // Destroy the default io when finishing the connection.
+    delete socketIO;
+    // Destroy the database when finishing the connection.
+    delete database;
+    return nullptr;
+}
+
+/**
  * Running the server without ever stopping, accepting new clients concurrently using threads.
  */
 void ServerManager::runServer() {
@@ -37,23 +59,22 @@ void ServerManager::runServer() {
     SocketCreator socketCreator(getPort());
     // Creating new server socket.
     int serverSocket = socketCreator.creatServerSocket();
+    vector<thread> runThreads;
     // Running the server.
     while (true) {
         // Accepting new clients.
         int clientSocket = socketCreator.acceptClient(serverSocket);
         // Thead - HERE!!!
-        // Creating new IO to communicate with the client.
-        AbstractDefaultIO *socketIO = new SocketIO(clientSocket);
-        RelativeDatabase *database = new RelativeDatabase();
-        // Creating cli.
-        CLI cli(socketIO);
-        // Starting the conversation.
-        cli.start(database);
-        // Closing the client's socket.
-        close(clientSocket);
-        // Destroy the default io when finishing the connection.
-        delete socketIO;
-        // Destroy the database when finishing the connection.
-        delete database;
+        thread t1(handleClient, clientSocket);
+        runThreads.push_back(std::move(t1));
+        for(int i = 0; i < runThreads.size(); i++){
+            if(runThreads[i].joinable()){
+                runThreads[i].join();
+                runThreads.erase(runThreads.begin() + i);
+                --i;
+            }
+
+        }
     }
 }
+

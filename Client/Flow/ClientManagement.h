@@ -4,11 +4,12 @@
 
 #include <cstdlib>
 #include <utility>
-# include "./IO/SocketCreator.h"
-#include "./IO/SocketIO.h"
-#include "Client/Operations/UploadFilesOp.h"
-#include "Client/Operations/AlgorithmSettingOp.h"
-#include "Client/Operations/DisplayResult.h"
+# include "../../IO/SocketCreator.h"
+#include "../../IO/SocketIO.h"
+#include "../Operations/UploadFilesOp.h"
+#include "../Operations/AlgorithmSettingOp.h"
+#include "../Operations/DisplayResult.h"
+#include "../Operations/DownloadOp.h"
 
 
 
