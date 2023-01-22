@@ -68,6 +68,13 @@ If he wants no changes to be made, he can press ENTER and the server will send t
   
 <img width="288" alt="5" src="https://user-images.githubusercontent.com/103560553/213907770-2840113a-7d60-48f5-8dd0-2fcc5e75d638.PNG">
 
+The last operational option is to download the results to the client's computer. If the user asks for it, the user will be asked to enter a path to store the file. After that, the server will send the results and the client will write them to the file. A message of validation will be presented to the client when the download will complete. If no data or results exist within the server, an error message will be sent. The communication looks like this:
+  
+  <img width="292" alt="6" src="https://user-images.githubusercontent.com/103560553/213908062-e6346e50-af08-4001-9d2a-4f1e06781048.PNG">
+
+ And the content of the file will look like that:
+  
+  <img width="547" alt="7" src="https://user-images.githubusercontent.com/103560553/213908097-36d254be-85bc-41bb-a6b0-a1b891a1a6d5.PNG">
 
 
 ### The Server
