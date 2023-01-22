@@ -1,7 +1,6 @@
 #include "DataAndCalcs/ClientValidation.h"
 #include "Flow/ClientManagement.h"
 
-
 /**
  * Extracting arguments from the system args to be the K (for the knn algorithm), the path to the file (the database)
  * and the metric calculation.
@@ -35,13 +34,15 @@ vector<string> extract_argc(char *argcArray[]) {
  * @return 0;
  */
 int main(int args, char *argv[]) {
-
     // Getting the argc and checking if valid.
     vector<string> argc_vector = extract_argc(argv);
+    // Get the ip from the system args.
     string ipAddress = argc_vector[0];
+    // Get the port number from the system args.
     int portNumber = stoi(argc_vector[1]);
+    // Create a new client management.
     ClientManagement clientManagement(portNumber, ipAddress);
+    // Start running the client.
     clientManagement.start();
-
     return 0;
 }

@@ -1,6 +1,5 @@
 #include "DownloadOp.h"
 
-
 /**
  * A default destructor for DownloadOp class.
  */
@@ -12,7 +11,6 @@ DownloadOp::~DownloadOp() = default;
  */
 DownloadOp::DownloadOp(AbstractDefaultIO *defaultIo) : AbstractOperations(defaultIo) {
 }
-
 
 /**
  * Downloading the file to the computer of the client.
@@ -46,11 +44,11 @@ void DownloadOp::executeOp() {
     }
     // Confirmation the
     getDio()->write("OK");
-
     // Get the path from the user.
     string path = userInput();
-
+    // Creating a thread to download the file.
     thread t2(downloadFileToComputer, response, path);
+    // Detaching the thread from the main thread.
     t2.detach();
 }
 

@@ -27,5 +27,4 @@ void AlgorithmSettingOp::executeOp() {
     getline(cin, changeSetting);
     // Send the user input to the server.
     getDio()->write(changeSetting);
-
 }

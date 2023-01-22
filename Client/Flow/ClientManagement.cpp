@@ -1,8 +1,7 @@
 #include "ClientManagement.h"
 
-
 /**
- * A default constructor.
+ * A constructor receiving a port and ip.
  */
 ClientManagement::ClientManagement(int port, string ip) {
     setPort(port);
@@ -54,7 +53,6 @@ string ClientManagement::getIp() {
     return this->serverIp;
 }
 
-
 /**
  * A getter for the DIO.
  * @return The DIO pointer of type AbstractDefaultIO.
@@ -76,8 +74,11 @@ void ClientManagement::setDefaultIO(AbstractDefaultIO *dio) {
  * @return The user's input.
  */
 string ClientManagement::userInput() {
+    // Create a string to store the choice.
     string line;
+    // Get the user's input.
     getline(cin, line);
+    // Return the user's input.
     return line;
 }
 
@@ -154,6 +155,7 @@ bool ClientManagement::menuManagement(string menuStr) {
     op->executeOp();
     // Delete the resources.
     delete op;
+    // Returning true to keep the loop running.
     return true;
 }
 

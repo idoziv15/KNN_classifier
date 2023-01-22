@@ -1,7 +1,6 @@
 #ifndef EX4_CLIENTMANAGEMENT_H
 #define EX4_CLIENTMANAGEMENT_H
 
-
 #include <cstdlib>
 #include <utility>
 # include "../../IO/SocketCreator.h"
@@ -11,8 +10,6 @@
 #include "../Operations/DisplayResult.h"
 #include "../Operations/DownloadOp.h"
 
-
-
 using namespace std;
 
 /**
@@ -20,7 +17,6 @@ using namespace std;
  */
 class ClientManagement {
 public:
-
     // Initiating the client's management to start running.
     void start();
 
@@ -62,7 +58,6 @@ public:
 
     // Runs the connection.
     void run();
-
 
 private:
     // IO member.

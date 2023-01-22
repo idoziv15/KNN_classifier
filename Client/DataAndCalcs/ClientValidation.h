@@ -55,8 +55,6 @@ protected:
 
     // Checking if the doubles the user entered is valid doubles.
     bool checkVecDouble(vector<string> vector);
-
-
 };
 
 #endif //EX4_CLIENTVALIDATION_H

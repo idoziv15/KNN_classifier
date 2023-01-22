@@ -4,6 +4,9 @@
 #include "AbstractOperations.h"
 #include <thread>
 
+/**
+ * An operation to download the file of the result to the client's computer.
+ */
 class DownloadOp : public AbstractOperations {
 public:
     // A constructor.

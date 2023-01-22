@@ -215,7 +215,6 @@ bool ClientValidation::validI(string strNum) {
     return true;
 }
 
-
 /**
  * Checking if a file exist on the computer.
  * @param path The path to the file.
