@@ -21,7 +21,10 @@
 
 *The final project seats in the "main" branch!*
 
-This program has two components, a Server and a client. The Server is a TCP server, which can receive two CSV files. One of the files contains vectors of doubles and a specific classification, and the other file contain vectors of doubles with no classification. The Client can connect to the server, enter a path to the files, and ask the server to calculate the classification of each vector from the unclassified file using [KNN algorithm](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) . The server can send to the client the result, and if the client wishes to, it can can send it to a file in the client's computer.
+This program has two components, a Server and a client. The Server is a TCP server, which can receive two CSV files. One of the files contains vectors of doubles and a specific classification, and the other file contain vectors of doubles with no classification. The Client can connect to the server, enter a path to the files, and ask the server to calculate the classification of each vector from the unclassified file using [KNN algorithm](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm). The server can send to the client the result, and if the client wishes to, it can can send it to a file in the client's computer.
+
+![adfbh](https://user-images.githubusercontent.com/103560553/213933559-65033ac1-ab25-4200-9162-e51c7295ee2c.png)
+
 
 The client receives two system arguments. The IP address of the server, and his port number. The server gets only a port number to bind to his main socket.
   
