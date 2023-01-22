@@ -88,6 +88,12 @@ The Clients implementation is relatively basic. It uses "operations" to fulfill 
   
 The server's implementation is based on a CLI with the client. After the server accepts a new client, it opens a thread for this client, which gives him the ability to concurrently accept new clients and handle them. The server implements the [Command](https://en.wikipedia.org/wiki/Command_pattern) design pattern, giving him the modular option to add and remove new features from the menu. The server uses the RelativeDatabase class to store all information from the client. This class is allocated on the heap to assure data modularity and safe data sharing between the different commands.
   
+A standard UML of this design pattern is:
+  
+  <img width="471" alt="11" src="https://user-images.githubusercontent.com/103560553/213909239-9831578a-e806-4657-a483-57a9ff2b14e2.PNG">
+
+
+  
 
 ## Installing And Executing
 
