@@ -28,14 +28,20 @@ This program has two components, a Server and a client. The Server is a TCP serv
 The client receives two system arguments:
  * The IP address of the server.
  * The port number the server uses.
- 
-After that, the client asks the user to enter a vector (the same sized as the vectors in the server's database), a metric calculation function, and a number K for the KNN calculation. If the client enters "-1" he closes the socket.
- 
-The client sends the message to the server and prints the reply.
   
-A run example, client perspective:
+ After initiation, the client connects to the server. The server sends the client a menu, and from it, the client can choose a command for the server. 
+
   
- <img width="365" alt="client" src="https://user-images.githubusercontent.com/103560553/210224395-24624769-ac11-4ade-bfb9-f1584748a5ec.PNG">
+The menu looks like this:
+  
+Welcome to the KNN Classifier Server. Please choose an option:
+1. upload an unclassified csv data file.
+2. algorithm settings.
+3. classify data
+4. display results
+5. download results
+8. exit
+
 
 ### The Server
 
