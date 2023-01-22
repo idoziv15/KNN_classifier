@@ -12,8 +12,6 @@
  */
 class Commander {
 public:
-    // A default constructor for commander class.
-    Commander();
 
     // Constructor for commander class.
     Commander(string description, AbstractDefaultIO *defaultIo, RelativeDatabase *relativeDatabase);
