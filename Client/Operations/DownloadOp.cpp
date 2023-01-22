@@ -51,5 +51,3 @@ void DownloadOp::executeOp() {
     // Detaching the thread from the main thread.
     t2.detach();
 }
-
-
