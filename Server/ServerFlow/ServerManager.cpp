@@ -30,11 +30,11 @@ int ServerManager::getPort() {
 }
 
 /**
- *
- * @param clientSocket
- * @return
+ * Handling a new client.
+ * @param clientSocket The socket of the client to the server.
+ * @return nullptr.
  */
-void* handleClient(int clientSocket) {
+void *handleClient(int clientSocket) {
     // Creating new IO to communicate with the client.
     AbstractDefaultIO *socketIO = new SocketIO(clientSocket);
     RelativeDatabase *database = new RelativeDatabase();
@@ -59,22 +59,14 @@ void ServerManager::runServer() {
     SocketCreator socketCreator(getPort());
     // Creating new server socket.
     int serverSocket = socketCreator.creatServerSocket();
-    vector<thread> runThreads;
     // Running the server.
     while (true) {
         // Accepting new clients.
         int clientSocket = socketCreator.acceptClient(serverSocket);
-        // Thead - HERE!!!
+        // Creating a new thread.
         thread t1(handleClient, clientSocket);
-        runThreads.push_back(std::move(t1));
-        for(int i = 0; i < runThreads.size(); i++){
-            if(runThreads[i].joinable()){
-                runThreads[i].join();
-                runThreads.erase(runThreads.begin() + i);
-                --i;
-            }
-
-        }
+        // Detach the new thread from the current thread.
+        t1.detach();
     }
 }
 

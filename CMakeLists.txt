@@ -3,6 +3,8 @@ project(ex4)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+
 include_directories(.)
 
 file(GLOB_RECURSE SERVER_SOURCES "Server/*.cpp" "Server/*.h")

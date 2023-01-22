@@ -2,6 +2,7 @@
 #define EX4_DOWNLOADOP_H
 
 #include "AbstractOperations.h"
+#include <thread>
 
 class DownloadOp : public AbstractOperations {
 public:
@@ -13,9 +14,6 @@ public:
 
     // Making the operation.
     void executeOp() override;
-
-    // Downloading the file to the computer.
-    void downloadFileToComputer(string file);
 };
 
 #endif //EX4_DOWNLOADOP_H
