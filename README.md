@@ -96,8 +96,7 @@ The last option (8) is to close the connection. all data will be released and th
 
 ## Implementation
   
-  Both server and client share the IO directory. This directory's purpose is to allow them to communicate threw different IO ways, such as sockets, keyboard io, etc. They use the AbstractDefaultIO to polymorphism the IO tool they use. In this program, we use the TCP socket IO.
-  
+  Both server and client share the IO directory. This directory's purpose is to allow them to communicate threw different IO ways, such as sockets, keyboard io, etc. They use the AbstractDefaultIO to polymorphism the IO tool they use. In this program, we use the TCP socket IO. We implemented a self-protocol to transfer data using the SocketIO read and write.  The protocol adds the char "$" to the end of the message we want to send.  When we read the message in the read method, the protocol concatenates the data (because of the [TCP](https://en.wikipedia.org/wiki/Transmission_Control_Protocol) segmentation mechanism), to ensure all data will be received as one message.
 ### client
   
 The Clients implementation is relatively basic. It uses "operations" to fulfill the user requests, such as printing the results of the classification or entering a path to a file. The communication with the server is performed as a "ping pong" talk. If the client sends a message to the server, it can't send a repetitive message until the server replies with a message of its own. All client operations are made sequentially, except the "download results". in this option, the client opens a new thread, which gives him the ability to concurrently make new commends while he downloads the results to his computer.
