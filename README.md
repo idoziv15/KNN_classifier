@@ -1,10 +1,13 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/idoziv15/AP1Project"><img src="https://img.icons8.com/color/344/c-plus-plus-logo.png" alt="C++" width="200"></a>
+  <img src="https://img.icons8.com/color/344/c-plus-plus-logo.png" alt="C++" width="100">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMN17Vk-TMPZZTcGGEkJfpX3NruOFcqkTUg&s" alt="TCP" width="100"> 
+  <img src="assets/knn.png" alt="KNN Algorithm" width="100"> 
   <br>
   Advanced-Programming-1
   <br>
 </h1>
+
 
 <h4 align="center">This github repository is for the final assignment given in Advanced Programming 1 course, Bar Ilan University.
 
