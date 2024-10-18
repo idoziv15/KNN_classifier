@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/TalMizrahii/AP1Project"><img src="https://img.icons8.com/color/344/c-plus-plus-logo.png" alt="C++" width="200"></a>
+  <a href="https://github.com/idoziv15/AP1Project"><img src="https://img.icons8.com/color/344/c-plus-plus-logo.png" alt="C++" width="200"></a>
   <br>
   Advanced-Programming-1
   <br>
@@ -31,21 +31,19 @@ The client receives two system arguments. The IP address of the server, and his 
 
   
 The menu looks like this:
-  
-  <img width="368" alt="1" src="https://user-images.githubusercontent.com/103560553/213907301-233a977c-a5b1-49f8-b42c-97fd3f332baa.PNG">
+![Menu](assets/menu.png)
 
 
 The user can choose any option from the menu. If he enters a choice outside of the menu, the server will reply "invalid input" message and will send the menu again.
   
 In the first option, the user will be asked to upload files to the server. He will be asked to enter a path to a classified CSV file, and a path to an unclassified CSV file. The client will automatically send the content of the files to the server. This option will look like that:
 
-
-  <img width="368" alt="3" src="https://user-images.githubusercontent.com/103560553/213906933-1b0cd068-c3dc-4808-a286-e36b1b564603.PNG">
+![Choose](assets/option-choose.png)
 
   
 If the user asks for the algorithm settings, the server will send him the current settings of the KNN algorithm. The message with the default settings looks like that:
 
-<img width="370" alt="2" src="https://user-images.githubusercontent.com/103560553/213906987-efa9ee9f-1935-4b0d-860b-9d322b0b5018.PNG">
+![Settings](assets/settings.png)
   
 If he wants no changes to be made, he can press ENTER and the server will send the menu again. If the user wants to change the settings, he can enter a new K element, and a metric of his choice from these options:
   
@@ -73,21 +71,18 @@ If he wants no changes to be made, he can press ENTER and the server will send t
 
  In the third option, the client can just classify the data in the server. If no files were uploaded, the server will reply with an error message, and send the menu again. This part will look like this:
   
-  
-<img width="285" alt="4" src="https://user-images.githubusercontent.com/103560553/213907466-b97fdb4d-20e7-4e9c-8049-776ea83f8145.PNG">
+![Classify complete](assets/complete.png)
 
 
   In option number 4, the client can request the result of the classification. The server will send the client the result of each vector in the order he received it. If no classification command is performed or no files were uploaded, the server will send an error message. The result will be displayed like that:
   
-<img width="288" alt="5" src="https://user-images.githubusercontent.com/103560553/213907770-2840113a-7d60-48f5-8dd0-2fcc5e75d638.PNG">
+![Result](assets/result.png)
 
-The last operational option is to download the results to the client's computer. If the user asks for it, the user will be asked to enter a path to store the file. After that, the server will send the results and the client will write them to the file. A message of validation will be presented to the client when the download will complete. If no data or results exist within the server, an error message will be sent. The communication looks like this:
-  
-  <img width="292" alt="6" src="https://user-images.githubusercontent.com/103560553/213908062-e6346e50-af08-4001-9d2a-4f1e06781048.PNG">
+The last operational option is to download the results to the client's computer. If the user asks for it, the user will be asked to enter a path to store the file. After that, the server will send the results and the client will write them to the file. A message of validation will be presented to the client when the download will complete. If no data or results exist within the server, an error message will be sent.
 
- And the content of the file will look like that:
+ The content of the file will look like that:
   
-  <img width="547" alt="7" src="https://user-images.githubusercontent.com/103560553/213908097-36d254be-85bc-41bb-a6b0-a1b891a1a6d5.PNG">
+![CSV file](assets/csv.png)
 
 The last option (8) is to close the connection. all data will be released and the client socket will be closed. The server will move to the next connection.
   
@@ -119,15 +114,15 @@ To clone and run this application, you'll need [Git](https://git-scm.com) instal
 
 ```bash
 # Clone this repository.
-$ git clone https://github.com/TalMizrahii/AP1-KNN-Multithreaded-TCP-Server
+$ git clone https://github.com/idoziv15/AP1-KNN-Multithreaded-TCP-Server
 
 # Go into the repository.
-$ cd AP1-KNN-Multithreaded-TCP-Server
+$ cd KNN_classifier
 
 # Compile using makefile.
 $ make
 ```
-  This command will create two .out files; server.out and client.out.
+  This command will create two executables files; server.out and client.out.
   
 ```bash
 # To run the server with default port:
@@ -146,6 +141,5 @@ $ make clean
 ```
 
 ## Authors
-* [@Yuval Arbel](https://github.com/YuvalArbel1)
-* [@Tal Mizrahi](https://github.com/TalMizrahii)
+* [@Ido Ziv](https://github.com/idoziv15)
 
